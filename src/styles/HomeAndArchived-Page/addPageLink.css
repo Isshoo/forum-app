@@ -1,0 +1,47 @@
+:root {
+  --add-btn-bg: #ffffffdf;
+  --add-btn-bg-hover: #ffffff;
+  --add-btn-shadow: rgba(0, 0, 0, 0.5);
+  --add-icon: #212631;
+  --add-icon-hover: #101217;
+}
+
+[data-theme="light"] {
+  --add-btn-bg: #101217;
+  --add-btn-bg-hover: #ffffff;
+  --add-btn-shadow: rgba(0, 0, 0, 0.305);
+  --add-icon: #ffffff;
+  --add-icon-hover: #101217;
+}
+
+#addPageLink {
+  bottom: 32px;
+  display: flex;
+  position: fixed;
+  right: 32px;
+}
+
+#addPageLink a {
+  background-color: var(--add-btn-bg);
+  border-radius: 100%;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  box-shadow: -2px 2px 5px 3px var(--add-btn-shadow);
+}
+#addPageLink a:hover {
+  background-color: var(--add-icon);
+  box-shadow: -2px 2px 5px 5px var(--add-btn-shadow);
+
+  svg path {
+    color: var(--add-btn-bg);
+  }
+}
+
+#addPageLink a svg {
+  font-size: 1.5rem;
+}
+#addPageLink a svg path {
+  color: var(--add-icon);
+}

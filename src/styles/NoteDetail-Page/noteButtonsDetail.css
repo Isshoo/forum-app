@@ -1,0 +1,76 @@
+:root {
+  --note-detail-message-bg: #333;
+  --note-detail-message-text: #fff;
+  --note-detail-btn: #ffffff;
+  --note-detail-btn-hover: #455068;
+  --note-detail-btn-act: #0a0e15;
+  --archive-content: "Archive Note";
+  --unarchive-content: "Unarchive Note";
+  --delete-content: "Delete Note";
+}
+
+[data-theme="light"] {
+  --note-detail-message-bg: #333;
+  --note-detail-message-text: #fff;
+  --note-detail-btn: #212631;
+  --note-detail-btn-hover: #0a0e15;
+  --note-detail-btn-act: #0a0e15;
+}
+[data-lang="ID"] {
+  --archive-content: "Arsipkan Catatan";
+  --unarchive-content: "Buka Ulang Catatan";
+  --delete-content: "Hapus Catatan";
+}
+
+.buttons.detail {
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
+  gap: 0.5rem;
+}
+
+.note-btn.detail::after {
+  transform: translateX(-30%);
+  padding: 0.25rem 0.4rem;
+  font-size: 0.75rem;
+}
+
+.note-btn.detail:hover::after {
+  opacity: 1;
+  transform: translateX(-30%) translateY(-0.9rem);
+}
+.note-btn.detail.btn-delete:hover:after {
+  transform: translateX(-30%) translateY(-1.1rem);
+}
+
+.btn-archive::after {
+  content: var(--archive-content);
+}
+
+.btn-unarchive::after {
+  content: var(--unarchive-content);
+}
+
+.btn-delete::after {
+  content: var(--delete-content);
+}
+
+.btn-archive.detail svg,
+.btn-unarchive.detail svg {
+  font-size: 2.2rem;
+  path {
+    color: var(--note-detail-btn);
+  }
+}
+
+.btn-delete.detail svg {
+  font-size: 2rem;
+  path {
+    color: var(--note-detail-btn);
+  }
+}
+
+.note-btn.detail:hover {
+  svg path {
+    color: var(--note-detail-btn-hover);
+  }
+}

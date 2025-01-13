@@ -1,0 +1,34 @@
+:root {
+  --notes-list-contaner: #212631;
+  --blank-text: #ffffff;
+}
+
+[data-theme="light"] {
+  --notes-list-contaner: #ffffff;
+  --blank-text: #212631;
+}
+
+#archivedListContainer {
+  display: none;
+}
+
+.notes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: auto;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background-color: var(--notes-list-contaner);
+  border-radius: 16px;
+  box-shadow: -2px 2px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.blankList {
+  color: var(--blank-text);
+}
+@media screen and (max-width: 375px) {
+  .notes-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 1.5rem;
+  }
+}

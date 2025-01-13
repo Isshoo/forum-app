@@ -1,0 +1,114 @@
+:root {
+  --note-item-message-bg: #333;
+  --note-item-message-text: #fff;
+  --note-item-btn: #373f4e;
+  --note-item-btn-hover: #212631;
+  --note-item-btn-act: #0a0e15;
+  --archive-content: "Archive Note";
+  --unarchive-content: "Unarchive Note";
+  --delete-content: "Delete Note";
+}
+
+[data-theme="light"] {
+  --note-item-message-bg: #333;
+  --note-item-message-text: #fff;
+  --note-item-btn: #ffffffc1;
+  --note-item-btn-hover: #ffffff;
+  --note-item-btn-act: #0a0e15;
+}
+[data-lang="ID"] {
+  --archive-content: "Arsipkan Catatan";
+  --unarchive-content: "Buka Ulang Catatan";
+  --delete-content: "Hapus Catatan";
+}
+
+.buttons {
+  margin-top: 0.25rem;
+  display: flex;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: end;
+}
+
+.note-btn {
+  position: relative;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 100%;
+  transition: 0.3s ease;
+  border: none;
+  display: flex;
+  align-items: end;
+}
+.note-btn::after {
+  content: attr(data-message);
+  position: absolute;
+  top: -0.75rem;
+  left: -0.5rem;
+  transform: translateX(-50%);
+  background-color: var(--note-item-message-bg);
+  color: var(--note-item-message-text);
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.5rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  z-index: 1000;
+}
+
+.note-btn:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-0.5rem);
+}
+.note-btn.btn-delete:hover:after {
+  transform: translateX(-50%) translateY(-0.7rem);
+}
+
+.btn-archive::after {
+  content: var(--archive-content);
+}
+
+.btn-unarchive::after {
+  content: var(--unarchive-content);
+}
+
+.btn-delete::after {
+  content: var(--delete-content);
+}
+
+.btn-archive svg,
+.btn-unarchive svg {
+  display: flex;
+  align-items: end;
+  padding-top: 1px;
+  font-size: 1.3rem;
+  path {
+    color: var(--note-item-btn);
+  }
+}
+
+.btn-delete svg {
+  font-size: 1.1rem;
+  padding-bottom: 1px;
+  path {
+    color: var(--note-item-btn);
+  }
+}
+
+.note-btn:hover {
+  svg path {
+    color: var(--note-item-btn-hover);
+  }
+}
+
+.note-btn:active {
+  svg path {
+    color: var(--note-item-btn-act);
+  }
+}
