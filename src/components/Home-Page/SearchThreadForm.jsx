@@ -3,7 +3,7 @@ import { FaSearch } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { LocaleConsumer } from '../../contexts/LocaleContext';
 
-function SearchNotesForm({ keyword, keywordChange }) {
+function SearchThreadsForm({ keyword, keywordChange }) {
   return (
     <LocaleConsumer>
       {({ locale }) => {
@@ -12,7 +12,7 @@ function SearchNotesForm({ keyword, keywordChange }) {
             <input
               type="text"
               id="searchInput"
-              placeholder={locale === 'EN' ? 'Search notes...' : 'Cari catatan...'}
+              placeholder={locale === 'EN' ? 'Search threads...' : 'Cari catatan...'}
               value={keyword}
               onChange={(event) => keywordChange(event.target.value)}
             />
@@ -26,9 +26,9 @@ function SearchNotesForm({ keyword, keywordChange }) {
   );
 }
 
-SearchNotesForm.propTypes = {
+SearchThreadsForm.propTypes = {
   keyword: PropTypes.string.isRequired,
   keywordChange: PropTypes.func.isRequired,
 };
 
-export default SearchNotesForm;
+export default SearchThreadsForm;

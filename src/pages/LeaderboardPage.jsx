@@ -8,7 +8,7 @@ import useSearch from '../hooks/useSearch';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncPopulateUsersAndThreads } from '../states/shared/action';
 
-function ArchivedNotesPage() {
+function ArchivedThreadsPage() {
   const firstRun = useRef(true);
   const threads = useSelector((states) => states.threads);
   const users = useSelector((states) => states.users);
@@ -41,4 +41,4 @@ function ArchivedNotesPage() {
   );
 }
 
-export default ArchivedNotesPage;
+export default ArchivedThreadsPage;

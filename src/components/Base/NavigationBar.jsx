@@ -15,7 +15,7 @@ function NavigationBar({ logout, username }) {
             <ul className="navigation">
               <li>
                 <Link
-                  id="allNotesBtn"
+                  id="allThreadsBtn"
                   className={`nav-button ${location.pathname === '/' ? 'active' : ''}`}
                   to="/"
                 >

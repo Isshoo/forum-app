@@ -1,29 +1,29 @@
 import React from 'react';
 import { showFormattedDate } from '../../utils';
-import NoteButtons from '../Base/ThreadButtons';
+import ThreadButtons from '../Base/ThreadButtons';
 import PropTypes from 'prop-types';
 import parser from 'html-react-parser';
 
-function NotesDetail({ id, archived, title, body, createdAt, onDelete, onArchive }) {
+function ThreadsDetail({ id, archived, title, body, createdAt, onDelete, onArchive }) {
   return (
-    <div className="note detail">
-      <div className="notes-item detail">
-        <div className="note-title detail">
+    <div className="thread detail">
+      <div className="threads-item detail">
+        <div className="thread-title detail">
           <h3>{title}</h3>
         </div>
-        <div className="note-date detail">
+        <div className="thread-date detail">
           <p>{showFormattedDate(createdAt)}</p>
         </div>
-        <div className="note-des detail">
+        <div className="thread-des detail">
           <p>{parser(body)}</p>
         </div>
-        <NoteButtons id={id} archived={archived} onDelete={onDelete} onArchive={onArchive} />
+        <ThreadButtons id={id} archived={archived} onDelete={onDelete} onArchive={onArchive} />
       </div>
     </div>
   );
 }
 
-NotesDetail.propTypes = {
+ThreadsDetail.propTypes = {
   id: PropTypes.string.isRequired,
   archived: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
@@ -33,4 +33,4 @@ NotesDetail.propTypes = {
   onArchive: PropTypes.func.isRequired,
 };
 
-export default NotesDetail;
+export default ThreadsDetail;

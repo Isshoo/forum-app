@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
-import { addNote } from '../utils/network-data';
-import FormAddNotes from '../components/AddThread-Page/FormAddThread';
+import { addThread } from '../utils/network-data';
+import FormAddThreads from '../components/AddThread-Page/FormAddThread';
 import { useNavigate } from 'react-router-dom';
 import LocaleContext from '../contexts/LocaleContext';
 
-function AddNotesPage() {
+function AddThreadsPage() {
   const navigate = useNavigate();
   const { locale } = useContext(LocaleContext);
 
-  async function onAddNoteHandler(note) {
-    await addNote(note);
+  async function onAddThreadHandler(thread) {
+    await addThread(thread);
     Swal.fire({
       title: 'Berhasil!',
       text: 'Catatan baru telah ditambahkan.',
@@ -23,12 +23,12 @@ function AddNotesPage() {
 
   return (
     <section className="pages-section">
-      <div id="formNewNotes" className="form-container">
-        <h2>{locale === 'EN' ? 'New Notes' : 'Catatan Baru'}</h2>
-        <FormAddNotes addNote={onAddNoteHandler} />
+      <div id="formNewThreads" className="form-container">
+        <h2>{locale === 'EN' ? 'New Threads' : 'Catatan Baru'}</h2>
+        <FormAddThreads addThread={onAddThreadHandler} />
       </div>
     </section>
   );
 }
 
-export default AddNotesPage;
+export default AddThreadsPage;

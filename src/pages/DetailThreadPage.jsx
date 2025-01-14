@@ -2,29 +2,29 @@ import React from 'react';
 import Swal from 'sweetalert2';
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getNote, deleteNote, archiveNote, unarchiveNote } from '../utils/network-data';
-import NotesDetail from '../components/DetailThread-Page/ThreadDetail';
+import { getThread, deleteThread, archiveThread, unarchiveThread } from '../utils/network-data';
+import ThreadsDetail from '../components/DetailThread-Page/ThreadDetail';
 import LocaleContext from '../contexts/LocaleContext';
 import LoadingBar from '../components/Base/LoadingBar';
 
-function DetailNotesPage() {
+function DetailThreadsPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { locale } = useContext(LocaleContext);
-  const [note, setNote] = useState(null);
+  const [thread, setThread] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchNoteData() {
-      const { data } = await getNote(id);
-      setNote(data);
+    async function fetchThreadData() {
+      const { data } = await getThread(id);
+      setThread(data);
       setLoading(false);
     }
 
-    fetchNoteData();
+    fetchThreadData();
 
     return () => {
-      setNote(null);
+      setThread(null);
     };
   }, [id]);
 
@@ -43,7 +43,7 @@ function DetailNotesPage() {
         return;
       }
 
-      await deleteNote(id);
+      await deleteThread(id);
 
       await Swal.fire({
         title: 'Berhasil!',
@@ -66,22 +66,22 @@ function DetailNotesPage() {
   }
 
   async function onArchivingHandler(id) {
-    await archiveNote(id);
+    await archiveThread(id);
     navigate('/archived');
   }
 
   async function onUnarchivingHandler(id) {
-    await unarchiveNote(id);
+    await unarchiveThread(id);
     navigate('/');
   }
   if (loading) {
     return <LoadingBar />;
   }
 
-  if (!note) {
+  if (!thread) {
     return (
-      <p className="blank-note">
-        {locale === 'EN' ? 'Note is not found!' : 'Catatan tidak ditemukan!'}
+      <p className="blank-thread">
+        {locale === 'EN' ? 'Thread is not found!' : 'Catatan tidak ditemukan!'}
       </p>
     );
   }
@@ -89,14 +89,14 @@ function DetailNotesPage() {
   return (
     <section className="pages-section">
       <div className="detail-con">
-        <NotesDetail
-          {...note}
+        <ThreadsDetail
+          {...thread}
           onDelete={onDeleteHandler}
-          onArchive={note.archived ? onUnarchivingHandler : onArchivingHandler}
+          onArchive={thread.archived ? onUnarchivingHandler : onArchivingHandler}
         />
       </div>
     </section>
   );
 }
 
-export default DetailNotesPage;
+export default DetailThreadsPage;

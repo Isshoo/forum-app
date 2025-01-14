@@ -14,14 +14,14 @@
   --add-icon-hover: #101217;
 }
 
-#addPageLink {
+#addThreadBtn {
   bottom: 32px;
   display: flex;
   position: fixed;
   right: 32px;
 }
 
-#addPageLink a {
+#addThreadBtn a {
   background-color: var(--add-btn-bg);
   border-radius: 100%;
   padding: 16px;
@@ -30,7 +30,7 @@
   align-items: center;
   box-shadow: -2px 2px 5px 3px var(--add-btn-shadow);
 }
-#addPageLink a:hover {
+#addThreadBtn a:hover {
   background-color: var(--add-icon);
   box-shadow: -2px 2px 5px 5px var(--add-btn-shadow);
 
@@ -39,9 +39,9 @@
   }
 }
 
-#addPageLink a svg {
+#addThreadBtn a svg {
   font-size: 1.5rem;
 }
-#addPageLink a svg path {
+#addThreadBtn a svg path {
   color: var(--add-icon);
 }

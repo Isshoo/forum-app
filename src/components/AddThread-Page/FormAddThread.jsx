@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LocaleConsumer } from '../../contexts/LocaleContext';
 
-class FormAddNotes extends React.Component {
+class FormAddThreads extends React.Component {
   constructor(props) {
     super(props);
 
@@ -41,7 +41,7 @@ class FormAddNotes extends React.Component {
 
   onSubmitEventHandler(event) {
     event.preventDefault();
-    this.props.addNote(this.state);
+    this.props.addThread(this.state);
   }
 
   render() {
@@ -49,7 +49,7 @@ class FormAddNotes extends React.Component {
       <LocaleConsumer>
         {({ locale }) => {
           return (
-            <form id="noteForm" autoComplete="off" onSubmit={this.onSubmitEventHandler}>
+            <form id="threadForm" autoComplete="off" onSubmit={this.onSubmitEventHandler}>
               <div>
                 <label htmlFor="title">{locale === 'EN' ? 'Title' : 'Judul'}</label>
                 <input
@@ -79,7 +79,7 @@ class FormAddNotes extends React.Component {
                 ></div>
                 <p id="descriptionValidation" className="validation-message" aria-live="polite"></p>
               </div>
-              <button type="submit" id="notesSubmit">
+              <button type="submit" id="threadsSubmit">
                 {locale === 'EN' ? 'Add' : 'Tambahkan'}
               </button>
             </form>
@@ -90,8 +90,8 @@ class FormAddNotes extends React.Component {
   }
 }
 
-FormAddNotes.propTypes = {
-  addNote: PropTypes.func.isRequired,
+FormAddThreads.propTypes = {
+  addThread: PropTypes.func.isRequired,
 };
 
-export default FormAddNotes;
+export default FormAddThreads;

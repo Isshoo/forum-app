@@ -17,22 +17,23 @@ function ThreadItem({
   authUser,
 }) {
   return (
-    <div className="note">
-      <div className="notes-item">
-        <div className="note-title">
+    <div className="thread">
+      <div className="threads-item">
+        <div className="thread-title">
           <h3>
-            <Link to={`/notes/${id}`}>{title}</Link>
+            <Link to={`/threads/${id}`}>{title}</Link>
           </h3>
         </div>
-        <div className="note-date">
+        <div className="thread-date">
           <p>{showFormattedDate(createdAt)}</p>
         </div>
-        <div className="note-des"></div>
-        <p>{parser(body)}</p>
-        <p>{upVotesBy.length}</p>
-        <p>{totalComments}</p>
-        <p>{category}</p>
-        <p>{user.name}</p>
+        <div className="thread-des">
+          <div>{parser(body)}</div>
+          <p>{upVotesBy.length}</p>
+          <p>{totalComments}</p>
+          <p>{category}</p>
+          <p>{user.name}</p>
+        </div>
       </div>
     </div>
   );

@@ -1,20 +1,20 @@
 :root {
-  --note-detail-message-bg: #333;
-  --note-detail-message-text: #fff;
-  --note-detail-btn: #ffffff;
-  --note-detail-btn-hover: #455068;
-  --note-detail-btn-act: #0a0e15;
-  --archive-content: "Archive Note";
-  --unarchive-content: "Unarchive Note";
-  --delete-content: "Delete Note";
+  --thread-detail-message-bg: #333;
+  --thread-detail-message-text: #fff;
+  --thread-detail-btn: #ffffff;
+  --thread-detail-btn-hover: #455068;
+  --thread-detail-btn-act: #0a0e15;
+  --archive-content: "Archive Thread";
+  --unarchive-content: "Unarchive Thread";
+  --delete-content: "Delete Thread";
 }
 
 [data-theme="light"] {
-  --note-detail-message-bg: #333;
-  --note-detail-message-text: #fff;
-  --note-detail-btn: #212631;
-  --note-detail-btn-hover: #0a0e15;
-  --note-detail-btn-act: #0a0e15;
+  --thread-detail-message-bg: #333;
+  --thread-detail-message-text: #fff;
+  --thread-detail-btn: #212631;
+  --thread-detail-btn-hover: #0a0e15;
+  --thread-detail-btn-act: #0a0e15;
 }
 [data-lang="ID"] {
   --archive-content: "Arsipkan Catatan";
@@ -28,17 +28,17 @@
   gap: 0.5rem;
 }
 
-.note-btn.detail::after {
+.thread-btn.detail::after {
   transform: translateX(-30%);
   padding: 0.25rem 0.4rem;
   font-size: 0.75rem;
 }
 
-.note-btn.detail:hover::after {
+.thread-btn.detail:hover::after {
   opacity: 1;
   transform: translateX(-30%) translateY(-0.9rem);
 }
-.note-btn.detail.btn-delete:hover:after {
+.thread-btn.detail.btn-delete:hover:after {
   transform: translateX(-30%) translateY(-1.1rem);
 }
 
@@ -58,19 +58,19 @@
 .btn-unarchive.detail svg {
   font-size: 2.2rem;
   path {
-    color: var(--note-detail-btn);
+    color: var(--thread-detail-btn);
   }
 }
 
 .btn-delete.detail svg {
   font-size: 2rem;
   path {
-    color: var(--note-detail-btn);
+    color: var(--thread-detail-btn);
   }
 }
 
-.note-btn.detail:hover {
+.thread-btn.detail:hover {
   svg path {
-    color: var(--note-detail-btn-hover);
+    color: var(--thread-detail-btn-hover);
   }
 }

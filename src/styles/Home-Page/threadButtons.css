@@ -1,20 +1,20 @@
 :root {
-  --note-item-message-bg: #333;
-  --note-item-message-text: #fff;
-  --note-item-btn: #373f4e;
-  --note-item-btn-hover: #212631;
-  --note-item-btn-act: #0a0e15;
-  --archive-content: "Archive Note";
-  --unarchive-content: "Unarchive Note";
-  --delete-content: "Delete Note";
+  --thread-item-message-bg: #333;
+  --thread-item-message-text: #fff;
+  --thread-item-btn: #373f4e;
+  --thread-item-btn-hover: #212631;
+  --thread-item-btn-act: #0a0e15;
+  --archive-content: "Archive Thread";
+  --unarchive-content: "Unarchive Thread";
+  --delete-content: "Delete Thread";
 }
 
 [data-theme="light"] {
-  --note-item-message-bg: #333;
-  --note-item-message-text: #fff;
-  --note-item-btn: #ffffffc1;
-  --note-item-btn-hover: #ffffff;
-  --note-item-btn-act: #0a0e15;
+  --thread-item-message-bg: #333;
+  --thread-item-message-text: #fff;
+  --thread-item-btn: #ffffffc1;
+  --thread-item-btn-hover: #ffffff;
+  --thread-item-btn-act: #0a0e15;
 }
 [data-lang="ID"] {
   --archive-content: "Arsipkan Catatan";
@@ -31,7 +31,7 @@
   align-items: end;
 }
 
-.note-btn {
+.thread-btn {
   position: relative;
   background-color: transparent;
   cursor: pointer;
@@ -42,14 +42,14 @@
   display: flex;
   align-items: end;
 }
-.note-btn::after {
+.thread-btn::after {
   content: attr(data-message);
   position: absolute;
   top: -0.75rem;
   left: -0.5rem;
   transform: translateX(-50%);
-  background-color: var(--note-item-message-bg);
-  color: var(--note-item-message-text);
+  background-color: var(--thread-item-message-bg);
+  color: var(--thread-item-message-text);
   padding: 0.25rem;
   border-radius: 0.25rem;
   font-size: 0.5rem;
@@ -62,11 +62,11 @@
   z-index: 1000;
 }
 
-.note-btn:hover::after {
+.thread-btn:hover::after {
   opacity: 1;
   transform: translateX(-50%) translateY(-0.5rem);
 }
-.note-btn.btn-delete:hover:after {
+.thread-btn.btn-delete:hover:after {
   transform: translateX(-50%) translateY(-0.7rem);
 }
 
@@ -89,7 +89,7 @@
   padding-top: 1px;
   font-size: 1.3rem;
   path {
-    color: var(--note-item-btn);
+    color: var(--thread-item-btn);
   }
 }
 
@@ -97,18 +97,18 @@
   font-size: 1.1rem;
   padding-bottom: 1px;
   path {
-    color: var(--note-item-btn);
+    color: var(--thread-item-btn);
   }
 }
 
-.note-btn:hover {
+.thread-btn:hover {
   svg path {
-    color: var(--note-item-btn-hover);
+    color: var(--thread-item-btn-hover);
   }
 }
 
-.note-btn:active {
+.thread-btn:active {
   svg path {
-    color: var(--note-item-btn-act);
+    color: var(--thread-item-btn-act);
   }
 }

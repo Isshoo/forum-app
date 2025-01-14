@@ -23,7 +23,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  color: var(--secondary-text);
 }
 
 body {
@@ -98,6 +97,6 @@ main {
 }
 .notFound-container h1,
 .notFound-container p,
-.blank-note {
+.blank-thread {
   color: var(--notfound-text);
 }

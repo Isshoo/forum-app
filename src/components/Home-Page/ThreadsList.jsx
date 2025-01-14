@@ -8,7 +8,7 @@ import LoadingBar from '../Base/LoadingBar';
 function ThreadsList({ threads }) {
   return (
     <>
-      <div className="notes-list">
+      <div className="threads-list">
         {threads.map((thread) => (
           <ThreadItem key={thread.id} id={thread.id} {...thread} />
         ))}
