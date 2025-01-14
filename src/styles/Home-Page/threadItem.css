@@ -62,7 +62,8 @@
   margin-top: 0.25rem;
   overflow: auto;
 }
-.thread-des p, .thread-des div {
+.thread-des p,
+.thread-des div {
   color: var(--thread-item-des);
   margin-block: 0;
 }

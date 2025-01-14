@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
-import { addThread } from '../utils/network-data';
 import FormAddThreads from '../components/AddThread-Page/FormAddThread';
 import { useNavigate } from 'react-router-dom';
 import LocaleContext from '../contexts/LocaleContext';

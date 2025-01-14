@@ -1,5 +1,4 @@
 import React from 'react';
-import ThreadButtons from '../Base/ThreadButtons';
 import { Link } from 'react-router-dom';
 import { showFormattedDate } from '../../utils';
 import PropTypes from 'prop-types';

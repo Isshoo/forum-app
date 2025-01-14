@@ -2,7 +2,6 @@ import React from 'react';
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import RegisterInput from '../components/LoginAndRegister-Page/RegisterInput';
-import { register } from '../utils/network-data';
 import { LocaleConsumer } from '../contexts/LocaleContext';
 import { useDispatch } from 'react-redux';
 import { asyncRegisterUser } from '../states/users/action';

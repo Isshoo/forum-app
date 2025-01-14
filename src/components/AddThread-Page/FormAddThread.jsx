@@ -6,7 +6,6 @@ class FormAddThreads extends React.Component {
   constructor(props) {
     super(props);
 
-    // inisialisasi state
     this.state = {
       title: '',
       body: '',

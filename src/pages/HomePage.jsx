@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import ThreadsList from '../components/Home-Page/ThreadsList';
 import SearchThreadForm from '../components/Home-Page/SearchThreadForm';
 import AddPageLink from '../components/Home-Page/AddThreadBtn';

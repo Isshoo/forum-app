@@ -1,9 +1,6 @@
 import React from 'react';
 import ThreadItem, { threadItemShape } from './ThreadItem';
-import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { LocaleConsumer } from '../../contexts/LocaleContext';
-import LoadingBar from '../Base/LoadingBar';
 
 function ThreadsList({ threads }) {
   return (

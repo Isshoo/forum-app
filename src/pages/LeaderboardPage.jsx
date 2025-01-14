@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Swal from 'sweetalert2';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import ThreadsList from '../components/Home-Page/ThreadsList';
 import SearchThreadForm from '../components/Home-Page/SearchThreadForm';
 import AddPageLink from '../components/Home-Page/AddThreadBtn';

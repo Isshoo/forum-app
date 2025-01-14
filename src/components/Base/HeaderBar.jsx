@@ -13,7 +13,7 @@ function HeaderBar() {
               return (
                 <div className="header-bar">
                   <h1 className="nav-title">
-                    {locale === 'EN' ? 'Threads App React' : 'Aplikasi Catatan React'}
+                    {locale === 'EN' ? 'Discussion Forum App' : 'Aplikasi Forum Diskusi'}
                   </h1>
                   <div className="header-buttons">
                     <button onClick={toggleTheme}>

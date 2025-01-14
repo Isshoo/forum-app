@@ -10,8 +10,8 @@ function FooterBar() {
             <p className="text-footer">
               &copy;
               {locale === 'EN'
-                ? ' Threads App React. All rights reserved.'
-                : ' Aplikasi Catatan React. Seluruh hak cipta dilindungi.'}
+                ? ' Discussion Forum App. All rights reserved.'
+                : ' Aplikasi Forum Diskusi. Seluruh hak cipta dilindungi.'}
             </p>
           </div>
         );
