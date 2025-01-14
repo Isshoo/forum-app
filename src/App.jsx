@@ -25,8 +25,8 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const [theme, toggleTheme] = useTheme();
-  const [locale, toggleLocale] = useLocale();
+  const [theme, themeContextValue] = useTheme();
+  const [locale, localeContextValue] = useLocale();
 
   useEffect(() => {
     if (firstRun.current) {
@@ -34,20 +34,6 @@ function App() {
       firstRun.current = false;
     }
   }, [dispatch]);
-
-  const themeContextValue = useMemo(() => {
-    return {
-      theme,
-      toggleTheme,
-    };
-  }, [theme, toggleTheme]);
-
-  const localeContextValue = useMemo(() => {
-    return {
-      locale,
-      toggleLocale,
-    };
-  }, [locale, toggleLocale]);
 
   const onSignOut = () => {
     dispatch(asyncUnsetAuthUser());

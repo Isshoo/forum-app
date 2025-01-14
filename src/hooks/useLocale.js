@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
 function useLocale(initialLocale = 'EN') {
   const [locale, setLocale] = useState(() => localStorage.getItem('locale') || initialLocale);
@@ -11,7 +11,14 @@ function useLocale(initialLocale = 'EN') {
     setLocale((prevLocale) => (prevLocale === 'EN' ? 'ID' : 'EN'));
   }, []);
 
-  return [locale, toggleLocale];
+  const localeContextValue = useMemo(() => {
+    return {
+      locale,
+      toggleLocale,
+    };
+  }, [locale, toggleLocale]);
+
+  return [locale, localeContextValue];
 }
 
 export default useLocale;

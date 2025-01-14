@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
 function useTheme(initialTheme = 'dark') {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
@@ -11,7 +11,14 @@ function useTheme(initialTheme = 'dark') {
     setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   }, []);
 
-  return [theme, toggleTheme];
+  const themeContextValue = useMemo(() => {
+    return {
+      theme,
+      toggleTheme,
+    };
+  }, [theme, toggleTheme]);
+
+  return [theme, themeContextValue];
 }
 
 export default useTheme;
