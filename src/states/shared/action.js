@@ -5,7 +5,7 @@ import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { receiveThreadsActionCreator } from '../threads/action';
 import { receiveUsersActionCreator } from '../users/action';
 
-function asyncPopulateUsersAndTalks() {
+function asyncPopulateUsersAndThreads() {
   return async (dispatch) => {
     dispatch(showLoading());
     try {
@@ -21,4 +21,4 @@ function asyncPopulateUsersAndTalks() {
   };
 }
 
-export { asyncPopulateUsersAndTalks };
+export { asyncPopulateUsersAndThreads };

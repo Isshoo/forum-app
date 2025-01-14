@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import ArchivedNotesPage from './pages/LeaderboardPage';
@@ -14,28 +14,26 @@ import useTheme from './hooks/useTheme';
 import HeaderBar from './components/Base/HeaderBar';
 import FooterBar from './components/Base/FooterBar';
 import NavigationBar from './components/Base/NavigationBar';
-import { getUserLogged, putAccessToken } from './utils/network-data';
+import { useDispatch, useSelector } from 'react-redux';
+import { asyncPreloadProcess } from './states/isPreload/action';
+import { asyncUnsetAuthUser } from './states/authUser/action';
 
 function App() {
-  const [authedUser, setAuthedUser] = useState(null);
-  const [initializing, setInitializing] = useState(true);
+  const firstRun = useRef(true);
+  const authUser = useSelector((states) => states.authUser);
+  const isPreload = useSelector((states) => states.isPreload);
+
+  const dispatch = useDispatch();
+
   const [theme, toggleTheme] = useTheme();
   const [locale, toggleLocale] = useLocale();
 
   useEffect(() => {
-    async function fetchUserData() {
-      try {
-        const { data } = await getUserLogged();
-        setAuthedUser(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setInitializing(false);
-      }
+    if (firstRun.current) {
+      dispatch(asyncPreloadProcess());
+      firstRun.current = false;
     }
-
-    fetchUserData();
-  }, []);
+  }, [dispatch]);
 
   const themeContextValue = useMemo(() => {
     return {
@@ -51,21 +49,14 @@ function App() {
     };
   }, [locale, toggleLocale]);
 
-  async function onLoginSuccess({ accessToken }) {
-    putAccessToken(accessToken);
-    const { data } = await getUserLogged();
-    setAuthedUser(data);
-  }
+  const onSignOut = () => {
+    dispatch(asyncUnsetAuthUser());
+  };
 
-  async function onLogoutHandler() {
-    setAuthedUser(null);
-    putAccessToken('');
-  }
-
-  if (initializing) {
+  if (isPreload) {
     return null;
   }
-  if (!authedUser) {
+  if (!authUser) {
     return (
       <LocaleProvider value={localeContextValue}>
         <ThemeProvider value={themeContextValue}>
@@ -79,7 +70,7 @@ function App() {
             </header>
             <main>
               <Routes>
-                <Route path="/*" element={<LoginPage loginSuccess={onLoginSuccess} />} />
+                <Route path="/*" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
               </Routes>
             </main>
@@ -101,7 +92,7 @@ function App() {
         >
           <header>
             <HeaderBar />
-            <NavigationBar logout={onLogoutHandler} username={authedUser.name} />
+            <NavigationBar logout={onSignOut} username={authUser.name} />
           </header>
           <main>
             <Routes>

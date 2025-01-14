@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 import LoginInput from '../components/LoginAndRegister-Page/LoginInput';
 import { login } from '../utils/network-data';
 import { LocaleConsumer } from '../contexts/LocaleContext';
+import { useDispatch } from 'react-redux';
+import { asyncSetAuthUser } from '../states/authUser/action';
 
-function LoginPage({ loginSuccess }) {
-  async function onLoginHandler({ email, password }) {
-    const { error, data } = await login({ email, password });
+function LoginPage() {
+  const dispatch = useDispatch();
 
-    if (!error) {
-      loginSuccess(data);
-    }
-  }
+  const onLogin = ({ email, password }) => {
+    dispatch(asyncSetAuthUser({ email, password }));
+  };
 
   return (
     <LocaleConsumer>
@@ -22,7 +22,7 @@ function LoginPage({ loginSuccess }) {
             <section className="pages-section">
               <div className="form-container">
                 <h2>Login</h2>
-                <LoginInput login={onLoginHandler} />
+                <LoginInput login={onLogin} />
                 <p>
                   Don&apos;t have an account? <Link to="/register">Sign up here!</Link>
                 </p>
@@ -34,7 +34,7 @@ function LoginPage({ loginSuccess }) {
           <section className="pages-section">
             <div className="form-container">
               <h2>Masuk</h2>
-              <LoginInput login={onLoginHandler} />
+              <LoginInput login={onLogin} />
               <p>
                 Belum punya akun? <Link to="/register">Registrasi disini!</Link>
               </p>
@@ -45,9 +45,5 @@ function LoginPage({ loginSuccess }) {
     </LocaleConsumer>
   );
 }
-
-LoginPage.propTypes = {
-  loginSuccess: PropTypes.func.isRequired,
-};
 
 export default LoginPage;

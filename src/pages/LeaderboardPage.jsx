@@ -1,83 +1,41 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Swal from 'sweetalert2';
 import { useState, useEffect } from 'react';
-import { getArchivedNotes, deleteNote, unarchiveNote } from '../utils/network-data';
-import NotesList from '../components/Home-Page/ThreadsList';
-import SearchNotesForm from '../components/Home-Page/SearchNotesForm';
+import ThreadsList from '../components/Home-Page/ThreadsList';
+import SearchThreadForm from '../components/Home-Page/SearchThreadForm';
 import AddPageLink from '../components/Home-Page/AddThreadBtn';
 import useSearch from '../hooks/useSearch';
+import { useDispatch, useSelector } from 'react-redux';
+import { asyncPopulateUsersAndThreads } from '../states/shared/action';
 
 function ArchivedNotesPage() {
-  const [notes, setNotes] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const firstRun = useRef(true);
+  const threads = useSelector((states) => states.threads);
+  const users = useSelector((states) => states.users);
+  const authUser = useSelector((states) => states.authUser);
+
+  const dispatch = useDispatch();
+
   const [keyword, onKeywordChangeHandler] = useSearch();
 
   useEffect(() => {
-    getArchivedNotes().then(({ data }) => {
-      setNotes(data);
-      setLoading(false);
-    });
-  }, []);
-
-  async function onDeleteHandler(id) {
-    try {
-      const result = await Swal.fire({
-        title: 'Apakah Anda yakin?',
-        text: 'Catatan ini akan dihapus secara permanen.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Hapus',
-        cancelButtonText: 'Batal',
-      });
-
-      if (!result.isConfirmed) {
-        return;
-      }
-
-      await deleteNote(id);
-
-      const { data } = await getArchivedNotes();
-      setNotes(data);
-
-      await Swal.fire({
-        title: 'Berhasil!',
-        text: 'Catatan telah dihapus.',
-        icon: 'success',
-        confirmButtonText: 'OK',
-      });
-    } catch (error) {
-      console.error('Error saat menghapus catatan:', error);
-
-      await Swal.fire({
-        title: 'Gagal!',
-        text: 'Terjadi kesalahan saat menghapus catatan. Silakan coba lagi.',
-        icon: 'error',
-        confirmButtonText: 'OK',
-      });
+    if (firstRun.current) {
+      dispatch(asyncPopulateUsersAndThreads());
+      firstRun.current = false;
     }
-  }
+  }, [dispatch]);
 
-  async function onUnarchivingHandler(id) {
-    await unarchiveNote(id);
-
-    const { data } = await getArchivedNotes();
-    setNotes(data);
-  }
-
-  const filteredNotes = notes.filter((note) => {
-    return note.title.toLowerCase().includes(keyword.toLowerCase());
-  });
+  const threadsList = threads.map((thread) => ({
+    ...thread,
+    user: users.find((user) => user.id === thread.ownerId),
+    authUser: authUser.id,
+  }));
 
   return (
     <section className="pages-section">
-      <SearchNotesForm keyword={keyword} keywordChange={onKeywordChangeHandler} />
+      <SearchThreadForm keyword={keyword} keywordChange={onKeywordChangeHandler} />
       <br />
-      <NotesList
-        notes={filteredNotes}
-        onDelete={onDeleteHandler}
-        onArchive={onUnarchivingHandler}
-        loading={loading}
-      />
+      <ThreadsList threads={threadsList} />
       <AddPageLink />
     </section>
   );

@@ -1,87 +1,40 @@
 import React from 'react';
-import Swal from 'sweetalert2';
 import { useState, useEffect, useRef } from 'react';
-import { getActiveNotes, deleteNote, archiveNote } from '../utils/network-data';
-import NotesList from '../components/Home-Page/ThreadsList';
-import SearchNotesForm from '../components/Home-Page/SearchNotesForm';
+import ThreadsList from '../components/Home-Page/ThreadsList';
+import SearchThreadForm from '../components/Home-Page/SearchThreadForm';
 import AddPageLink from '../components/Home-Page/AddThreadBtn';
 import useSearch from '../hooks/useSearch';
+import { useDispatch, useSelector } from 'react-redux';
+import { asyncPopulateUsersAndThreads } from '../states/shared/action';
 
 function HomePage() {
-  const [notes, setNotes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [keyword, onKeywordChangeHandler] = useSearch();
   const firstRun = useRef(true);
+  const threads = useSelector((states) => states.threads);
+  const users = useSelector((states) => states.users);
+  const authUser = useSelector((states) => states.authUser);
+
+  const dispatch = useDispatch();
+
+  const [keyword, onKeywordChangeHandler] = useSearch();
 
   useEffect(() => {
     if (firstRun.current) {
-      getActiveNotes().then(({ data }) => {
-        setNotes(data);
-        setLoading(false);
-      });
+      dispatch(asyncPopulateUsersAndThreads());
       firstRun.current = false;
     }
-  }, []);
+  }, [dispatch]);
 
-  async function onDeleteHandler(id) {
-    try {
-      const result = await Swal.fire({
-        title: 'Apakah Anda yakin?',
-        text: 'Catatan ini akan dihapus secara permanen.',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Hapus',
-        cancelButtonText: 'Batal',
-      });
-
-      if (!result.isConfirmed) {
-        return;
-      }
-
-      await deleteNote(id);
-
-      const { data } = await getActiveNotes();
-      setNotes(data);
-
-      await Swal.fire({
-        title: 'Berhasil!',
-        text: 'Catatan telah dihapus.',
-        icon: 'success',
-        confirmButtonText: 'OK',
-      });
-    } catch (error) {
-      console.error('Error saat menghapus catatan:', error);
-
-      await Swal.fire({
-        title: 'Gagal!',
-        text: 'Terjadi kesalahan saat menghapus catatan. Silakan coba lagi.',
-        icon: 'error',
-        confirmButtonText: 'OK',
-      });
-    }
-  }
-
-  async function onArchivingHandler(id) {
-    await archiveNote(id);
-
-    const { data } = await getActiveNotes();
-    setNotes(data);
-  }
-
-  const filteredNotes = notes.filter((note) => {
-    return note.title.toLowerCase().includes(keyword.toLowerCase());
-  });
+  const threadsList = threads.map((thread) => ({
+    ...thread,
+    user: users.find((user) => user.id === thread.ownerId),
+    authUser: authUser.id,
+  }));
 
   return (
     <section className="pages-section">
-      <SearchNotesForm keyword={keyword} keywordChange={onKeywordChangeHandler} />
+      <SearchThreadForm keyword={keyword} keywordChange={onKeywordChangeHandler} />
       <br />
-      <NotesList
-        notes={filteredNotes}
-        onDelete={onDeleteHandler}
-        onArchive={onArchivingHandler}
-        loading={loading}
-      />
+      <ThreadsList threads={threadsList} />
       <AddPageLink />
     </section>
   );

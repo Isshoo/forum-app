@@ -4,23 +4,25 @@ import { Link, useNavigate } from 'react-router-dom';
 import RegisterInput from '../components/LoginAndRegister-Page/RegisterInput';
 import { register } from '../utils/network-data';
 import { LocaleConsumer } from '../contexts/LocaleContext';
+import { useDispatch } from 'react-redux';
+import { asyncRegisterUser } from '../states/users/action';
 
 function RegisterPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  async function onRegisterHandler(user) {
-    const { error } = await register(user);
-    if (!error) {
-      Swal.fire({
-        title: 'Berhasil!',
-        text: 'Akun berhasil diregistrasi, silahkan login.',
-        icon: 'success',
-        confirmButtonText: 'OK',
-      }).then(() => {
-        navigate('/');
-      });
-    }
-  }
+  const onRegister = ({ name, email, password }) => {
+    dispatch(asyncRegisterUser({ name, email, password }));
+    Swal.fire({
+      title: 'Berhasil!',
+      text: 'Akun berhasil diregistrasi, silahkan login.',
+      icon: 'success',
+      confirmButtonText: 'OK',
+    }).then(() => {
+      navigate('/');
+    });
+    navigate('/');
+  };
 
   return (
     <LocaleConsumer>
@@ -30,7 +32,7 @@ function RegisterPage() {
             <section className="pages-section">
               <div className="form-container">
                 <h2>Register</h2>
-                <RegisterInput register={onRegisterHandler} />
+                <RegisterInput register={onRegister} />
                 <p>
                   Already have an account? <Link to="/">Login here!</Link>
                 </p>
@@ -42,7 +44,7 @@ function RegisterPage() {
           <section className="pages-section">
             <div className="form-container">
               <h2>Registrasi</h2>
-              <RegisterInput register={onRegisterHandler} />
+              <RegisterInput register={onRegister} />
               <p>
                 Sudah punya akun? <Link to="/">Masuk disini!</Link>
               </p>

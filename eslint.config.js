@@ -35,7 +35,7 @@ export default [
       'no-unused-vars': 'off',
       'linebreak-style': 'off',
       'react-refresh/only-export-components': [
-        'warn',
+        'off',
         { allowConstantExport: true },
       ],
     },
