@@ -2,9 +2,9 @@ import React from 'react';
 import Swal from 'sweetalert2';
 import { useState, useEffect } from 'react';
 import { getArchivedNotes, deleteNote, unarchiveNote } from '../utils/network-data';
-import NotesList from '../components/HomeAndArchived-Page/NotesList';
-import SearchNotesForm from '../components/HomeAndArchived-Page/SearchNotesForm';
-import AddPageLink from '../components/HomeAndArchived-Page/AddPageLink';
+import NotesList from '../components/Home-Page/ThreadsList';
+import SearchNotesForm from '../components/Home-Page/SearchNotesForm';
+import AddPageLink from '../components/Home-Page/AddThreadBtn';
 import useSearch from '../hooks/useSearch';
 
 function ArchivedNotesPage() {

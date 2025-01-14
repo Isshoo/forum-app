@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getNote, deleteNote, archiveNote, unarchiveNote } from '../utils/network-data';
-import NotesDetail from '../components/NoteDetail-Page/NotesDetail';
+import NotesDetail from '../components/DetailThread-Page/ThreadDetail';
 import LocaleContext from '../contexts/LocaleContext';
 import LoadingBar from '../components/Base/LoadingBar';
 

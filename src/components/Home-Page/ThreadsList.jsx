@@ -1,5 +1,5 @@
 import React from 'react';
-import NotesItem from './NotesItem';
+import NotesItem from './ThreadItem';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { LocaleConsumer } from '../../contexts/LocaleContext';

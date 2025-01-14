@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
 import { addNote } from '../utils/network-data';
-import FormAddNotes from '../components/AddNotes-Page/FormAddNotes';
+import FormAddNotes from '../components/AddThread-Page/FormAddThread';
 import { useNavigate } from 'react-router-dom';
 import LocaleContext from '../contexts/LocaleContext';
 

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import AddPageLink from '../components/HomeAndArchived-Page/AddPageLink';
+import AddPageLink from '../components/Home-Page/AddThreadBtn';
 import LocaleContext from '../contexts/LocaleContext';
 
 function NotFoundPage() {
