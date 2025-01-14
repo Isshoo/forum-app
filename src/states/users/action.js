@@ -1,4 +1,4 @@
-import api from '../../utils/api';
+import { register } from '../../utils/api/auth';
 
 const ActionType = {
   RECEIVE_USERS: 'RECEIVE_USERS',
@@ -13,10 +13,10 @@ function receiveUsersActionCreator(users) {
   };
 }
 
-function asyncRegisterUser({ id, name, password }) {
+function asyncRegisterUser({ name, email, password }) {
   return async () => {
     try {
-      await api.register({ id, name, password });
+      await register({ name, email, password });
     } catch (error) {
       alert(error.message);
     }

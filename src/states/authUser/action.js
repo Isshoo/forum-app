@@ -1,4 +1,6 @@
-import api from '../../utils/api';
+import { login } from '../../utils/api/auth';
+import { getOwnProfile } from '../../utils/api/users';
+import { putAccessToken } from '../../utils/config';
 
 const ActionType = {
   SET_AUTH_USER: 'SET_AUTH_USER',
@@ -23,12 +25,12 @@ function unsetAuthUserActionCreator() {
   };
 }
 
-function asyncSetAuthUser({ id, password }) {
+function asyncSetAuthUser({ email, password }) {
   return async (dispatch) => {
     try {
-      const token = await api.login({ id, password });
-      api.putAccessToken(token);
-      const authUser = await api.getOwnProfile();
+      const token = await login({ email, password });
+      putAccessToken(token);
+      const authUser = await getOwnProfile();
 
       dispatch(setAuthUserActionCreator(authUser));
     } catch (error) {
@@ -40,7 +42,7 @@ function asyncSetAuthUser({ id, password }) {
 function asyncUnsetAuthUser() {
   return (dispatch) => {
     dispatch(unsetAuthUserActionCreator());
-    api.putAccessToken('');
+    putAccessToken('');
   };
 }
 
