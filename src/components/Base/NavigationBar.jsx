@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 import { FiLogOut } from 'react-icons/fi';
+import { MdOutlineLeaderboard } from 'react-icons/md';
+import { GoHome } from 'react-icons/go';
 import { LocaleConsumer } from '../../contexts/LocaleContext';
 
 function NavigationBar({ logout, username }) {
@@ -19,7 +21,8 @@ function NavigationBar({ logout, username }) {
                   className={`nav-button ${location.pathname === '/' ? 'active' : ''}`}
                   to="/"
                 >
-                  {locale === 'EN' ? 'Home' : 'Beranda'}
+                  <GoHome className="nav-icon" />
+                  <p>{locale === 'EN' ? 'Home' : 'Beranda'}</p>
                 </Link>
               </li>
               <li>
@@ -28,7 +31,8 @@ function NavigationBar({ logout, username }) {
                   className={`nav-button ${location.pathname === '/leaderboard' ? 'active' : ''}`}
                   to="/leaderboard"
                 >
-                  {locale === 'EN' ? 'Leaderboard' : 'Peringkat'}
+                  <MdOutlineLeaderboard className="nav-icon" />
+                  <p>{locale === 'EN' ? 'Leaderboard' : 'Peringkat'}</p>
                 </Link>
               </li>
             </ul>

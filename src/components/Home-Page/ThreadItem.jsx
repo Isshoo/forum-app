@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { showFormattedDate } from '../../utils';
 import PropTypes from 'prop-types';
 import parser from 'html-react-parser';
+import LocaleContext from '../../contexts/LocaleContext';
 
 function ThreadItem({
   id,
@@ -10,30 +11,39 @@ function ThreadItem({
   body,
   createdAt,
   upVotesBy,
+  downVotesBy,
   totalComments,
   category,
   user,
   authUser,
 }) {
+  const { locale } = useContext(LocaleContext);
   return (
     <div className="thread">
-      <div className="threads-item">
-        <div className="thread-title">
-          <h3>
-            <Link to={`/threads/${id}`}>{title}</Link>
-          </h3>
+      <Link className="threads-item" to={`/threads/${id}`}>
+        <div className="thread-header">
+          <div className="thread-avatar">
+            <img src={user.avatar} alt="" />
+          </div>
+          <div className="thread-user">
+            <p className="thread-name">{user.name}</p>
+            <p className="thread-email">{user.email}</p>
+            <p className="thread-date">{showFormattedDate(createdAt, locale)}</p>
+          </div>
         </div>
-        <div className="thread-date">
-          <p>{showFormattedDate(createdAt)}</p>
+        <div className="thread-body">
+          <h3 className="thread-title">{title}</h3>
+          <div className="thread-des">{parser(body)}</div>
+          <div className="thread-category">
+            <p>{category !== 'general' ? `#${category}` : ''}</p>
+          </div>
         </div>
-        <div className="thread-des">
-          <div>{parser(body)}</div>
+        <div className="thread-footer">
           <p>{upVotesBy.length}</p>
+          <p>{downVotesBy.length}</p>
           <p>{totalComments}</p>
-          <p>{category}</p>
-          <p>{user.name}</p>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
@@ -44,6 +54,7 @@ export const threadItemShape = {
   body: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   totalComments: PropTypes.number.isRequired,
   category: PropTypes.string.isRequired,
   user: PropTypes.shape({

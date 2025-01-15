@@ -1,19 +1,21 @@
 :root {
   --header-background: #212631;
   --header-text: #f0f1f5;
+  --navbar-bg: #e0e4eb;
   --nav-text: #ffffff;
   --nav-bg: #212631;
   --nav-border: #212631;
-  --nav-bg-hover: #373f4e;
+  --nav-bg-hover: #0a0e15;
   --nav-bg-act: #4e576a;
-  --nav-active-bg: #373f4e;
-  --logout-text: #ffffff;
-  --logout-text-hover: #93a7ff;
+  --nav-active-bg: #212631;
+  --logout-text: #000;
+  --logout-text-hover: #3b5efa;
 }
 
 [data-theme="light"] {
   --header-background: #212631;
   --header-text: #f0f1f5;
+  --navbar-bg: #ffffff;
   --nav-text: #ffffff;
   --nav-bg: #212631;
   --nav-border: #212631;
@@ -30,7 +32,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  position: fixed;
 }
 
 .header-bar {
@@ -41,6 +43,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
+  min-height: 74px;
 }
 
 .nav-title {
@@ -63,12 +67,15 @@ header {
 }
 
 .navigation-bar {
-  max-width: 1200px;
+  max-width: 900px;
   width: 100%;
-  padding-inline: 8%;
+  padding-block: 2rem;
+  padding-inline: 2%;
   display: flex;
   align-items: center;
   gap: 1rem;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
 }
 .navigation {
   width: 100%;
@@ -80,6 +87,8 @@ header {
 .nav-button {
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
   min-width: 148px;
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
@@ -88,6 +97,7 @@ header {
   cursor: pointer;
   opacity: 0.9;
   border: 1px solid var(--nav-border);
+  min-height: 41px;
 }
 .nav-button:hover {
   background-color: var(--nav-bg-hover);
@@ -98,6 +108,9 @@ header {
 .nav-button.active {
   background-color: var(--nav-active-bg);
   opacity: 1;
+}
+.nav-icon {
+  font-size: 1rem;
 }
 
 .logout {
@@ -131,15 +144,25 @@ header {
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 900px) {
   .navigation-bar {
-    flex-direction: column-reverse;
+    padding-inline: 32px;
   }
-  .navigation li {
-    width: 100%;
-  }
+}
+
+@media screen and (max-width: 500px) {
+  .nav-title {
+  font-size: 1.5rem;
+}
+
   .nav-button {
-    width: 100%;
+    min-width: 90px;
+  }
+  .nav-icon {
+  font-size: 1.25rem;
+}
+  .nav-button p {
+    display: none;
   }
   .logout {
     width: 100%;
@@ -149,13 +172,9 @@ header {
 
 @media screen and (max-width: 368px) {
   .navigation {
-    flex-direction: column;
     gap: 0.5rem;
   }
-  .navigation li {
-    width: 100%;
-  }
   .nav-button {
-    width: 100%;
+    min-width: 70px;
   }
 }

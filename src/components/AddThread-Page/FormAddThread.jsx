@@ -11,6 +11,7 @@ class FormAddThreads extends React.Component {
       body: '',
       category: '',
       titleMaxLength: 50,
+      categoryMaxLength: 20,
     };
 
     this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
@@ -41,11 +42,16 @@ class FormAddThreads extends React.Component {
   }
 
   onCategoryChangeEventHandler(event) {
-    this.setState(() => {
-      return {
-        category: event.target.value,
-      };
-    });
+    const maxLength = this.state.categoryMaxLength;
+    const inputValue = event.target.value;
+
+    if (inputValue.length <= maxLength) {
+      this.setState(() => {
+        return {
+          category: inputValue,
+        };
+      });
+    }
   }
 
   onSubmitEventHandler(event) {
