@@ -4,6 +4,7 @@
   --form-background: #0a0e15;
   --form-border: #212631;
   --form-shadow: rgba(255, 255, 255, 0.2);
+  --input-label: #ffffff;
   --input-background: #e0e4eb;
   --input-text: #212631;
   --input-placeholder: #2126319a;
@@ -19,6 +20,7 @@
   --form-background: #212631;
   --form-border: #212631;
   --form-shadow: rgb(0, 0, 0);
+  --input-label: #ffffff;
   --input-background: #e0e4eb;
   --input-text: #212631;
   --input-placeholder: #2126319a;
@@ -46,6 +48,9 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+#threadForm div label {
+  color: var(--input-label);
 }
 
 #title,

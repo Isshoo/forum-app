@@ -25,10 +25,10 @@ function NavigationBar({ logout, username }) {
               <li>
                 <Link
                   id="archivedListBtn"
-                  className={`nav-button ${location.pathname === '/archived' ? 'active' : ''}`}
-                  to="/archived"
+                  className={`nav-button ${location.pathname === '/leaderboard' ? 'active' : ''}`}
+                  to="/leaderboard"
                 >
-                  {locale === 'EN' ? 'Archived' : 'Arsip'}
+                  {locale === 'EN' ? 'Leaderboard' : 'Peringkat'}
                 </Link>
               </li>
             </ul>

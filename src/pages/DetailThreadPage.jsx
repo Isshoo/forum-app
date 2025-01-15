@@ -1,37 +1,25 @@
-import React from 'react';
-import Swal from 'sweetalert2';
-import { useState, useEffect, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import ThreadsDetail from '../components/DetailThread-Page/ThreadDetail';
+import React, { useRef } from 'react';
+import { useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import LocaleContext from '../contexts/LocaleContext';
-import LoadingBar from '../components/Base/LoadingBar';
+import { useDispatch, useSelector } from 'react-redux';
+import { asyncReceiveThreadDetail } from '../states/threadDetail/thunk';
 
 function DetailThreadsPage() {
+  const firstRun = useRef(true);
   const { id } = useParams();
-  const navigate = useNavigate();
   const { locale } = useContext(LocaleContext);
-  const [thread, setThread] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const threadDetail = useSelector((states) => states.threadDetail);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    async function fetchThreadData() {
-      const { data } = await getThread(id);
-      setThread(data);
-      setLoading(false);
+    if (firstRun.current) {
+      dispatch(asyncReceiveThreadDetail(id));
+      firstRun.current = false;
     }
+  }, [id, dispatch]);
 
-    fetchThreadData();
-
-    return () => {
-      setThread(null);
-    };
-  }, [id]);
-
-  if (loading) {
-    return <LoadingBar />;
-  }
-
-  if (!thread) {
+  if (!threadDetail) {
     return (
       <p className="blank-thread">
         {locale === 'EN' ? 'Thread is not found!' : 'Catatan tidak ditemukan!'}
@@ -42,7 +30,8 @@ function DetailThreadsPage() {
   return (
     <section className="pages-section">
       <div className="detail-con">
-        <ThreadsDetail {...thread} />
+        <div>ini detail thread</div>
+        <div>{threadDetail.title}</div>
       </div>
     </section>
   );

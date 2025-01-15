@@ -1,18 +1,14 @@
 import React, { useRef } from 'react';
-import Swal from 'sweetalert2';
 import { useEffect } from 'react';
-import ThreadsList from '../components/Home-Page/ThreadsList';
 import SearchThreadForm from '../components/Home-Page/SearchThreadForm';
 import AddPageLink from '../components/Home-Page/AddThreadBtn';
 import useSearch from '../hooks/useSearch';
 import { useDispatch, useSelector } from 'react-redux';
-import { asyncPopulateUsersAndThreads } from '../states/shared/action';
+import { asyncRecieveLeaderboards } from '../states/leaderboards/action';
 
-function ArchivedThreadsPage() {
+function LeaderboardPage() {
   const firstRun = useRef(true);
-  const threads = useSelector((states) => states.threads);
-  const users = useSelector((states) => states.users);
-  const authUser = useSelector((states) => states.authUser);
+  const leaderboards = useSelector((states) => states.leaderboards);
 
   const dispatch = useDispatch();
 
@@ -20,25 +16,26 @@ function ArchivedThreadsPage() {
 
   useEffect(() => {
     if (firstRun.current) {
-      dispatch(asyncPopulateUsersAndThreads());
+      dispatch(asyncRecieveLeaderboards());
       firstRun.current = false;
     }
   }, [dispatch]);
-
-  const threadsList = threads.map((thread) => ({
-    ...thread,
-    user: users.find((user) => user.id === thread.ownerId),
-    authUser: authUser.id,
-  }));
 
   return (
     <section className="pages-section">
       <SearchThreadForm keyword={keyword} keywordChange={onKeywordChangeHandler} />
       <br />
-      <ThreadsList threads={threadsList} />
+      <div>Halaman Leaderboard</div>
+      <ul>
+        {leaderboards.map((leaderboard) => (
+          <li key={leaderboard.user.id}>
+            {leaderboard.user.name} - {leaderboard.score}
+          </li>
+        ))}
+      </ul>
       <AddPageLink />
     </section>
   );
 }
 
-export default ArchivedThreadsPage;
+export default LeaderboardPage;

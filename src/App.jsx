@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import ArchivedThreadsPage from './pages/LeaderboardPage';
+import LeaderboardPage from './pages/LeaderboardPage';
 import AddThreadsPage from './pages/AddThreadPage';
 import DetailThreadsPage from './pages/DetailThreadPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -83,7 +83,7 @@ function App() {
           <main>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/archived" element={<ArchivedThreadsPage />} />
+              <Route path="/leaderboard" element={<LeaderboardPage />} />
               <Route path="/threads/new" element={<AddThreadsPage />} />
               <Route path="/threads/:id" element={<DetailThreadsPage />} />
               <Route path="*" element={<NotFoundPage />} />

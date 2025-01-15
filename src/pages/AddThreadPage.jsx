@@ -3,16 +3,19 @@ import Swal from 'sweetalert2';
 import FormAddThreads from '../components/AddThread-Page/FormAddThread';
 import { useNavigate } from 'react-router-dom';
 import LocaleContext from '../contexts/LocaleContext';
+import { asyncAddThread } from '../states/threads/thunk';
+import { useDispatch } from 'react-redux';
 
 function AddThreadsPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { locale } = useContext(LocaleContext);
 
-  async function onAddThreadHandler(thread) {
-    await addThread(thread);
+  function onAddThreadHandler(thread) {
+    dispatch(asyncAddThread(thread));
     Swal.fire({
       title: 'Berhasil!',
-      text: 'Catatan baru telah ditambahkan.',
+      text: 'Thread baru telah ditambahkan.',
       icon: 'success',
       confirmButtonText: 'OK',
     }).then(() => {

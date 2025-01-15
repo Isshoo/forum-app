@@ -80,7 +80,7 @@ header {
 .nav-button {
   display: flex;
   justify-content: center;
-  min-width: 115px;
+  min-width: 148px;
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
   background-color: var(--nav-bg);
@@ -131,12 +131,31 @@ header {
   }
 }
 
-@media screen and (max-width: 355px) {
+@media screen and (max-width: 500px) {
   .navigation-bar {
     flex-direction: column-reverse;
+  }
+  .navigation li {
+    width: 100%;
+  }
+  .nav-button {
+    width: 100%;
   }
   .logout {
     width: 100%;
     justify-content: flex-end;
+  }
+}
+
+@media screen and (max-width: 368px) {
+  .navigation {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .navigation li {
+    width: 100%;
+  }
+  .nav-button {
+    width: 100%;
   }
 }
