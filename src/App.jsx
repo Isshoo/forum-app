@@ -14,6 +14,7 @@ import useTheme from './hooks/useTheme';
 import HeaderBar from './components/Base/HeaderBar';
 import FooterBar from './components/Base/FooterBar';
 import NavigationBar from './components/Base/NavigationBar';
+import Loading from './components/Base/LoadingBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
@@ -46,6 +47,7 @@ function App() {
     return (
       <LocaleProvider value={localeContextValue}>
         <ThemeProvider value={themeContextValue}>
+          <Loading />
           <div
             className="container"
             data-theme={theme === 'dark' ? '' : 'light'}
@@ -71,6 +73,7 @@ function App() {
   return (
     <LocaleProvider value={localeContextValue}>
       <ThemeProvider value={themeContextValue}>
+        <Loading />
         <div
           className="container"
           data-theme={theme === 'dark' ? '' : 'light'}

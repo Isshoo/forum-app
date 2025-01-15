@@ -1,4 +1,5 @@
 import { createComment } from '../../utils/api/comments';
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { downVoteComment, neutralizeVoteComment, upVoteComment } from '../../utils/api/commentVotes';
 import { getThreadDetail } from '../../utils/api/threads';
 import { downVoteThread, neutralizeVoteThread, upVoteThread } from '../../utils/api/threadVotes';
@@ -6,6 +7,7 @@ import { addCommentActionCreator, clearThreadDetailActionCreator, receiveThreadD
 
 function asyncReceiveThreadDetail(threadId) {
   return async (dispatch) => {
+    dispatch(showLoading());
     dispatch(clearThreadDetailActionCreator());
 
     try {
@@ -14,6 +16,7 @@ function asyncReceiveThreadDetail(threadId) {
     } catch (error) {
       alert(error.message);
     }
+    dispatch(hideLoading());
   };
 }
 

@@ -8,6 +8,11 @@
   --spin-shadow: rgba(255, 255, 255, 0.2);
 }
 
+.loading {
+  position: sticky;
+  top: 0;
+}
+
 .pageload {
   position: fixed;
   top: 0;
