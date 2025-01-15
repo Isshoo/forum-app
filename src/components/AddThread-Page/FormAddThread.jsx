@@ -9,11 +9,13 @@ class FormAddThreads extends React.Component {
     this.state = {
       title: '',
       body: '',
+      category: '',
       titleMaxLength: 50,
     };
 
     this.onTitleChangeEventHandler = this.onTitleChangeEventHandler.bind(this);
     this.onBodyChangeEventHandler = this.onBodyChangeEventHandler.bind(this);
+    this.onCategoryChangeEventHandler = this.onCategoryChangeEventHandler.bind(this);
     this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
   }
 
@@ -34,6 +36,14 @@ class FormAddThreads extends React.Component {
     this.setState(() => {
       return {
         body: event.target.innerHTML,
+      };
+    });
+  }
+
+  onCategoryChangeEventHandler(event) {
+    this.setState(() => {
+      return {
+        category: event.target.value,
       };
     });
   }
@@ -65,6 +75,19 @@ class FormAddThreads extends React.Component {
                   {locale === 'EN' ? 'Numbers of characters left :' : 'Jumlah karakter tersisa :'}{' '}
                   {this.state.titleMaxLength - this.state.title.length}
                 </p>
+              </div>
+              <div>
+                <label htmlFor="category">{locale === 'EN' ? 'Category' : 'Kategori'}</label>
+                <input
+                  type="text"
+                  id="category"
+                  name="category"
+                  placeholder={locale === 'EN' ? 'Category' : 'Kategori'}
+                  aria-describedby="categoryValidation"
+                  value={this.state.category}
+                  onChange={this.onCategoryChangeEventHandler}
+                />
+                <p id="categoryValidation" className="validation-message" aria-live="polite"></p>
               </div>
               <div>
                 <label>{locale === 'EN' ? 'Description' : 'Deskripsi'}</label>

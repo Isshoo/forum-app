@@ -47,13 +47,13 @@
 #threadForm {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
 }
 #threadForm div label {
   color: var(--input-label);
 }
 
 #title,
+#category,
 #description {
   width: 100%;
   font-size: 1rem;
@@ -61,6 +61,12 @@
   border-radius: 0.25rem;
 }
 
+#category,
+#description {
+  margin-bottom: 1rem;
+}
+
+#category::placeholder,
 #title::placeholder {
   font-size: 1rem;
   font-weight: 400;
