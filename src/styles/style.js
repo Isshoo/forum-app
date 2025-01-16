@@ -4,7 +4,7 @@ import './Base/header.css';
 import './Base/footer.css';
 import './Base/loading.css';
 import './Home-Page/addThreadBtn.css';
-import './Home-Page/searchBar.css';
+import './Home-Page/filterList.css';
 import './Home-Page/threadButtons.css';
 import './Home-Page/threadItem.css';
 import './Home-Page/threadsList.css';

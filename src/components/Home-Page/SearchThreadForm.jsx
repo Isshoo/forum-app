@@ -12,7 +12,7 @@ function SearchThreadsForm({ keyword, keywordChange }) {
             <input
               type="text"
               id="searchInput"
-              placeholder={locale === 'EN' ? 'Search threads...' : 'Cari catatan...'}
+              placeholder={locale === 'EN' ? 'Search title...' : 'Cari judul...'}
               value={keyword}
               onChange={(event) => keywordChange(event.target.value)}
             />

@@ -8,10 +8,6 @@
   --blank-text: #212631;
 }
 
-#archivedListContainer {
-  display: none;
-}
-
 .threads-list {
   display: grid;
   grid-template-columns: 1fr;
