@@ -152,21 +152,32 @@ header {
 
 @media screen and (max-width: 500px) {
   .nav-title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+  }
+  .navigation-bar {
+    padding-block: 1.5rem;
   }
 
   .nav-button {
     min-width: 90px;
-  }
-  .nav-icon {
-    font-size: 1.25rem;
+    padding: 0.25rem 1rem;
+    min-height: 35px;
   }
   .nav-button p {
     display: none;
   }
+  .nav-icon {
+    font-size: 1.1rem;
+  }
   .logout {
     width: 100%;
     justify-content: flex-end;
+  }
+  .logout p {
+    font-size: 1.1rem;
+  }
+  .logout svg {
+    font-size: 1.25rem;
   }
 }
 
@@ -175,6 +186,6 @@ header {
     gap: 0.5rem;
   }
   .nav-button {
-    min-width: 70px;
+    min-width: 65px;
   }
 }

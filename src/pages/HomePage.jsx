@@ -34,7 +34,7 @@ function HomePage() {
     <section className="pages-section">
       <SearchThreadForm keyword={keyword} keywordChange={onKeywordChangeHandler} />
       <br />
-      <ThreadsList threads={threadsList} />
+      <ThreadsList threads={threadsList} allUsers={users} />
       <AddPageLink />
     </section>
   );

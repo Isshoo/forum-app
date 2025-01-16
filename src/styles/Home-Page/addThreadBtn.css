@@ -48,3 +48,12 @@
 #addThreadBtn a svg path {
   color: var(--add-icon);
 }
+
+@media screen and (max-width: 500px) {
+  #addThreadBtn a {
+    padding: 14px;
+  }
+  #addThreadBtn a svg {
+    font-size: 1.25rem;
+  }
+}

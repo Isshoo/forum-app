@@ -115,8 +115,13 @@ main {
     padding-inline: 32px;
   }
 }
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 500px) {
   main {
-    padding-block: 13.5rem 1rem;
+    padding-block: 10.5rem 1rem;
+  }
+}
+@media screen and (max-width: 368px) {
+  main {
+    padding-block: 11.75rem 1rem;
   }
 }

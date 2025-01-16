@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 
-function useTheme(initialTheme = 'dark') {
+function useTheme(initialTheme = 'light') {
   const [theme, setTheme] = useState(() => localStorage.getItem('theme') || initialTheme);
 
   useEffect(() => {
