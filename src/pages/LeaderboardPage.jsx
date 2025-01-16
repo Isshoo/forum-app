@@ -5,10 +5,11 @@ import AddPageLink from '../components/Home-Page/AddThreadBtn';
 import useSearch from '../hooks/useSearch';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncRecieveLeaderboards } from '../states/leaderboards/action';
+import Loading from '../components/Base/LoadingBar';
 
 function LeaderboardPage() {
   const firstRun = useRef(true);
-  const leaderboards = useSelector((states) => states.leaderboards);
+  const leaderboards = useSelector((states) => states.leaderboards || []);
 
   const dispatch = useDispatch();
 
@@ -20,6 +21,10 @@ function LeaderboardPage() {
       firstRun.current = false;
     }
   }, [dispatch]);
+
+  if (!leaderboards.length) {
+    return <Loading />;
+  }
 
   return (
     <section className="pages-section">

@@ -1,30 +1,60 @@
-import React from 'react';
-import { showFormattedDate } from '../../utils';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import parser from 'html-react-parser';
+import HeaderThreadDetail from './HeaderThreadDetail';
+import BodyThreadDetail from './BodyThreadDetail';
+import FooterThreadDetail from './FooterThreadDetail';
 
-function ThreadsDetail({ title, body, createdAt }) {
+function ThreadDetail({
+  title,
+  body,
+  category,
+  createdAt,
+  owner,
+  upVotesBy,
+  downVotesBy,
+  authUser,
+  allUsers,
+}) {
   return (
-    <div className="thread detail">
-      <div className="threads-item detail">
-        <div className="thread-title detail">
-          <h3>{title}</h3>
-        </div>
-        <div className="thread-date detail">
-          <p>{showFormattedDate(createdAt)}</p>
-        </div>
-        <div className="thread-des detail">
-          <div>{parser(body)}</div>
-        </div>
+    <div className="thread-detail">
+      <div className="threads-item-detail">
+        <HeaderThreadDetail
+          avatar={owner.avatar}
+          name={owner.name}
+          email={owner.email}
+          createdAt={createdAt}
+        />
+        <BodyThreadDetail title={title} body={body} category={category} />
+        <FooterThreadDetail
+          upVotesBy={upVotesBy}
+          downVotesBy={downVotesBy}
+          authUser={authUser}
+          allUsers={allUsers}
+        />
       </div>
     </div>
   );
 }
 
-ThreadsDetail.propTypes = {
+export const threadDetailShape = {
   title: PropTypes.string.isRequired,
   body: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  owner: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }),
+  upVotesBy: PropTypes.arrayOf(PropTypes.string),
+  downVotesBy: PropTypes.arrayOf(PropTypes.string),
+  authUser: PropTypes.string.isRequired,
+  allUsers: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default ThreadsDetail;
+ThreadDetail.propTypes = {
+  ...threadDetailShape,
+};
+
+export default ThreadDetail;

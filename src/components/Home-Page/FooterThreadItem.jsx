@@ -4,6 +4,7 @@ import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from 'react-icons/bi';
 import { FaRegComments, FaComments } from 'react-icons/fa';
 import LocaleContext from '../../contexts/LocaleContext';
 import UpVotesInfo from './UpVotesInfo';
+import DownVotesInfo from './DownVotesInfo';
 
 function FooterThreadItem({ upVotesBy, downVotesBy, totalComments, authUser, allUsers }) {
   const { locale } = useContext(LocaleContext);
@@ -14,8 +15,14 @@ function FooterThreadItem({ upVotesBy, downVotesBy, totalComments, authUser, all
   return (
     <div className="thread-footer">
       <div className="thread-numbers-container">
-        <div className="thread-number">
-          <UpVotesInfo upVotesBy={upVotesBy} allUsers={allUsers} />
+        <div className="thread-votes-number">
+          <div className="thread-number">
+            <UpVotesInfo upVotesBy={upVotesBy} allUsers={allUsers} />
+          </div>
+          <span></span>
+          <div className="thread-number">
+            <DownVotesInfo downVotesBy={downVotesBy} allUsers={allUsers} />
+          </div>
         </div>
         <div className="thread-number">
           <p>{totalComments}</p>

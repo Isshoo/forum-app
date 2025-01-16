@@ -1,4 +1,5 @@
 import { register } from '../../utils/api/auth';
+import { getAllUsers } from '../../utils/api/users';
 
 const ActionType = {
   RECEIVE_USERS: 'RECEIVE_USERS',
@@ -23,8 +24,21 @@ function asyncRegisterUser({ name, email, password }) {
   };
 }
 
+function asyncRecieveAllUsers() {
+  return async (dispatch) => {
+    try {
+      const users = await getAllUsers();
+
+      dispatch(receiveUsersActionCreator(users));
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+}
+
 export {
   ActionType,
   receiveUsersActionCreator,
   asyncRegisterUser,
+  asyncRecieveAllUsers,
 };

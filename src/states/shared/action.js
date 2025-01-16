@@ -1,9 +1,10 @@
 
-import { getAllThreads } from '../../utils/api/threads';
+import { getAllThreads, getThreadDetail } from '../../utils/api/threads';
 import { getAllUsers } from '../../utils/api/users';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { receiveThreadsActionCreator } from '../threads/action';
 import { receiveUsersActionCreator } from '../users/action';
+import { clearThreadDetailActionCreator, receiveThreadDetailActionCreator } from '../threadDetail/action';
 
 function asyncPopulateUsersAndThreads() {
   return async (dispatch) => {
@@ -20,5 +21,21 @@ function asyncPopulateUsersAndThreads() {
     dispatch(hideLoading());
   };
 }
+function asyncPopulateUsersAndDetailThread(threadId) {
+  return async (dispatch) => {
+    dispatch(showLoading());
+    dispatch(clearThreadDetailActionCreator());
+    try {
+      const users = await getAllUsers();
+      const threadDetail = await getThreadDetail(threadId);
 
-export { asyncPopulateUsersAndThreads };
+      dispatch(receiveUsersActionCreator(users));
+      dispatch(receiveThreadDetailActionCreator(threadDetail));
+    } catch (error) {
+      alert(error.message);
+    }
+    dispatch(hideLoading());
+  };
+}
+
+export { asyncPopulateUsersAndThreads, asyncPopulateUsersAndDetailThread };

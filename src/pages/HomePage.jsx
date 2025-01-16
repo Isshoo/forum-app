@@ -7,12 +7,13 @@ import CategoryDropdown from '../components/Home-Page/CategoryDropdown';
 import useSearch from '../hooks/useSearch';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncPopulateUsersAndThreads } from '../states/shared/action';
+import Loading from '../components/Base/LoadingBar';
 
 function HomePage() {
   const firstRun = useRef(true);
-  const threads = useSelector((states) => states.threads);
-  const users = useSelector((states) => states.users);
-  const authUser = useSelector((states) => states.authUser);
+  const threads = useSelector((states) => states.threads || []);
+  const users = useSelector((states) => states.users || []);
+  const authUser = useSelector((states) => states.authUser || {});
 
   const dispatch = useDispatch();
 
@@ -41,6 +42,10 @@ function HomePage() {
     user: users.find((user) => user.id === thread.ownerId),
     authUser: authUser.id,
   }));
+
+  if (!threads.length || !users.length) {
+    return <Loading />;
+  }
 
   return (
     <section className="pages-section">
