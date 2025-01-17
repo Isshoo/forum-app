@@ -29,7 +29,7 @@ function CommentItem({ content, createdAt, owner, upVotesBy, downVotesBy, authUs
             <button>{isUpVotedByUser ? <BiSolidLike /> : <BiLike />}</button>
             <p>{upVotesBy.length}</p>
           </div>
-          <div className="comment-action">
+          <div className="comment-action red">
             <button>{isDownVotedByUser ? <BiSolidDislike /> : <BiDislike />}</button>
             <p>{downVotesBy.length}</p>
           </div>

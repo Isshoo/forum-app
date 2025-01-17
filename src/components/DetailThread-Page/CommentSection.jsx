@@ -8,7 +8,7 @@ function CommentSection({ comments, authUser }) {
   return (
     <div className="comment-section">
       <div className="comment-head">
-        <h3>Beri Komentar</h3>
+        <h3>Komentar</h3>
         <div className="comments-total">
           <FaRegComments />
           <p>{comments.length}</p>
