@@ -31,7 +31,7 @@
 }
 
 .leaderboard-list {
-  padding-block: 1.1rem 1rem;
+  padding-block: 1.1rem 0rem;
   padding-inline: 0.75rem;
   display: grid;
   grid-template-columns: 1fr;
@@ -46,6 +46,7 @@
   justify-content: space-between;
   border-bottom: 1px solid var(--leadearboard-item-shadow);
   padding-block: 0 1rem;
+  gap: 1rem;
 }
 
 .leaderboard-user {
@@ -88,6 +89,41 @@
 
 .leaderboard-score {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.25rem;
   align-items: center;
+}
+.leaderboard-score p {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 500px) {
+  .leaderboard-list {
+    padding-inline: 0.25rem;
+    padding-block: 1rem 0rem;
+  }
+}
+@media screen and (max-width: 368px) {
+  .leaderboard-title {
+    font-size: 1.3rem;
+  }
+  .leaderboard-list {
+    padding-inline: 0rem;
+  }
+  .leaderboard-avatar img {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+  .leaderboard-user {
+    gap: 0.5rem;
+  }
+  .leaderboard-name {
+    font-size: 0.9rem;
+  }
+  .leaderboard-email {
+    font-size: 0.7rem;
+  }
+  .leaderboard-score p {
+    font-size: 0.9rem;
+  }
 }
