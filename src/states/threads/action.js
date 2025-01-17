@@ -4,6 +4,7 @@ const ActionType = {
   TOGGLE_UP_VOTE_THREAD: 'TOGGLE_UP_VOTE_THREAD',
   TOGGLE_DOWN_VOTE_THREAD: 'TOGGLE_DOWN_VOTE_THREAD',
   TOGGLE_NEUTRAL_VOTE_THREAD: 'TOGGLE_NEUTRAL_VOTE_THREAD',
+  RESTORE_THREAD_STATE: 'RESTORE_THREAD_STATE',
 };
 
 function receiveThreadsActionCreator(threads) {
@@ -11,6 +12,15 @@ function receiveThreadsActionCreator(threads) {
     type: ActionType.RECEIVE_THREADS,
     payload: {
       threads,
+    },
+  };
+}
+
+function restoreThreadStateActionCreator(thread) {
+  return {
+    type: ActionType.RESTORE_THREAD_STATE,
+    payload: {
+      thread,
     },
   };
 }
@@ -57,6 +67,7 @@ function toggleNeutralizeVoteThreadActionCreator({ threadId, userId }) {
 export {
   ActionType,
   receiveThreadsActionCreator,
+  restoreThreadStateActionCreator,
   addThreadActionCreator,
   toggleUpVoteThreadActionCreator,
   toggleDownVoteThreadActionCreator,

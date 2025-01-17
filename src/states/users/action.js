@@ -18,8 +18,9 @@ function asyncRegisterUser({ name, email, password }) {
   return async () => {
     try {
       await register({ name, email, password });
+      return { success: true };
     } catch (error) {
-      alert(error.message);
+      return { success: false, message: error.message };
     }
   };
 }

@@ -1,16 +1,40 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from 'react-icons/bi';
 import { FaRegComments, FaComments } from 'react-icons/fa';
 import LocaleContext from '../../contexts/LocaleContext';
 import UpVotesInfo from './UpVotesInfo';
 import DownVotesInfo from './DownVotesInfo';
 
-function FooterThreadItem({ upVotesBy, downVotesBy, totalComments, authUser, allUsers }) {
+function FooterThreadItem({
+  id,
+  upVotesBy,
+  downVotesBy,
+  totalComments,
+  authUser,
+  allUsers,
+  onUpVote,
+  onDownVote,
+  onNeutralizeVote,
+}) {
   const { locale } = useContext(LocaleContext);
 
   const isUpVotedByUser = upVotesBy.includes(authUser);
   const isDownVotedByUser = downVotesBy.includes(authUser);
+
+  const onUpVoteClick = (e) => {
+    e.stopPropagation();
+    onUpVote(id);
+  };
+  const onDownVoteClick = (e) => {
+    e.stopPropagation();
+    onDownVote(id);
+  };
+  const onNeutralizeVoteClick = (e) => {
+    e.stopPropagation();
+    onNeutralizeVote(id);
+  };
 
   return (
     <div className="thread-footer">
@@ -31,38 +55,39 @@ function FooterThreadItem({ upVotesBy, downVotesBy, totalComments, authUser, all
       </div>
       <div className="thread-actions-container">
         {isUpVotedByUser ? (
-          <div className="thread-action active">
+          <button className="thread-action active" onClick={onNeutralizeVoteClick}>
             <BiSolidLike />
             <p>{locale === 'ID' ? 'Suka' : 'Up Vote'}</p>
-          </div>
+          </button>
         ) : (
-          <div className="thread-action">
+          <button className="thread-action" onClick={onUpVoteClick}>
             <BiLike />
             <p>{locale === 'ID' ? 'Suka' : 'Up Vote'}</p>
-          </div>
+          </button>
         )}
         {isDownVotedByUser ? (
-          <div className="thread-action active red">
+          <button className="thread-action active red" onClick={onNeutralizeVoteClick}>
             <BiSolidDislike />
             <p>{locale === 'ID' ? 'Tidak suka' : 'Down Vote'}</p>
-          </div>
+          </button>
         ) : (
-          <div className="thread-action red">
+          <button className="thread-action red" onClick={onDownVoteClick}>
             <BiDislike />
             <p>{locale === 'ID' ? 'Tidak suka' : 'Down Vote'}</p>
-          </div>
+          </button>
         )}
-        <div className="thread-action comment">
+        <Link className="thread-action comment" to={`/threads/${id}`}>
           <FaComments className="solid" />
           <FaRegComments className="no-solid" />
           <p>{locale === 'ID' ? 'Komentar' : 'Comment'}</p>
-        </div>
+        </Link>
       </div>
     </div>
   );
 }
 
 FooterThreadItem.propTypes = {
+  id: PropTypes.string.isRequired,
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   totalComments: PropTypes.number.isRequired,
@@ -74,6 +99,9 @@ FooterThreadItem.propTypes = {
       avatar: PropTypes.string.isRequired,
     })
   ).isRequired,
+  onUpVote: PropTypes.func.isRequired,
+  onDownVote: PropTypes.func.isRequired,
+  onNeutralizeVote: PropTypes.func.isRequired,
 };
 
 export default FooterThreadItem;

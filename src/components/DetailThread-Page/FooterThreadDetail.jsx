@@ -5,7 +5,15 @@ import LocaleContext from '../../contexts/LocaleContext';
 import UpVotesInfoDetail from './UpVotesInfoDetail';
 import DownVotesInfoDetail from './DownVotesInfoDetail';
 
-function FooterThreadDetail({ upVotesBy, downVotesBy, authUser, allUsers }) {
+function FooterThreadDetail({
+  upVotesBy,
+  downVotesBy,
+  authUser,
+  allUsers,
+  onUpVote,
+  onDownVote,
+  onNeutralizeVote,
+}) {
   const { locale } = useContext(LocaleContext);
 
   const isUpVotedByUser = upVotesBy.includes(authUser);
@@ -26,26 +34,26 @@ function FooterThreadDetail({ upVotesBy, downVotesBy, authUser, allUsers }) {
       </div>
       <div className="thread-actions-container-detail">
         {isUpVotedByUser ? (
-          <div className="thread-action-detail active">
+          <button className="thread-action-detail active" onClick={() => onNeutralizeVote()}>
             <BiSolidLike />
             <p>{locale === 'ID' ? 'Suka' : 'Up Vote'}</p>
-          </div>
+          </button>
         ) : (
-          <div className="thread-action-detail">
+          <button className="thread-action-detail" onClick={() => onUpVote()}>
             <BiLike />
             <p>{locale === 'ID' ? 'Suka' : 'Up Vote'}</p>
-          </div>
+          </button>
         )}
         {isDownVotedByUser ? (
-          <div className="thread-action-detail active red">
+          <button className="thread-action-detail active red" onClick={() => onNeutralizeVote()}>
             <BiSolidDislike />
             <p>{locale === 'ID' ? 'Tidak suka' : 'Down Vote'}</p>
-          </div>
+          </button>
         ) : (
-          <div className="thread-action-detail red">
+          <button className="thread-action-detail red" onClick={() => onDownVote()}>
             <BiDislike />
             <p>{locale === 'ID' ? 'Tidak suka' : 'Down Vote'}</p>
-          </div>
+          </button>
         )}
       </div>
     </div>
@@ -57,6 +65,9 @@ FooterThreadDetail.propTypes = {
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   authUser: PropTypes.string.isRequired,
   allUsers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onUpVote: PropTypes.func.isRequired,
+  onDownVote: PropTypes.func.isRequired,
+  onNeutralizeVote: PropTypes.func.isRequired,
 };
 
 export default FooterThreadDetail;

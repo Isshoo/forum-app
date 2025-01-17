@@ -8,6 +8,7 @@ const ActionType = {
   TOGGLE_UP_VOTE_COMMENT: 'TOGGLE_UP_VOTE_COMMENT',
   TOGGLE_DOWN_VOTE_COMMENT: 'TOGGLE_DOWN_VOTE_COMMENT',
   TOGGLE_NEUTRAL_VOTE_COMMENT: 'TOGGLE_NEUTRAL_VOTE_COMMENT',
+  RESTORE_COMMENT_STATE: 'RESTORE_COMMENT_STATE',
 };
 
 function receiveThreadDetailActionCreator(threadDetail) {
@@ -91,6 +92,15 @@ function toggleNeutralizeVoteCommentActionCreator({ commentId, userId }) {
   };
 }
 
+function restoreCommentStateActionCreator(comment) {
+  return {
+    type: ActionType.RESTORE_COMMENT_STATE,
+    payload: {
+      comment,
+    },
+  };
+}
+
 
 
 export {
@@ -104,4 +114,5 @@ export {
   toggleUpVoteCommentActionCreator,
   toggleDownVoteCommentActionCreator,
   toggleNeutralizeVoteCommentActionCreator,
+  restoreCommentStateActionCreator,
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { LocaleConsumer } from '../../contexts/LocaleContext';
+import PropTypes from 'prop-types';
 
 class CommentInput extends React.Component {
   constructor(props) {
@@ -16,14 +17,14 @@ class CommentInput extends React.Component {
   onContentChangeEventHandler(event) {
     this.setState(() => {
       return {
-        body: event.target.innerHTML,
+        content: event.target.innerHTML,
       };
     });
   }
 
   onSubmitEventHandler(event) {
     event.preventDefault();
-    // this.props.addThread(this.state);
+    this.props.onAddComment(this.state.content);
   }
 
   render() {
@@ -58,5 +59,9 @@ class CommentInput extends React.Component {
     );
   }
 }
+
+CommentInput.propTypes = {
+  onAddComment: PropTypes.func.isRequired,
+};
 
 export default CommentInput;

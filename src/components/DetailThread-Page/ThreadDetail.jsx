@@ -14,6 +14,9 @@ function ThreadDetail({
   downVotesBy,
   authUser,
   allUsers,
+  onUpVote,
+  onDownVote,
+  onNeutralizeVote,
 }) {
   return (
     <div className="thread-detail">
@@ -30,6 +33,9 @@ function ThreadDetail({
           downVotesBy={downVotesBy}
           authUser={authUser}
           allUsers={allUsers}
+          onUpVote={onUpVote}
+          onDownVote={onDownVote}
+          onNeutralizeVote={onNeutralizeVote}
         />
       </div>
     </div>
@@ -51,6 +57,9 @@ export const threadDetailShape = {
   downVotesBy: PropTypes.arrayOf(PropTypes.string),
   authUser: PropTypes.string.isRequired,
   allUsers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onUpVote: PropTypes.func.isRequired,
+  onDownVote: PropTypes.func.isRequired,
+  onNeutralizeVote: PropTypes.func.isRequired,
 };
 
 ThreadDetail.propTypes = {

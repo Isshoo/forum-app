@@ -11,17 +11,27 @@ function AddThreadsPage() {
   const dispatch = useDispatch();
   const { locale } = useContext(LocaleContext);
 
-  function onAddThreadHandler(thread) {
-    dispatch(asyncAddThread(thread));
-    Swal.fire({
-      title: 'Berhasil!',
-      text: 'Thread baru telah ditambahkan.',
-      icon: 'success',
-      confirmButtonText: 'OK',
-    }).then(() => {
-      navigate('/');
-    });
-  }
+  const onAddThreadHandler = async (thread) => {
+    const result = await dispatch(asyncAddThread(thread));
+
+    if (result.success) {
+      Swal.fire({
+        title: 'Berhasil!',
+        text: 'Thread baru telah ditambahkan.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      }).then(() => {
+        navigate('/');
+      });
+    } else {
+      Swal.fire({
+        title: 'Gagal!',
+        text: result.message || 'Terjadi kesalahan saat menambahkan thread.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
+  };
 
   return (
     <section className="pages-section">

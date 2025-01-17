@@ -184,10 +184,27 @@
   padding-block: 0.35rem 0.2rem;
 }
 
+.comment-footer span {
+  position: relative;
+  padding-inline: 0.25rem;
+}
+.comment-footer span:before {
+  content: "";
+  position: absolute;
+  width: 0.2rem;
+  height: 0.2rem;
+  border-radius: 50%;
+  background-color: var(--thread-item-date);
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
 .comment-action {
   display: flex;
   gap: 0.5rem;
   align-items: center;
+  min-width: 45px;
 }
 .comment-action button {
   display: flex;

@@ -4,6 +4,10 @@ function threadsReducer(threads = [], action = {}) {
   switch (action.type) {
   case ActionType.RECEIVE_THREADS:
     return action.payload.threads;
+  case ActionType.RESTORE_THREAD_STATE:
+    return threads.map((thread) =>
+      thread.id === action.payload.thread.id ? { ...action.payload.thread } : thread
+    );
   case ActionType.ADD_THREAD:
     return [action.payload.thread, ...threads];
   case ActionType.TOGGLE_UP_VOTE_THREAD:
@@ -14,6 +18,7 @@ function threadsReducer(threads = [], action = {}) {
           upVotesBy: thread.upVotesBy.includes(action.payload.userId)
             ? thread.upVotesBy.filter((id) => id !== action.payload.userId)
             : thread.upVotesBy.concat([action.payload.userId]),
+          downVotesBy: thread.downVotesBy.filter((id) => id !== action.payload.userId),
         };
       }
       return thread;
@@ -26,6 +31,7 @@ function threadsReducer(threads = [], action = {}) {
           downVotesBy: thread.downVotesBy.includes(action.payload.userId)
             ? thread.downVotesBy.filter((id) => id !== action.payload.userId)
             : thread.downVotesBy.concat([action.payload.userId]),
+          upVotesBy: thread.upVotesBy.filter((id) => id !== action.payload.userId),
         };
       }
       return thread;

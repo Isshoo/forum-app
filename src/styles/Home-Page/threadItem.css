@@ -44,7 +44,7 @@
   box-shadow: -2px 2px 5px 2px var(--thread-item-shadow);
 }
 .threads-item:hover {
-  transform: scale(1.01);
+  box-shadow: -2px 2px 5px 5px var(--thread-item-shadow);
   transition: 0.3s ease-in-out;
 }
 
@@ -245,6 +245,7 @@
   cursor: pointer;
   color: var(--thread-item-des);
   font-weight: 500;
+  background-color: transparent;
 }
 .thread-action:hover {
   color: var(--thread-item-category);

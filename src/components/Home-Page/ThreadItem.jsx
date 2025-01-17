@@ -17,6 +17,9 @@ function ThreadItem({
   user,
   authUser,
   allUsers,
+  onUpVote,
+  onDownVote,
+  onNeutralizeVote,
 }) {
   return (
     <div className="thread">
@@ -31,11 +34,15 @@ function ThreadItem({
           <BodyThreadItem title={title} body={body} category={category} />
         </Link>
         <FooterThreadItem
+          id={id}
           upVotesBy={upVotesBy}
           downVotesBy={downVotesBy}
           totalComments={totalComments}
           authUser={authUser}
           allUsers={allUsers}
+          onUpVote={onUpVote}
+          onDownVote={onDownVote}
+          onNeutralizeVote={onNeutralizeVote}
         />
       </div>
     </div>
@@ -64,6 +71,9 @@ export const threadItemShape = {
       avatar: PropTypes.string.isRequired,
     })
   ),
+  onUpVote: PropTypes.func.isRequired,
+  onDownVote: PropTypes.func.isRequired,
+  onNeutralizeVote: PropTypes.func.isRequired,
 };
 
 ThreadItem.propTypes = {

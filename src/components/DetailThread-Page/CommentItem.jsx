@@ -5,11 +5,35 @@ import { showFormattedDate } from '../../utils';
 import LocaleContext from '../../contexts/LocaleContext';
 import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from 'react-icons/bi';
 
-function CommentItem({ content, createdAt, owner, upVotesBy, downVotesBy, authUser }) {
+function CommentItem({
+  id,
+  content,
+  createdAt,
+  owner,
+  upVotesBy,
+  downVotesBy,
+  authUser,
+  onUpVoteComment,
+  onDownVoteComment,
+  onNeutralizeVoteComment,
+}) {
   const { locale } = useContext(LocaleContext);
 
   const isUpVotedByUser = upVotesBy.includes(authUser);
   const isDownVotedByUser = downVotesBy.includes(authUser);
+
+  const onUpVoteCommentClick = (e) => {
+    e.stopPropagation();
+    onUpVoteComment(id);
+  };
+  const onDownVoteCommentClick = (e) => {
+    e.stopPropagation();
+    onDownVoteComment(id);
+  };
+  const onNeutralizeVoteCommentClick = (e) => {
+    e.stopPropagation();
+    onNeutralizeVoteComment(id);
+  };
 
   return (
     <div className="comment-item">
@@ -26,11 +50,27 @@ function CommentItem({ content, createdAt, owner, upVotesBy, downVotesBy, authUs
         <div className="comment-content">{parser(content)}</div>
         <div className="comment-footer">
           <div className="comment-action">
-            <button>{isUpVotedByUser ? <BiSolidLike /> : <BiLike />}</button>
+            {isUpVotedByUser ? (
+              <button onClick={onNeutralizeVoteCommentClick}>
+                <BiSolidLike />
+              </button>
+            ) : (
+              <button onClick={onUpVoteCommentClick}>
+                <BiLike />
+              </button>
+            )}
             <p>{upVotesBy.length}</p>
           </div>
           <div className="comment-action red">
-            <button>{isDownVotedByUser ? <BiSolidDislike /> : <BiDislike />}</button>
+            {isDownVotedByUser ? (
+              <button onClick={onNeutralizeVoteCommentClick}>
+                <BiSolidDislike />
+              </button>
+            ) : (
+              <button onClick={onDownVoteCommentClick}>
+                <BiDislike />
+              </button>
+            )}
             <p>{downVotesBy.length}</p>
           </div>
         </div>
@@ -40,6 +80,7 @@ function CommentItem({ content, createdAt, owner, upVotesBy, downVotesBy, authUs
 }
 
 CommentItem.propTypes = {
+  id: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
   owner: PropTypes.shape({
@@ -50,6 +91,9 @@ CommentItem.propTypes = {
   upVotesBy: PropTypes.arrayOf(PropTypes.string),
   downVotesBy: PropTypes.arrayOf(PropTypes.string),
   authUser: PropTypes.string.isRequired,
+  onUpVoteComment: PropTypes.func.isRequired,
+  onDownVoteComment: PropTypes.func.isRequired,
+  onNeutralizeVoteComment: PropTypes.func.isRequired,
 };
 
 export default CommentItem;

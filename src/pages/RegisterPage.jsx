@@ -1,26 +1,35 @@
 import React from 'react';
-import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import RegisterInput from '../components/LoginAndRegister-Page/RegisterInput';
 import { LocaleConsumer } from '../contexts/LocaleContext';
 import { useDispatch } from 'react-redux';
 import { asyncRegisterUser } from '../states/users/action';
+import Swal from 'sweetalert2';
 
 function RegisterPage() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const onRegister = ({ name, email, password }) => {
-    dispatch(asyncRegisterUser({ name, email, password }));
-    Swal.fire({
-      title: 'Berhasil!',
-      text: 'Akun berhasil diregistrasi, silahkan login.',
-      icon: 'success',
-      confirmButtonText: 'OK',
-    }).then(() => {
-      navigate('/');
-    });
-    navigate('/');
+  const onRegister = async ({ name, email, password }) => {
+    const result = await dispatch(asyncRegisterUser({ name, email, password }));
+
+    if (result.success) {
+      Swal.fire({
+        title: 'Berhasil!',
+        text: 'Akun berhasil diregistrasi, silahkan login.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+      }).then(() => {
+        navigate('/');
+      });
+    } else {
+      Swal.fire({
+        title: 'Gagal!',
+        text: result.message,
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
+    }
   };
 
   return (
