@@ -11,3 +11,4 @@ import './AddThread-Page/formAddThread.css';
 import './detailThread-Page/threadDetail.css';
 import './detailThread-Page/comments.css';
 import './LoginAndRegister-Page/LoginRegister.css';
+import './Leaderboards-Page/leadearboards.css';

@@ -33,7 +33,7 @@
 }
 
 .threads-item-detail {
-  padding: 0.5rem;
+  padding: 0.25rem 0.5rem;
   background-color: transparent;
   border-radius: 16px;
   display: flex;

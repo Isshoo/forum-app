@@ -4,6 +4,7 @@ import AddPageLink from '../components/Home-Page/AddThreadBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncRecieveLeaderboards } from '../states/leaderboards/action';
 import Loading from '../components/Base/LoadingBar';
+import LeaderboardList from '../components/Leaderboard-Page/LeaderboardsList';
 
 function LeaderboardPage() {
   const firstRun = useRef(true);
@@ -24,15 +25,8 @@ function LeaderboardPage() {
 
   return (
     <section className="pages-section">
-      <br />
-      <div>Halaman Leaderboard</div>
-      <ul>
-        {leaderboards.map((leaderboard) => (
-          <li key={leaderboard.user.id}>
-            {leaderboard.user.name} - {leaderboard.score}
-          </li>
-        ))}
-      </ul>
+      <h3 className="leaderboard-title">Top Active Users</h3>
+      <LeaderboardList leaderboards={leaderboards} />
       <AddPageLink />
     </section>
   );
