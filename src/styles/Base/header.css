@@ -93,8 +93,8 @@ header {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  min-width: 148px;
-  padding: 0.5rem 1.5rem;
+  min-width: 160px;
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   background-color: var(--nav-bg);
   color: var(--nav-text);

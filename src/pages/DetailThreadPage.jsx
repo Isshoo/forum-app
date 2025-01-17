@@ -48,7 +48,7 @@ function DetailThreadsPage() {
           authUser={authUser.id}
           allUsers={allUsers}
         />
-        <CommentSection />
+        <CommentSection comments={threadDetail.comments} authUser={authUser.id} />
       </div>
     </section>
   );

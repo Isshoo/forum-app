@@ -305,6 +305,9 @@
   .thread-category p {
     font-size: 0.8rem;
   }
+  .thread-footer {
+  margin-top: 0.25rem;
+}
   .thread-number p{
     font-size: 0.7rem;
   }

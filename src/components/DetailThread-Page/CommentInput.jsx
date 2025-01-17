@@ -32,21 +32,24 @@ class CommentInput extends React.Component {
         {({ locale }) => {
           return (
             <div className="comment-input">
-              <div className="comment-input-avatar">
-                <img src="" alt="" />
-              </div>
               <form id="commentForm" autoComplete="off" onSubmit={this.onSubmitEventHandler}>
                 <div>
                   <div
                     id="content"
-                    data-placeholder={locale === 'EN' ? 'Add comment..' : 'Beri komentar...'}
+                    data-placeholdercomment={
+                      locale === 'EN'
+                        ? 'Leave your comments here...'
+                        : 'Berikan komentarmu disini...'
+                    }
                     aria-describedby="contentValidation"
                     contentEditable
                     required
-                    onInput={this.onBodyChangeEventHandler}
+                    onInput={this.onContentChangeEventHandler}
                   ></div>
                 </div>
-                <button type="submit" id="commentSubmit"></button>
+                <button type="submit" id="commentSubmit">
+                  Tambahkan
+                </button>
               </form>
             </div>
           );

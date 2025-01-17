@@ -29,13 +29,12 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   padding: 0;
   background-color: transparent;
 }
 
 .threads-item-detail {
-  padding: 1.5rem 1.75rem;
+  padding: 0.5rem;
   background-color: transparent;
   border-radius: 16px;
   display: flex;
@@ -46,7 +45,6 @@
   width: 100%;
   overflow: auto;
   height: 100%;
-  box-shadow: -2px 2px 5px 2px var(--thread-detail-shadow);
 }
 .threads-detail-detail:hover {
   background-color: var(--thread-detail-bg-hover);
@@ -168,7 +166,7 @@
 /* FOOT */
 
 .thread-footer-detail {
-  margin-top: 0.75rem;
+  margin-block: 0.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -222,13 +220,14 @@
 }
 
 .thread-actions-container-detail {
-  padding-top: 1rem;
+  padding-block: 1rem;
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: space-around;
   gap: 1rem;
-  border-top: 1px solid var(--thread-detail-border);
+  border-top: 1px solid var(--thread-detail-shadow);
+  border-bottom: 1px solid var(--thread-detail-title);
 }
 
 .thread-action-detail {
@@ -272,7 +271,7 @@
 
 @media screen and (max-width: 500px) {
   .threads-item-detail {
-    padding: 1.25rem;
+    padding: 0.25rem;
   }
   .thread-avatar-detail img {
     width: 3.75rem;
