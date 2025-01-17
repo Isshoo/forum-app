@@ -14,6 +14,7 @@ import useTheme from './hooks/useTheme';
 import HeaderBar from './components/Base/HeaderBar';
 import FooterBar from './components/Base/FooterBar';
 import NavigationBar from './components/Base/NavigationBar';
+import ScrollToTop from './components/Base/ScrollToTop';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncPreloadProcess } from './states/isPreload/action';
 import { asyncUnsetAuthUser } from './states/authUser/action';
@@ -47,7 +48,7 @@ function App() {
       <LocaleProvider value={localeContextValue}>
         <ThemeProvider value={themeContextValue}>
           <div
-            className="container"
+            className="container unAuth"
             data-theme={theme === 'dark' ? '' : 'light'}
             data-lang={locale === 'EN' ? '' : 'ID'}
           >
@@ -55,6 +56,7 @@ function App() {
               <HeaderBar />
             </header>
             <main>
+              <ScrollToTop />
               <Routes>
                 <Route path="/*" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
@@ -81,6 +83,7 @@ function App() {
             <NavigationBar logout={onSignOut} username={authUser.name} />
           </header>
           <main>
+            <ScrollToTop />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/leaderboard" element={<LeaderboardPage />} />

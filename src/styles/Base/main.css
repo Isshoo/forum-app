@@ -74,6 +74,19 @@ label {
   min-height: 100vh;
 }
 
+.container.unAuth main {
+  padding-block: 0 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container.unAuth main .pages-section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 main {
   max-width: 900px;
   width: 100%;
