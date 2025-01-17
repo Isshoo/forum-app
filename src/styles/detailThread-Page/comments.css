@@ -43,7 +43,7 @@
   align-items: center;
   gap: 1rem;
 }
-.comment-head h3{
+.comment-head h3 {
   font-size: 1.25rem;
   font-weight: 600;
   color: var(--comment-header-title);
@@ -55,8 +55,8 @@
   align-items: center;
   padding-inline: 1%;
 }
-.comments-total p, 
-.comments-total svg{
+.comments-total p,
+.comments-total svg {
   font-size: 1.25rem;
   font-weight: 500;
   color: var(--comment-header-title);
@@ -117,7 +117,6 @@
 }
 #commentSubmit:hover {
   background-color: var(--comment-submit-bg-hover);
-  
 }
 #commentSubmit:active {
   background-color: var(--comment-submit-bg-act);

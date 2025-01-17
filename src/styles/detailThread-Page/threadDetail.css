@@ -1,4 +1,3 @@
-
 :root {
   --thread-detail-border: #2126319d;
   --thread-detail-shadow: rgba(0, 0, 0, 0.2);
@@ -84,7 +83,6 @@
 .thread-email-detail {
   color: var(--thread-detail-date);
   font-size: 1rem;
-  
 }
 
 .thread-date-detail {
@@ -200,7 +198,6 @@
   top: 50%;
   left: 50%;
   transform: translateY(-50%);
-
 }
 
 .thread-number-detail {
@@ -208,12 +205,12 @@
   align-items: center;
   gap: 0.5rem;
 }
-.thread-number-detail p{
+.thread-number-detail p {
   color: var(--thread-detail-date);
   font-size: 1rem;
   font-weight: 500;
 }
-.thread-number-detail svg{
+.thread-number-detail svg {
   color: var(--thread-detail-date);
   font-size: 1.1rem;
   font-weight: 500;
@@ -299,19 +296,19 @@
     margin-top: 0.25rem;
   }
   .thread-votes-number-detail {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 0.25rem;
-}
-.thread-votes-number-detail span {
-  display: none;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.25rem;
+  }
+  .thread-votes-number-detail span {
+    display: none;
+  }
 
-  .thread-number-detail p{
+  .thread-number-detail p {
     font-size: 0.9rem;
   }
-  .thread-number-detail svg{
+  .thread-number-detail svg {
     font-size: 1rem;
   }
   .thread-action-detail {

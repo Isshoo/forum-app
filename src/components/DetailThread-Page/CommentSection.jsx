@@ -11,7 +11,7 @@ function CommentSection({ comments, authUser }) {
         <h3>Beri Komentar</h3>
         <div className="comments-total">
           <FaRegComments />
-          <p>3</p>
+          <p>{comments.length}</p>
         </div>
       </div>
       <CommentInput />

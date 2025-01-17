@@ -38,12 +38,12 @@
   padding: 0.25rem 0.75rem;
   border-radius: 10px;
   background-color: var(--search-submit-bg);
-} 
+}
 .category-select {
   background-color: var(--search-input-background);
-  border: none; 
-  outline: none; 
-  box-shadow: none; 
+  border: none;
+  outline: none;
+  box-shadow: none;
   cursor: pointer;
   color: var(--search-submit-icon);
 }
@@ -95,5 +95,3 @@
 #searchSubmit:active {
   background-color: var(--search-submit-bg-act);
 }
-
-

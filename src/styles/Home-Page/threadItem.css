@@ -31,7 +31,7 @@
 
 .threads-item {
   border-radius: 16px;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 2rem 1.25rem;
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -81,7 +81,6 @@
 .thread-email {
   color: var(--thread-item-date);
   font-size: 0.8rem;
-  
 }
 
 .thread-date {
@@ -192,18 +191,17 @@
   gap: 1rem;
 }
 
-
 .thread-number {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
-.thread-number p{
+.thread-number p {
   color: var(--thread-item-date);
   font-size: 0.8rem;
   font-weight: 500;
 }
-.thread-number svg{
+.thread-number svg {
   color: var(--thread-item-date);
   font-size: 0.9rem;
   font-weight: 500;
@@ -228,11 +226,10 @@
   top: 50%;
   left: 50%;
   transform: translateY(-50%);
-
 }
 
 .thread-actions-container {
-  padding-top: 0.75rem;
+  padding-top: 1rem;
   display: flex;
   width: 100%;
   align-items: center;
@@ -306,24 +303,24 @@
     font-size: 0.8rem;
   }
   .thread-footer {
-  margin-top: 0.25rem;
-}
-  .thread-number p{
+    margin-top: 0.25rem;
+  }
+  .thread-number p {
     font-size: 0.7rem;
   }
-  .thread-number svg{
+  .thread-number svg {
     font-size: 0.8rem;
   }
 
   .thread-votes-number {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 0.25rem;
-}
-.thread-votes-number span {
-  display: none;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.25rem;
+  }
+  .thread-votes-number span {
+    display: none;
+  }
   .thread-action {
     font-size: 0.8rem;
   }
