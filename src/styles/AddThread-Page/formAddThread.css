@@ -102,6 +102,7 @@
 #titleValidation {
   color: var(--validation);
   margin-block: 0.5rem;
+  text-align: start;
 }
 
 #title:focus,

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CommentList from './CommentList';
 import CommentInput from './CommentInput';
 import { FaRegComments, FaComments } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+import LocaleContext from '../../contexts/LocaleContext';
 
 function CommentSection({
   comments,
@@ -12,10 +13,11 @@ function CommentSection({
   onDownVoteComment,
   onNeutralizeVoteComment,
 }) {
+  const { locale } = useContext(LocaleContext);
   return (
     <div className="comment-section">
       <div className="comment-head">
-        <h3>Beri Komentar</h3>
+        <h3>{locale === 'EN' ? 'Comments' : 'Komentar'}</h3>
         <div className="comments-total">
           <FaRegComments />
           <p>{comments.length}</p>

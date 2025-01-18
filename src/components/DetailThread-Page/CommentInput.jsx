@@ -49,7 +49,7 @@ class CommentInput extends React.Component {
                   ></div>
                 </div>
                 <button type="submit" id="commentSubmit">
-                  Tambahkan
+                  {locale === 'EN' ? 'Submit' : 'Kirim'}
                 </button>
               </form>
             </div>

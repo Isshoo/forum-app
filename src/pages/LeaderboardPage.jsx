@@ -1,12 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncRecieveLeaderboards } from '../states/leaderboards/action';
 import Loading from '../components/Base/LoadingBar';
 import LeaderboardList from '../components/Leaderboard-Page/LeaderboardsList';
+import LocaleContext from '../contexts/LocaleContext';
 
 function LeaderboardPage() {
   const firstRun = useRef(true);
+  const { locale } = useContext(LocaleContext);
+
   const leaderboards = useSelector((states) => states.leaderboards || []);
   const authUser = useSelector((states) => states.authUser || {});
 
@@ -25,7 +28,9 @@ function LeaderboardPage() {
 
   return (
     <section className="pages-section">
-      <h3 className="leaderboard-title">Top Active Users</h3>
+      <h3 className="leaderboard-title">
+        {locale === 'EN' ? 'Top Active Users' : 'Klasemen Pengguna Aktif'}
+      </h3>
       <LeaderboardList leaderboards={leaderboards} authUser={authUser.id} />
     </section>
   );
