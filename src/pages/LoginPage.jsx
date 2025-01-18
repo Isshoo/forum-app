@@ -4,6 +4,7 @@ import LoginInput from '../components/LoginAndRegister-Page/LoginInput';
 import { LocaleConsumer } from '../contexts/LocaleContext';
 import { useDispatch } from 'react-redux';
 import { asyncSetAuthUser } from '../states/authUser/action';
+import { GiWorld } from 'react-icons/gi';
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -19,7 +20,9 @@ function LoginPage() {
           return (
             <section className="pages-section">
               <div className="form-container">
-                <h2>Login</h2>
+                <div className="logo">
+                  <GiWorld />
+                </div>
                 <LoginInput login={onLogin} />
                 <p>
                   Don&apos;t have an account? <Link to="/register">Sign up here!</Link>

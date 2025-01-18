@@ -78,7 +78,12 @@ label {
   min-height: 100vh;
 }
 
+.container.unAuth {
+  background-color: var(--background);
+}
+
 .container.unAuth main {
+  background-color: var(--background);
   padding-block: 0 0;
   height: 100%;
   display: flex;
