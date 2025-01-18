@@ -1,14 +1,14 @@
 :root {
-  --thread-item-border: #2126319d;
+  --thread-item-border: #ffffffa5;
   --thread-item-shadow: rgba(0, 0, 0, 0.2);
-  --thread-item-bg: #e0e4eb;
+  --thread-item-bg: #212631;
   --thread-item-bg-hover: #ffffff;
-  --thread-item-title: #000;
-  --thread-item-category: #1f46a6;
-  --thread-item-des: #0a0e15;
-  --thread-item-date: #212631cd;
+  --thread-item-title: #ffffff;
+  --thread-item-category: #6d95f9;
+  --thread-item-des: #f4f4f4;
+  --thread-item-date: #ffffffa5;
   --thread-item-dislike: #ff0000;
-  --thread-item-comment: #000;
+  --thread-item-comment: #fff;
 }
 
 [data-theme="light"] {
@@ -42,6 +42,7 @@
   overflow: auto;
   height: 100%;
   box-shadow: -2px 2px 5px 2px var(--thread-item-shadow);
+  background-color: var(--thread-item-bg);
 }
 .threads-item:hover {
   box-shadow: -2px 2px 5px 5px var(--thread-item-shadow);
@@ -253,18 +254,19 @@
 }
 .thread-action svg {
   font-size: 1rem;
+  color: var(--thread-item-des);
 }
 
 .thread-action:hover  {
   color: var(--thread-item-category);
-  p {
+  p, svg {
     color: var(--thread-item-category);
   }
 }
 
 .thread-action.active {
   color: var(--thread-item-category);
-  p {
+  p, svg {
     color: var(--thread-item-category);
   }
 }
@@ -279,7 +281,7 @@
 }
 .thread-action.comment:hover  {
   color: var(--thread-item-comment);
-  p {
+  p, svg {
     color: var(--thread-item-comment);
   }
 
@@ -293,14 +295,14 @@
 
 .thread-action.red:hover  {
   color: var(--thread-item-dislike);
-  p {
+  p, svg {
     color: var(--thread-item-dislike);
   }
 }
 
 .thread-action.red.active  {
   color: var(--thread-item-dislike);
-  p {
+  p, svg {
     color: var(--thread-item-dislike);
   }
 }

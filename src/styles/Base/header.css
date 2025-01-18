@@ -9,8 +9,9 @@
   --nav-bg-act: #4e576a;
   --nav-active-bg: #212631;
   --logout-text: #000;
-  --logout-text-hover: #3b5efa;
+  --logout-text-hover: #1a44ff;
   --nav-shadow: rgba(0, 0, 0, 0.2);
+  --navigation-bg: rgba(255, 255, 255, 0.51);
 }
 
 [data-theme="light"] {
@@ -26,6 +27,7 @@
   --logout-text: #000;
   --logout-text-hover: #3b5efa;
   --nav-shadow: rgba(0, 0, 0, 0.2);
+  --navigation-bg: rgba(255, 255, 255, 0.5);
 }
 
 header {
@@ -77,7 +79,7 @@ header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  background-color: transparent;
+  background-color: var(--navigation-bg);
   backdrop-filter: blur(10px);
   box-shadow: 0px 2px 2px 0px var(--nav-shadow);
   height: 81px;

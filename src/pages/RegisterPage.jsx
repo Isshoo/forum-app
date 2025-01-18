@@ -38,7 +38,7 @@ function RegisterPage() {
         if (locale === 'EN') {
           return (
             <section className="pages-section">
-              <div className="form-container">
+              <div className="form-container logreg">
                 <h2>Register</h2>
                 <RegisterInput register={onRegister} />
                 <p>
@@ -50,7 +50,7 @@ function RegisterPage() {
         }
         return (
           <section className="pages-section">
-            <div className="form-container">
+            <div className="form-container logreg">
               <h2>Registrasi</h2>
               <RegisterInput register={onRegister} />
               <p>

@@ -19,7 +19,7 @@ function LoginPage() {
         if (locale === 'EN') {
           return (
             <section className="pages-section">
-              <div className="form-container">
+              <div className="form-container logreg">
                 <div className="logo">
                   <GiWorld />
                 </div>
@@ -33,8 +33,10 @@ function LoginPage() {
         }
         return (
           <section className="pages-section">
-            <div className="form-container">
-              <h2>Masuk</h2>
+            <div className="form-container logreg">
+              <div className="logo">
+                <GiWorld />
+              </div>
               <LoginInput login={onLogin} />
               <p>
                 Belum punya akun? <Link to="/register">Registrasi disini!</Link>
