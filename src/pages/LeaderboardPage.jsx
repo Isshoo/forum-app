@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { useEffect } from 'react';
-import AddPageLink from '../components/Home-Page/AddThreadBtn';
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncRecieveLeaderboards } from '../states/leaderboards/action';
 import Loading from '../components/Base/LoadingBar';

@@ -1,7 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import {
   asyncAddComment,
   asyncDownVoteComment,
@@ -17,55 +17,79 @@ import ThreadDetail from '../components/DetailThread-Page/ThreadDetail';
 import CommentSection from '../components/DetailThread-Page/CommentSection';
 import Loading from '../components/Base/LoadingBar';
 import Swal from 'sweetalert2';
+import { asyncPopulateUsersAndDetailThread } from '../states/shared/action';
 
 function DetailThreadsPage() {
   const firstRun = useRef(true);
   const { id } = useParams();
-  const threadDetail = useSelector((states) => states.threadDetail || {});
-  const authUser = useSelector((states) => states.authUser || {});
-  const allUsers = useSelector((states) => states.users || []);
+  const { threadDetail, users, authUser } = useSelector(
+    (states) => ({
+      threadDetail: states.threadDetail,
+      users: states.users,
+      authUser: states.authUser,
+    }),
+    shallowEqual
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (firstRun.current) {
-      dispatch(asyncReceiveThreadDetail(id));
-      dispatch(asyncRecieveAllUsers());
+      dispatch(asyncPopulateUsersAndDetailThread(id));
       firstRun.current = false;
     }
   }, [id, dispatch]);
 
-  const onUpVote = () => dispatch(asyncUpVoteThreadDetail());
-  const onDownVote = () => dispatch(asyncDownVoteThreadDetail());
-  const onNeutralizeVote = () => dispatch(asyncNeutralizeVoteThreadDetail());
-  const onUpVoteComment = (commentId) => dispatch(asyncUpVoteComment(commentId));
-  const onDownVoteComment = (commentId) => dispatch(asyncDownVoteComment(commentId));
-  const onNeutralizeVoteComment = (commentId) => dispatch(asyncNeutralizeVoteComment(commentId));
-
-  const onAddComment = async (content) => {
-    const result = await dispatch(asyncAddComment({ content }));
-
-    if (result.success) {
-      Swal.fire({
-        title: 'Berhasil!',
-        text: 'Komentar berhasil ditambahkan.',
-        icon: 'success',
-        confirmButtonText: 'OK',
-      });
-    } else {
-      Swal.fire({
-        title: 'Gagal!',
-        text: result.message || 'Terjadi kesalahan saat menambahkan komentar.',
-        icon: 'error',
-        confirmButtonText: 'OK',
-      });
+  const owner = useMemo(() => {
+    if (threadDetail && threadDetail.owner && users.length > 0) {
+      return users.find((user) => user.id === threadDetail.owner.id);
     }
-  };
+    return null;
+  }, [threadDetail, users]);
 
-  const owner = threadDetail?.owner
-    ? allUsers.find((user) => user.id === threadDetail.owner.id)
-    : null;
+  const onUpVote = useCallback(() => dispatch(asyncUpVoteThreadDetail()), [dispatch]);
+  const onDownVote = useCallback(() => dispatch(asyncDownVoteThreadDetail()), [dispatch]);
+  const onNeutralizeVote = useCallback(
+    () => dispatch(asyncNeutralizeVoteThreadDetail()),
+    [dispatch]
+  );
+  const onUpVoteComment = useCallback(
+    (commentId) => dispatch(asyncUpVoteComment(commentId)),
+    [dispatch]
+  );
+  const onDownVoteComment = useCallback(
+    (commentId) => dispatch(asyncDownVoteComment(commentId)),
+    [dispatch]
+  );
+  const onNeutralizeVoteComment = useCallback(
+    (commentId) => dispatch(asyncNeutralizeVoteComment(commentId)),
+    [dispatch]
+  );
 
-  if (!threadDetail || !threadDetail.owner || !allUsers.length) {
+  // Add comment handler
+  const onAddComment = useCallback(
+    async (content) => {
+      const result = await dispatch(asyncAddComment({ content }));
+
+      if (result.success) {
+        Swal.fire({
+          title: 'Berhasil!',
+          text: 'Komentar berhasil ditambahkan.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
+      } else {
+        Swal.fire({
+          title: 'Gagal!',
+          text: result.message || 'Terjadi kesalahan saat menambahkan komentar.',
+          icon: 'error',
+          confirmButtonText: 'OK',
+        });
+      }
+    },
+    [dispatch]
+  );
+
+  if (!threadDetail || !threadDetail.owner || !users.length || !owner) {
     return <Loading />;
   }
 
@@ -81,7 +105,7 @@ function DetailThreadsPage() {
           upVotesBy={threadDetail.upVotesBy}
           downVotesBy={threadDetail.downVotesBy}
           authUser={authUser.id}
-          allUsers={allUsers}
+          allUsers={users}
           onUpVote={onUpVote}
           onDownVote={onDownVote}
           onNeutralizeVote={onNeutralizeVote}

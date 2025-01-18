@@ -2,7 +2,7 @@ import React from 'react';
 import ThreadItem, { threadItemShape } from './ThreadItem';
 import PropTypes from 'prop-types';
 
-function ThreadsList({ threads, allUsers, onUpVote, onDownVote, onNeutralizeVote }) {
+function ThreadsList({ threads, allUsers }) {
   return (
     <>
       <div className="threads-list">
@@ -12,9 +12,9 @@ function ThreadsList({ threads, allUsers, onUpVote, onDownVote, onNeutralizeVote
             id={thread.id}
             {...thread}
             allUsers={allUsers}
-            onUpVote={onUpVote}
-            onDownVote={onDownVote}
-            onNeutralizeVote={onNeutralizeVote}
+            onUpVote={thread.onUpVote}
+            onDownVote={thread.onDownVote}
+            onNeutralizeVote={thread.onNeutralizeVote}
           />
         ))}
       </div>
@@ -31,9 +31,6 @@ ThreadsList.propTypes = {
       avatar: PropTypes.string.isRequired,
     })
   ),
-  onUpVote: PropTypes.func.isRequired,
-  onDownVote: PropTypes.func.isRequired,
-  onNeutralizeVote: PropTypes.func.isRequired,
 };
 
 export default ThreadsList;
