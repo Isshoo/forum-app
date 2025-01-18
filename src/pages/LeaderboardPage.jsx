@@ -9,6 +9,7 @@ import LeaderboardList from '../components/Leaderboard-Page/LeaderboardsList';
 function LeaderboardPage() {
   const firstRun = useRef(true);
   const leaderboards = useSelector((states) => states.leaderboards || []);
+  const authUser = useSelector((states) => states.authUser || {});
 
   const dispatch = useDispatch();
 
@@ -19,15 +20,14 @@ function LeaderboardPage() {
     }
   }, [dispatch]);
 
-  if (!leaderboards.length) {
+  if (!leaderboards.length || !authUser.id) {
     return <Loading />;
   }
 
   return (
     <section className="pages-section">
       <h3 className="leaderboard-title">Top Active Users</h3>
-      <LeaderboardList leaderboards={leaderboards} />
-      <AddPageLink />
+      <LeaderboardList leaderboards={leaderboards} authUser={authUser.id} />
     </section>
   );
 }

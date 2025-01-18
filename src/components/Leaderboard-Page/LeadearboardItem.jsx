@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function LeaderboardItem({ avatar, name, email, score }) {
+function LeaderboardItem({ id, avatar, name, email, score, authUser }) {
+  const isCurrentUser = authUser === id;
   return (
     <div className="leaderboard-item">
       <div className="leaderboard-user">
@@ -9,7 +10,7 @@ function LeaderboardItem({ avatar, name, email, score }) {
           <img src={avatar} alt="" />
         </div>
         <div className="leaderboard-info">
-          <p className="leaderboard-name">{name}</p>
+          <p className={isCurrentUser ? 'leaderboard-name isUser' : 'leaderboard-name'}>{name}</p>
           <p className="leaderboard-email">{email}</p>
         </div>
       </div>
@@ -22,10 +23,12 @@ function LeaderboardItem({ avatar, name, email, score }) {
 }
 
 LeaderboardItem.propTypes = {
+  id: PropTypes.string.isRequired,
   avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
+  authUser: PropTypes.string.isRequired,
 };
 
 export default LeaderboardItem;

@@ -75,9 +75,9 @@ function HomePage() {
       <ThreadsList
         threads={filteredThreads}
         allUsers={users}
-        onUpVote={onUpVote || (() => {})} // Pastikan ada fallback jika undefined
-        onDownVote={onDownVote || (() => {})} // Pastikan ada fallback jika undefined
-        onNeutralizeVote={onNeutralizeVote || (() => {})}
+        onUpVote={onUpVote}
+        onDownVote={onDownVote}
+        onNeutralizeVote={onNeutralizeVote}
       />
       <AddPageLink />
     </section>

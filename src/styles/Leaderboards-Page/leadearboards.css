@@ -80,6 +80,10 @@
   font-size: 1rem;
   font-weight: 600;
 }
+.leaderboard-name.isUser{
+  font-weight: 700;
+  color: var(--leadearboard-item-category);
+}
 
 .leaderboard-email {
   color: var(--leadearboard-item-email);

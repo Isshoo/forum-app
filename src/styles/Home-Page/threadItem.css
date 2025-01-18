@@ -243,23 +243,45 @@
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
-  color: var(--thread-item-des);
-  font-weight: 500;
   background-color: transparent;
 }
-.thread-action:hover {
+
+.thread-action p {
+  color: var(--thread-item-des);
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+.thread-action svg {
+  font-size: 1rem;
+}
+
+.thread-action:hover  {
   color: var(--thread-item-category);
+  p {
+    color: var(--thread-item-category);
+  }
 }
 
 .thread-action.active {
   color: var(--thread-item-category);
+  p {
+    color: var(--thread-item-category);
+  }
+}
+
+.thread-action.comment  {
+  text-decoration: none;
+  color: var(--thread-item-des);
 }
 
 .thread-action.comment .solid {
   display: none;
 }
-.thread-action.comment:hover {
+.thread-action.comment:hover  {
   color: var(--thread-item-comment);
+  p {
+    color: var(--thread-item-comment);
+  }
 
   .solid {
     display: block;
@@ -269,12 +291,18 @@
   }
 }
 
-.thread-action.red:hover {
+.thread-action.red:hover  {
   color: var(--thread-item-dislike);
+  p {
+    color: var(--thread-item-dislike);
+  }
 }
 
-.thread-action.red.active {
+.thread-action.red.active  {
   color: var(--thread-item-dislike);
+  p {
+    color: var(--thread-item-dislike);
+  }
 }
 
 @media screen and (max-width: 500px) {
