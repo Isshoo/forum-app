@@ -16,10 +16,12 @@ function HeaderBar() {
                     {locale === 'EN' ? 'Discussion Forum App' : 'Aplikasi Forum Diskusi'}
                   </h1>
                   <div className="header-buttons">
-                    <button onClick={toggleTheme}>
+                    <button onClick={toggleTheme} id="toggleThemeBtn">
                       {theme === 'dark' ? <MdOutlineWbSunny /> : <MdSunny />}
                     </button>
-                    <button onClick={toggleLocale}>{locale === 'EN' ? 'EN' : 'ID'}</button>
+                    <button id="toggleLocaleBtn" onClick={toggleLocale}>
+                      {locale === 'EN' ? 'EN' : 'ID'}
+                    </button>
                   </div>
                 </div>
               );
