@@ -23,7 +23,7 @@ function LoginPage() {
                 <div className="logo">
                   <GiWorld />
                 </div>
-                <LoginInput login={onLogin} />
+                <LoginInput login={onLogin} locale={locale} />
                 <p>
                   Don&apos;t have an account? <Link to="/register">Sign up here!</Link>
                 </p>
@@ -37,7 +37,7 @@ function LoginPage() {
               <div className="logo">
                 <GiWorld />
               </div>
-              <LoginInput login={onLogin} />
+              <LoginInput login={onLogin} locale={locale} />
               <p>
                 Belum punya akun? <Link to="/register">Registrasi disini!</Link>
               </p>

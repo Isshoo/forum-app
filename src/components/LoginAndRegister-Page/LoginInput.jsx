@@ -3,21 +3,14 @@ import PropTypes from 'prop-types';
 import useInput from '../../hooks/useInput';
 import useVisibility from '../../hooks/useVisibility';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa6';
-import LocaleContext from '../../contexts/LocaleContext';
 
-function LoginInput({ login }) {
-  const { locale } = useContext(LocaleContext);
+function LoginInput({ login, locale }) {
   const [email, onEmailChange] = useInput('');
   const [password, onPasswordChange] = useInput('');
   const [showPassword, setShowPassword] = useVisibility(false);
 
-  async function onLogin(event) {
-    event.preventDefault();
-    await login({ email, password });
-  }
-
   return (
-    <form id="loginForm" className="logreg-form" autoComplete="on" onSubmit={onLogin}>
+    <form id="loginForm" className="logreg-form" autoComplete="on">
       <div>
         <label htmlFor="email">Email</label>
         <input
@@ -49,7 +42,12 @@ function LoginInput({ login }) {
           </button>
         </div>
       </div>
-      <button type="submit" id="loginSubmit" className="submit-btn">
+      <button
+        type="button"
+        id="loginSubmit"
+        className="submit-btn"
+        onClick={() => login({ email, password })}
+      >
         {locale === 'EN' ? 'Login' : 'Masuk'}
       </button>
     </form>
@@ -58,6 +56,7 @@ function LoginInput({ login }) {
 
 LoginInput.propTypes = {
   login: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default LoginInput;
