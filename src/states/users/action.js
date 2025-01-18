@@ -2,7 +2,7 @@ import { register } from '../../utils/api/auth';
 import { getAllUsers } from '../../utils/api/users';
 
 const ActionType = {
-  RECEIVE_USERS: 'RECEIVE_USERS',
+  RECEIVE_USERS: 'users/recieve',
 };
 
 function receiveUsersActionCreator(users) {

@@ -1,10 +1,10 @@
 const ActionType = {
-  RECEIVE_THREADS: 'RECEIVE_THREADS',
-  ADD_THREAD: 'ADD_THREAD',
-  TOGGLE_UP_VOTE_THREAD: 'TOGGLE_UP_VOTE_THREAD',
-  TOGGLE_DOWN_VOTE_THREAD: 'TOGGLE_DOWN_VOTE_THREAD',
-  TOGGLE_NEUTRAL_VOTE_THREAD: 'TOGGLE_NEUTRAL_VOTE_THREAD',
-  RESTORE_THREAD_STATE: 'RESTORE_THREAD_STATE',
+  RECEIVE_THREADS: 'threads/recieve',
+  ADD_THREAD: 'threads/add',
+  TOGGLE_UP_VOTE_THREAD: 'threads/toggleUpVote',
+  TOGGLE_DOWN_VOTE_THREAD: 'threads/toggleDownVote',
+  TOGGLE_NEUTRAL_VOTE_THREAD: 'threads/toggleNeutralVote',
+  RESTORE_THREAD_STATE: 'threads/restoreState',
 };
 
 function receiveThreadsActionCreator(threads) {
