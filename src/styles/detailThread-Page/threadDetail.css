@@ -1,14 +1,14 @@
 :root {
-  --thread-detail-border: #2126319d;
+  --thread-detail-border: #ffffff86;
   --thread-detail-shadow: rgba(0, 0, 0, 0.2);
-  --thread-detail-bg: #e0e4eb;
+  --thread-detail-bg: #212631;
   --thread-detail-bg-hover: #ffffff;
-  --thread-detail-title: #000;
-  --thread-detail-category: #1f46a6;
-  --thread-detail-des: #0a0e15;
-  --thread-detail-date: #212631cd;
+  --thread-detail-title: #ffffff;
+  --thread-detail-category: #6893ff;
+  --thread-detail-des: #f4f4f4;
+  --thread-detail-date: #ffffffa5;
   --thread-detail-dislike: #ff0000;
-  --thread-detail-comment: #000;
+  --thread-detail-comment: #fff;
 }
 
 [data-theme="light"] {
@@ -33,7 +33,7 @@
 }
 
 .threads-item-detail {
-  padding: 0.25rem 0.5rem;
+  padding: 1.5rem 1.5rem 1rem;
   background-color: transparent;
   border-radius: 16px;
   display: flex;
@@ -44,6 +44,8 @@
   width: 100%;
   overflow: auto;
   height: 100%;
+  background-color: var(--thread-detail-bg);
+  box-shadow: -2px 2px 5px 2px var(--thread-detail-shadow);
 }
 .threads-detail-detail:hover {
   background-color: var(--thread-detail-bg-hover);
@@ -223,7 +225,7 @@
   align-items: center;
   justify-content: space-around;
   gap: 1rem;
-  border-top: 1px solid var(--thread-detail-shadow);
+  border-top: 1px solid var(--thread-detail-border);
   border-bottom: 1px solid var(--thread-detail-title);
 }
 

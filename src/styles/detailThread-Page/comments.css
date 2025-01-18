@@ -1,8 +1,8 @@
 :root {
-  --comment-header-title: #ffffff;
+  --comment-header-title: #000;
   --comment-input-background: transparent;
   --comment-input-border: #212631a7;
-  --comment-input-text: #f0f1f5;
+  --comment-input-text: #212631;
   --comment-submit-icon: #ffffff;
   --comment-submit-icon-hover: #ffffff;
   --comment-submit-bg: #212631;
@@ -31,7 +31,7 @@
 }
 
 .comment-section {
-  padding: 1rem 0.5rem;
+  padding: 1.5rem 0.5rem 1rem;
   background-color: transparent;
   display: flex;
   flex-direction: column;

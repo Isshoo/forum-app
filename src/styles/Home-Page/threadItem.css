@@ -257,21 +257,23 @@
   color: var(--thread-item-des);
 }
 
-.thread-action:hover  {
+.thread-action:hover {
   color: var(--thread-item-category);
-  p, svg {
+  p,
+  svg {
     color: var(--thread-item-category);
   }
 }
 
 .thread-action.active {
   color: var(--thread-item-category);
-  p, svg {
+  p,
+  svg {
     color: var(--thread-item-category);
   }
 }
 
-.thread-action.comment  {
+.thread-action.comment {
   text-decoration: none;
   color: var(--thread-item-des);
 }
@@ -279,9 +281,10 @@
 .thread-action.comment .solid {
   display: none;
 }
-.thread-action.comment:hover  {
+.thread-action.comment:hover {
   color: var(--thread-item-comment);
-  p, svg {
+  p,
+  svg {
     color: var(--thread-item-comment);
   }
 
@@ -293,16 +296,18 @@
   }
 }
 
-.thread-action.red:hover  {
+.thread-action.red:hover {
   color: var(--thread-item-dislike);
-  p, svg {
+  p,
+  svg {
     color: var(--thread-item-dislike);
   }
 }
 
-.thread-action.red.active  {
+.thread-action.red.active {
   color: var(--thread-item-dislike);
-  p, svg {
+  p,
+  svg {
     color: var(--thread-item-dislike);
   }
 }
