@@ -20,14 +20,11 @@ function asyncPreloadProcess() {
     dispatch(showLoading());
 
     try {
-      // preload process
       const authUser = await getOwnProfile();
       dispatch(setAuthUserActionCreator(authUser));
     } catch {
-      // fallback process
       dispatch(setAuthUserActionCreator(null));
     } finally {
-      // end preload process
       dispatch(setIsPreloadActionCreator(false));
     }
 

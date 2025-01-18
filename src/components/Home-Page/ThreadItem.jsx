@@ -64,13 +64,6 @@ export const threadItemShape = {
     avatar: PropTypes.string.isRequired,
   }).isRequired,
   authUser: PropTypes.string.isRequired,
-  allUsers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      avatar: PropTypes.string.isRequired,
-    })
-  ),
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   onNeutralizeVote: PropTypes.func.isRequired,
@@ -78,6 +71,13 @@ export const threadItemShape = {
 
 ThreadItem.propTypes = {
   ...threadItemShape,
+  allUsers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 export default ThreadItem;

@@ -7,7 +7,7 @@
   --main-bg: #f4f4f5;
   --input-background: #e0e4eb;
   --input-text: #212631;
-  --notfound-text: #ffffff;
+  --notfound-text: #000;
 }
 
 [data-theme="light"] {

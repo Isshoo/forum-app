@@ -10,7 +10,6 @@ function NotFoundPage() {
         <h1>404</h1>
         <p>{locale === 'EN' ? 'Page Not Found' : 'Halaman tidak ditemukan'}</p>
       </div>
-      <AddPageLink />
     </>
   );
 }

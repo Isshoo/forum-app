@@ -10,7 +10,6 @@ const showFormattedDate = (date, locale = '') => {
   const months = Math.floor(days / 30);
   const years = Math.floor(days / 365);
 
-  // Format untuk Bahasa Indonesia
   if (locale === 'ID') {
     if (seconds < 60) return 'baru saja';
     if (minutes < 60) return `${minutes}m lalu`;
@@ -20,7 +19,6 @@ const showFormattedDate = (date, locale = '') => {
     return `${years}thn lalu`;
   }
 
-  // Format untuk Bahasa Inggris (default)
   if (seconds < 60) return 'just now';
   if (minutes < 60) return `${minutes}m ago`;
   if (hours < 24) return `${hours}h ago`;

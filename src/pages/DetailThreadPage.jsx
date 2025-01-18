@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useRef } from 'react';
-import { useEffect, useContext } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import {
@@ -8,11 +8,9 @@ import {
   asyncDownVoteThreadDetail,
   asyncNeutralizeVoteComment,
   asyncNeutralizeVoteThreadDetail,
-  asyncReceiveThreadDetail,
   asyncUpVoteComment,
   asyncUpVoteThreadDetail,
 } from '../states/threadDetail/thunk';
-import { asyncRecieveAllUsers } from '../states/users/action';
 import ThreadDetail from '../components/DetailThread-Page/ThreadDetail';
 import CommentSection from '../components/DetailThread-Page/CommentSection';
 import Loading from '../components/Base/LoadingBar';
