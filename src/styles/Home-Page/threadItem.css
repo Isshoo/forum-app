@@ -31,7 +31,7 @@
 
 .threads-item {
   border-radius: 16px;
-  padding: 1.5rem 2rem 1.25rem;
+  padding: 1.75rem 2.25rem 1.5rem;
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -314,7 +314,7 @@
 
 @media screen and (max-width: 500px) {
   .threads-item {
-    padding: 1rem;
+    padding: 1.25rem 1.5rem;
   }
   .thread-avatar img {
     width: 3.5rem;
@@ -362,7 +362,7 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 450px) {
   .thread-action p {
     display: none;
   }

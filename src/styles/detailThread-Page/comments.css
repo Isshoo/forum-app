@@ -31,7 +31,7 @@
 }
 
 .comment-section {
-  padding: 1.5rem 0.5rem 1rem;
+  padding: 1.5rem 0rem 1rem;
   background-color: transparent;
   display: flex;
   flex-direction: column;
@@ -175,6 +175,13 @@
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--comment-header-title);
+}
+
+.comment-content {
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .comment-footer {

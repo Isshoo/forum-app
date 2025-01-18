@@ -271,7 +271,7 @@
 
 @media screen and (max-width: 500px) {
   .threads-item-detail {
-    padding: 0.25rem;
+    padding: 1rem 1.25rem;
   }
   .thread-avatar-detail img {
     width: 3.75rem;

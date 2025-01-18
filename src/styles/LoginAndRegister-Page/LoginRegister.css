@@ -31,8 +31,8 @@
   --submit-bg: #212631;
   --submit-bg-hover: #000000;
   --submit-bg-act: #f0f1f5;
-  --question-text: #212631;
-  --link-text: #0a0e15;
+  --question-text: #0a0e15;
+  --link-text: #000;
   --link-hover: #93a7ff;
 }
 
@@ -77,6 +77,7 @@
   color: var(--form-label);
   font-weight: 500;
   font-size: 1.05rem;
+  text-shadow: -2px 2px 10px 5px var(--form-shadow);
 }
 
 .form-input {
@@ -121,7 +122,7 @@ input:focus {
 }
 
 .submit-btn {
-  min-width: 126px;
+  width: 100%;
   margin-top: 0.5rem;
   align-self: flex-end;
   padding: 0.5rem 1.5rem;
@@ -143,6 +144,8 @@ input:focus {
 
 .form-container p {
   color: var(--question-text);
+  text-align: center;
+  margin-top: 0.5rem;
 }
 .form-container p a {
   text-decoration: underline;

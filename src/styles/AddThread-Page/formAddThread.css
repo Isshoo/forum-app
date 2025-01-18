@@ -39,7 +39,6 @@
 }
 
 #formNewThreads {
-  max-width: 700px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -47,8 +46,7 @@
   padding: 1.5rem 2rem 2rem;
   background-color: var(--form-background);
   border-radius: 16px;
-  border: 1px solid var(--form-border);
-  box-shadow: 0 5px 10px var(--form-shadow);
+  box-shadow: -2px 2px 10px 3px var(--form-shadow);
   align-self: center;
 }
 
