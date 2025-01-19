@@ -37,7 +37,7 @@ function AddThreadsPage() {
     <section className="pages-section">
       <div id="formNewThreads" className="form-container">
         <h2>{locale === 'EN' ? 'New Threads' : 'Thread Baru'}</h2>
-        <FormAddThreads addThread={onAddThreadHandler} />
+        <FormAddThreads addThread={onAddThreadHandler} locale={locale} />
       </div>
     </section>
   );

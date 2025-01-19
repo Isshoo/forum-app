@@ -10,7 +10,11 @@ function RegisterPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onRegister = async ({ name, email, password }) => {
+  const onRegister = async ({ name, email, password, confirmPassword }) => {
+    if (password !== confirmPassword) {
+      alert('Passwords do not match. Please ensure they match and try again.');
+      return;
+    }
     const result = await dispatch(asyncRegisterUser({ name, email, password }));
 
     if (result.success) {
@@ -23,12 +27,7 @@ function RegisterPage() {
         navigate('/');
       });
     } else {
-      Swal.fire({
-        title: 'Gagal!',
-        text: result.message,
-        icon: 'error',
-        confirmButtonText: 'OK',
-      });
+      alert(result.message);
     }
   };
 
@@ -40,7 +39,7 @@ function RegisterPage() {
             <section className="pages-section">
               <div className="form-container logreg">
                 <h2>Register</h2>
-                <RegisterInput register={onRegister} />
+                <RegisterInput register={onRegister} locale={locale} />
                 <p>
                   Already have an account? <Link to="/">Login here!</Link>
                 </p>
@@ -52,7 +51,7 @@ function RegisterPage() {
           <section className="pages-section">
             <div className="form-container logreg">
               <h2>Registrasi</h2>
-              <RegisterInput register={onRegister} />
+              <RegisterInput register={onRegister} locale={locale} />
               <p>
                 Sudah punya akun? <Link to="/">Masuk disini!</Link>
               </p>

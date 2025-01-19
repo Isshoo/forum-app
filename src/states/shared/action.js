@@ -1,6 +1,4 @@
 
-import { getAllThreads, getThreadDetail } from '../../utils/api/threads';
-import { getAllUsers } from '../../utils/api/users';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { receiveThreadsActionCreator } from '../threads/action';
 import { receiveUsersActionCreator } from '../users/action';
@@ -27,8 +25,8 @@ function asyncPopulateUsersAndDetailThread(threadId) {
     dispatch(showLoading());
     dispatch(clearThreadDetailActionCreator());
     try {
-      const users = await getAllUsers();
-      const threadDetail = await getThreadDetail(threadId);
+      const users = await api.getAllUsers();
+      const threadDetail = await api.getThreadDetail(threadId);
 
       dispatch(receiveUsersActionCreator(users));
       dispatch(receiveThreadDetailActionCreator(threadDetail));

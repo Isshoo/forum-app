@@ -1,7 +1,7 @@
 :root {
   --search-input-background: transparent;
   --search-input-border: #212631;
-  --search-input-text: #f0f1f5;
+  --search-input-text: #212631;
   --search-submit-icon: #ffffff;
   --search-submit-icon-hover: #ffffff;
   --search-submit-bg: #212631;

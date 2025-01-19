@@ -23,7 +23,7 @@ function CommentSection({
           <p>{comments.length}</p>
         </div>
       </div>
-      <CommentInput onAddComment={onAddComment} />
+      <CommentInput onAddComment={onAddComment} locale={locale} />
       <CommentList
         comments={comments}
         authUser={authUser}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback, useContext } from 'react';
 import ThreadsList from '../components/Home-Page/ThreadsList';
 import SearchThreadForm from '../components/Home-Page/SearchThreadForm';
 import AddPageLink from '../components/Home-Page/AddThreadBtn';
@@ -12,6 +12,7 @@ import {
   asyncNeutralizeVoteThread,
   asyncUpVoteThread,
 } from '../states/threads/thunk';
+import LocaleContext from '../contexts/LocaleContext';
 
 function HomePage() {
   const firstRun = useRef(true);
@@ -27,6 +28,7 @@ function HomePage() {
 
   const [keyword, onKeywordChangeHandler] = useSearch();
   const [category, setCategory] = useState('');
+  const { locale } = useContext(LocaleContext);
 
   useEffect(() => {
     if (firstRun.current) {
@@ -68,7 +70,11 @@ function HomePage() {
     <section className="pages-section">
       <div className="filter-container">
         <CategoryDropdown categories={categories} setCategory={setCategory} />
-        <SearchThreadForm keyword={keyword} keywordChange={onKeywordChangeHandler} />
+        <SearchThreadForm
+          keyword={keyword}
+          keywordChange={onKeywordChangeHandler}
+          locale={locale}
+        />
       </div>
       <ThreadsList threads={filteredThreads} allUsers={users} />
       <AddPageLink />

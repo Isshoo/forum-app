@@ -1,6 +1,4 @@
-import { login } from '../../utils/api/auth';
-import { getOwnProfile } from '../../utils/api/users';
-import { putAccessToken } from '../../utils/config';
+import api from '../../utils/api-test';
 
 const ActionType = {
   SET_AUTH_USER: 'authUser/set',
@@ -28,9 +26,9 @@ function unsetAuthUserActionCreator() {
 function asyncSetAuthUser({ email, password }) {
   return async (dispatch) => {
     try {
-      const token = await login({ email, password });
-      putAccessToken(token);
-      const authUser = await getOwnProfile();
+      const token = await api.login({ email, password });
+      api.putAccessToken(token);
+      const authUser = await api.getOwnProfile();
 
       dispatch(setAuthUserActionCreator(authUser));
     } catch (error) {
@@ -42,7 +40,7 @@ function asyncSetAuthUser({ email, password }) {
 function asyncUnsetAuthUser() {
   return (dispatch) => {
     dispatch(unsetAuthUserActionCreator());
-    putAccessToken('');
+    api.putAccessToken('');
   };
 }
 

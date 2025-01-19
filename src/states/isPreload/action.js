@@ -1,4 +1,4 @@
-import { getOwnProfile } from '../../utils/api/users';
+import api from '../../utils/api-test';
 import { setAuthUserActionCreator } from '../authUser/action';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 
@@ -20,7 +20,7 @@ function asyncPreloadProcess() {
     dispatch(showLoading());
 
     try {
-      const authUser = await getOwnProfile();
+      const authUser = await api.getOwnProfile();
       dispatch(setAuthUserActionCreator(authUser));
     } catch {
       dispatch(setAuthUserActionCreator(null));
