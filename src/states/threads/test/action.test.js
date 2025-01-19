@@ -1,3 +1,24 @@
+/**
+ * skenario test
+ *
+ * - asyncAddThread thunk
+ *  - should dispatch addThreadActionCreator when adding thread succeeds
+ *  - should return error when adding thread fails
+ *
+ * - asyncUpVoteThread thunk
+ *  - should dispatch toggleUpVoteThreadActionCreator and call API when upvoting thread succeeds
+ *  - should restore previous state and call alert when upvoting thread fails
+ *
+ * - asyncDownVoteThread thunk
+ *  - should dispatch toggleDownVoteThreadActionCreator and call API when downvoting thread succeeds
+ *  - should restore previous state and call alert when downvoting thread fails
+ *
+ * - asyncNeutralizeVoteThread thunk
+ *  - should dispatch toggleNeutralizeVoteThreadActionCreator and call API when neutralizing vote succeeds
+ *  - should restore previous state and call alert when neutralizing vote fails
+ *
+ */
+
 import { describe, it, vi, expect, beforeEach, afterEach } from 'vitest';
 import api from '../../../utils/api-test';
 import { asyncAddThread, asyncDownVoteThread, asyncNeutralizeVoteThread, asyncUpVoteThread } from '../thunk';
@@ -69,7 +90,6 @@ describe('asyncAddThread thunk', () => {
   beforeEach(() => {
     api._createThread = api.createThread;
   });
-
   afterEach(() => {
     api.createThread = api._createThread;
 
@@ -102,7 +122,6 @@ describe('asyncUpVoteThread thunk', () => {
   beforeEach(() => {
     api._upVoteThread = api.upVoteThread;
   });
-
   afterEach(() => {
     api.upVoteThread = api._upVoteThread;
 
@@ -139,13 +158,13 @@ describe('asyncDownVoteThread thunk', () => {
   beforeEach(() => {
     api._downVoteThread = api.downVoteThread;
   });
-
   afterEach(() => {
     api.downVoteThread = api._downVoteThread;
 
     // delete backup data
     delete api._downVoteThread;
   });
+
   it('should dispatch toggleDownVoteThreadActionCreator and call API when downvoting thread succeeds', async () => {
 
     api.downVoteThread = () => Promise.resolve(fakeDownVote);
@@ -171,13 +190,13 @@ describe('asyncNeutralizeVoteThread thunk', () => {
   beforeEach(() => {
     api._neutralizeVoteThread = api.neutralizeVoteThread;
   });
-
   afterEach(() => {
     api.neutralizeVoteThread = api._neutralizeVoteThread;
 
     // delete backup data
     delete api._neutralizeVoteThread;
   });
+
   it('should dispatch toggleNeutralizeVoteThreadActionCreator and call API when neutralizing vote succeeds', async () => {
     // Arrange
     api.neutralizeVoteThread = () => Promise.resolve(fakeNeutralizeVote);

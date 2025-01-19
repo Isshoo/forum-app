@@ -1,3 +1,36 @@
+/**
+ * skenario test
+ *
+ * - asyncAddComment thunk
+ *  - should dispatch addCommentActionCreator when adding comment succeeds
+ *  - should return error when adding comment fails
+ *
+ * - asyncUpVoteThreadDetail thunk
+ *  - should dispatch toggleUpVoteThreadDetailActionCreator and call API when upvoting thread succeeds
+ *  - should restore previous state and call alert when upvoting thread detail fails
+ *
+ * - asyncDownVoteThreadDetail thunk
+ *  - should dispatch toggleDownVoteThreadDetailActionCreator and call API when downvoting thread succeeds
+ *  - should restore previous state and call alert when downvoting thread detail fails
+ *
+ * - asyncNeutralizeVoteThreadDetail thunk
+ *  - should dispatch toggleNeutralizeVoteThreadDetailActionCreator and call API when neutralizing vote succeeds
+ *  - should restore previous state and call alert when neutralizing vote detail fails
+ *
+ * - asyncUpVoteComment thunk
+ *  - should dispatch toggleUpVoteCommentActionCreator and call API when upvoting Comment succeeds
+ *  - should restore previous state comment and call alert when upvoting comment fails
+ *
+ * - asyncDownVoteComment thunk
+ *  - should dispatch toggleDownVoteCommentActionCreator and call API when downvoting comment succeeds
+ *  - should restore previous state comment and call alert when downvoting comment fails
+ *
+ * - asyncNeutralizeVoteComment thunk
+ *  - should dispatch toggleNeutralizeVoteCommentActionCreator and call API when neutralizing vote succeeds
+ *  - should restore previous state comment and call alert when neutralizing vote comment fails
+ *
+ */
+
 import { describe, it, vi, expect, beforeEach, afterEach } from 'vitest';
 import api from '../../../utils/api-test';
 import { asyncAddComment, asyncDownVoteComment, asyncDownVoteThreadDetail, asyncNeutralizeVoteComment, asyncNeutralizeVoteThreadDetail, asyncUpVoteComment, asyncUpVoteThreadDetail } from '../thunk';
@@ -105,7 +138,6 @@ describe('asyncAddComment thunk', () => {
   beforeEach(() => {
     api._createComment = api.createComment;
   });
-
   afterEach(() => {
     api.createComment = api._createComment;
 
@@ -138,7 +170,6 @@ describe('asyncUpVoteThreadDetail thunk', () => {
   beforeEach(() => {
     api._upVoteThread = api.upVoteThread;
   });
-
   afterEach(() => {
     api.upVoteThread = api._upVoteThread;
 
@@ -176,13 +207,13 @@ describe('asyncDownVoteThreadDetail thunk', () => {
   beforeEach(() => {
     api._downVoteThread = api.downVoteThread;
   });
-
   afterEach(() => {
     api.downVoteThread = api._downVoteThread;
 
     // delete backup data
     delete api._downVoteThread;
   });
+
   it('should dispatch toggleDownVoteThreadDetailActionCreator and call API when downvoting thread succeeds', async () => {
 
     api.downVoteThread = () => Promise.resolve(fakeDownVote);
@@ -209,13 +240,13 @@ describe('asyncNeutralizeVoteThreadDetail thunk', () => {
   beforeEach(() => {
     api._neutralizeVoteThread = api.neutralizeVoteThread;
   });
-
   afterEach(() => {
     api.neutralizeVoteThread = api._neutralizeVoteThread;
 
     // delete backup data
     delete api._neutralizeVoteThread;
   });
+
   it('should dispatch toggleNeutralizeVoteThreadDetailActionCreator and call API when neutralizing vote succeeds', async () => {
     // Arrange
     api.neutralizeVoteThread = () => Promise.resolve(fakeNeutralizeVote);
@@ -246,7 +277,6 @@ describe('asyncUpVoteComment thunk', () => {
   beforeEach(() => {
     api._upVoteComment = api.upVoteComment;
   });
-
   afterEach(() => {
     api.upVoteComment = api._upVoteComment;
 
@@ -284,13 +314,13 @@ describe('asyncDownVoteComment thunk', () => {
   beforeEach(() => {
     api._downVoteComment = api.downVoteComment;
   });
-
   afterEach(() => {
     api.downVoteComment = api._downVoteComment;
 
     // delete backup data
     delete api._downVoteComment;
   });
+
   it('should dispatch toggleDownVoteCommentActionCreator and call API when downvoting comment succeeds', async () => {
 
     api.downVoteComment = () => Promise.resolve(fakeDownVoteComment);
@@ -317,13 +347,13 @@ describe('asyncNeutralizeVoteComment thunk', () => {
   beforeEach(() => {
     api._neutralizeVoteComment = api.neutralizeVoteComment;
   });
-
   afterEach(() => {
     api.neutralizeVoteComment = api._neutralizeVoteComment;
 
     // delete backup data
     delete api._neutralizeVoteComment;
   });
+
   it('should dispatch toggleNeutralizeVoteCommentActionCreator and call API when neutralizing vote succeeds', async () => {
     // Arrange
     api.neutralizeVoteComment = () => Promise.resolve(fakeNeutralizeVoteComment);

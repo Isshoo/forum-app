@@ -1,3 +1,16 @@
+/**
+ * skenario test
+ *
+ * - asyncPopulateUsersAndThreads thunk
+ *  - should dispatch action correctly when data fetching success
+ *  - should dispatch action and call alert correctly when data fetching failed
+ *
+ * - asyncPopulateUsersAndThreadDetail thunk
+ *  - should dispatch action correctly when data fetching success
+ *  - should dispatch action and call alert correctly when data fetching failed
+ *
+ */
+
 import { describe, beforeEach, afterEach, it, vi, expect } from 'vitest';
 import { asyncPopulateUsersAndDetailThread, asyncPopulateUsersAndThreads } from '../action';
 import { receiveThreadsActionCreator } from '../../threads/action';
