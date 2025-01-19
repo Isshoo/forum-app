@@ -1,3 +1,28 @@
+/**
+* test scenario for threadDetailReducer
+*
+* - threadDetailReducer function
+*  - should return the initial state when given by unknown action
+*  - should return the thread detail when given by RECEIVE_THREAD_DETAIL action
+*  - should clear the thread detail when given by CLEAR_THREAD_DETAIL action
+*  - should return the thread detail comments with the new comment when given by ADD_COMMENT action
+*  - should return the thread detail with the toggled up vote thread when given by TOGGLE_UP_VOTE_THREAD_DETAIL action
+*  - should return the thread detail with the toggled down vote thread when given by TOGGLE_DOWN_VOTE_THREAD_DETAIL action
+*  - should return the up voted thread detail with the toggled neutral vote thread when given by TOGGLE_NEUTRALIZE_VOTE_THREAD_DETAIL action
+*  - should return the down voted thread detail with the toggled neutral vote thread when given by TOGGLE_NEUTRALIZE_VOTE_THREAD_DETAIL action
+*  - should return the down voted thread detail with the toggled up voted thread when given by TOGGLE_UP_VOTE_THREAD_DETAIL action
+*  - should return the up voted thread detail with the toggled down vote thread when given by TOGGLE_DOWN_VOTE_THREAD_DETAIL action
+*  - should return the previous state when given by RESTORE_THREAD_STATE action
+*  - should return the comments with the toggled up vote comment when given by TOGGLE_UP_VOTE_COMMENT action
+*  - should return the comments with the toggled down vote comment when given by TOGGLE_DOWN_VOTE_COMMENT action
+*  - should return the up voted comment with the toggled neutral vote comment when given by TOGGLE_NEUTRALIZE_VOTE_COMMENT action
+*  - should return the down voted comment with the toggled neutral vote comment when given by TOGGLE_NEUTRALIZE_VOTE_COMMENT action
+*  - should return the down voted comment with the toggled up voted comment when given by TOGGLE_UP_VOTE_COMMENT action
+*  - should return the up voted comment with the toggled down vote comment when given by TOGGLE_DOWN_VOTE_COMMENT action
+*  - should return the previous state when given by RESTORE_COMMENT_STATE action
+*
+*/
+
 import { describe, expect, it } from 'vitest';
 import threadDetailReducer from '../reducer';
 
@@ -500,7 +525,6 @@ describe('threadDetailReducer function', () => {
       },
     );
   });
-
 
   it('should return the comments with the toggled up vote comment when given by TOGGLE_UP_VOTE_COMMENT action', () => {
     // arrange

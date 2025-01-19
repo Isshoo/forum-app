@@ -1,3 +1,20 @@
+/**
+* test scenario for threadsReducer
+*
+* - threadsReducer function
+*  - should return the initial state when given by unknown action
+*  - should return the threads when given by RECEIVE_THREADS action
+*  - should return the threads with the new thread when given by ADD_THREAD action
+*  - should return the threads with the toggled up vote thread when given by TOGGLE_UP_VOTE_THREAD action
+*  - should return the threads with the toggled down vote thread when given by TOGGLE_DOWN_VOTE_THREAD action
+*  - should return the up vote thread with the toggled neutral vote thread when given by TOGGLE_NEUTRALIZE_VOTE_THREAD action
+*  - should return the down vote thread with the toggled neutral vote thread when given by TOGGLE_NEUTRALIZE_VOTE_THREAD_DETAIL action
+*  - should return the down vote thread with the toggled up vote thread when given by TOGGLE_UP_VOTE_THREAD action
+*  - should return the up vote thread with the toggled down vote thread when given by TOGGLE_DOWN_VOTE_THREAD action
+*  - should return the previous state when given by RESTORE_THREAD_STATE action
+*
+*/
+
 import { describe, expect, it } from 'vitest';
 import threadsReducer from '../reducer';
 

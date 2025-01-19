@@ -1,3 +1,13 @@
+/**
+* test scenario for authUserReducer
+*
+* - authUserReducer function
+*  - should return the initial state when given by unknown action
+*  - should set the authUser when given by SET_AUTH_USER action
+*  - should unset the authUser when given by UNSET_AUTH_USER action
+*
+*/
+
 import { describe, expect, it } from 'vitest';
 import authUserReducer from '../reducer';
 
@@ -33,7 +43,6 @@ describe('authUserReducer function', () => {
     // assert
     expect(nextState).toEqual(action.payload.authUser);
   });
-
 
   it('should unset the authUser when given by UNSET_AUTH_USER action', () => {
     // arrange
