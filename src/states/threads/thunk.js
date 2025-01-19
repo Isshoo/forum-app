@@ -1,11 +1,16 @@
-import { createThread } from '../../utils/api/threads';
-import { downVoteThread, neutralizeVoteThread, upVoteThread } from '../../utils/api/threadVotes';
-import { addThreadActionCreator, toggleDownVoteThreadActionCreator, toggleNeutralizeVoteThreadActionCreator, toggleUpVoteThreadActionCreator, restoreThreadStateActionCreator } from './action';
+import api from '../../utils/api-test';
+import {
+  addThreadActionCreator,
+  toggleDownVoteThreadActionCreator,
+  toggleNeutralizeVoteThreadActionCreator,
+  toggleUpVoteThreadActionCreator,
+  restoreThreadStateActionCreator
+} from './action';
 
 function asyncAddThread({ title, body, category = '' }) {
   return async (dispatch) => {
     try {
-      const thread = await createThread({ title, body, category });
+      const thread = await api.createThread({ title, body, category });
       dispatch(addThreadActionCreator(thread));
       return { success: true };
     } catch (error) {
@@ -21,7 +26,7 @@ function asyncUpVoteThread(threadId) {
     dispatch(toggleUpVoteThreadActionCreator({ threadId, userId: authUser.id }));
 
     try {
-      await upVoteThread({ threadId });
+      await api.upVoteThread({ threadId });
     } catch (error) {
       alert(error.message);
       dispatch(restoreThreadStateActionCreator(previousState));
@@ -35,7 +40,7 @@ function asyncDownVoteThread(threadId) {
     dispatch(toggleDownVoteThreadActionCreator({ threadId, userId: authUser.id }));
 
     try {
-      await downVoteThread({ threadId });
+      await api.downVoteThread({ threadId });
     } catch (error) {
       alert(error.message);
       dispatch(restoreThreadStateActionCreator(previousState));
@@ -49,7 +54,7 @@ function asyncNeutralizeVoteThread(threadId) {
     dispatch(toggleNeutralizeVoteThreadActionCreator({ threadId, userId: authUser.id }));
 
     try {
-      await neutralizeVoteThread({ threadId });
+      await api.neutralizeVoteThread({ threadId });
     } catch (error) {
       alert(error.message);
       dispatch(restoreThreadStateActionCreator(previousState));

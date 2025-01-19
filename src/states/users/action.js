@@ -1,5 +1,4 @@
-import { register } from '../../utils/api/auth';
-import { getAllUsers } from '../../utils/api/users';
+import api from '../../utils/api-test';
 
 const ActionType = {
   RECEIVE_USERS: 'users/recieve',
@@ -17,7 +16,7 @@ function receiveUsersActionCreator(users) {
 function asyncRegisterUser({ name, email, password }) {
   return async () => {
     try {
-      await register({ name, email, password });
+      await api.register({ name, email, password });
       return { success: true };
     } catch (error) {
       return { success: false, message: error.message };
@@ -28,7 +27,7 @@ function asyncRegisterUser({ name, email, password }) {
 function asyncRecieveAllUsers() {
   return async (dispatch) => {
     try {
-      const users = await getAllUsers();
+      const users = await api.getAllUsers();
 
       dispatch(receiveUsersActionCreator(users));
     } catch (error) {
