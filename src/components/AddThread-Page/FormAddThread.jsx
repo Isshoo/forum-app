@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import useEditable from '../../hooks/useEditable';
 
 function FormAddThreads({ addThread, locale }) {
   const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
   const [category, setCategory] = useState('');
+  const [body, onBodyChange] = useEditable('');
 
   const titleMaxLength = 50;
   const categoryMaxLength = 20;
@@ -14,10 +15,6 @@ function FormAddThreads({ addThread, locale }) {
     if (inputValue.length <= titleMaxLength) {
       setTitle(inputValue);
     }
-  };
-
-  const onBodyChangeEventHandler = (event) => {
-    setBody(event.target.innerHTML);
   };
 
   const onCategoryChangeEventHandler = (event) => {
@@ -69,7 +66,7 @@ function FormAddThreads({ addThread, locale }) {
           aria-describedby="descriptionValidation"
           contentEditable
           required
-          onInput={onBodyChangeEventHandler}
+          onInput={onBodyChange}
         ></div>
         <p id="descriptionValidation" className="validation-message" aria-live="polite"></p>
       </div>

@@ -1,67 +1,38 @@
-import React from 'react';
-import { LocaleConsumer } from '../../contexts/LocaleContext';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import useEditable from '../../hooks/useEditable';
 
-class CommentInput extends React.Component {
-  constructor(props) {
-    super(props);
+const CommentInput = ({ onAddComment, locale }) => {
+  const [content, onContentChange] = useEditable('');
 
-    this.state = {
-      content: '',
-    };
-
-    this.onContentChangeEventHandler = this.onContentChangeEventHandler.bind(this);
-    this.onSubmitEventHandler = this.onSubmitEventHandler.bind(this);
-  }
-
-  onContentChangeEventHandler(event) {
-    this.setState(() => {
-      return {
-        content: event.target.innerHTML,
-      };
-    });
-  }
-
-  onSubmitEventHandler(event) {
-    event.preventDefault();
-    this.props.onAddComment(this.state.content);
-  }
-
-  render() {
-    return (
-      <LocaleConsumer>
-        {({ locale }) => {
-          return (
-            <div className="comment-input">
-              <form id="commentForm" autoComplete="off" onSubmit={this.onSubmitEventHandler}>
-                <div>
-                  <div
-                    id="content"
-                    data-placeholdercomment={
-                      locale === 'EN'
-                        ? 'Leave your comments here...'
-                        : 'Berikan komentarmu disini...'
-                    }
-                    aria-describedby="contentValidation"
-                    contentEditable
-                    required
-                    onInput={this.onContentChangeEventHandler}
-                  ></div>
-                </div>
-                <button type="submit" id="commentSubmit">
-                  {locale === 'EN' ? 'Submit' : 'Kirim'}
-                </button>
-              </form>
-            </div>
-          );
-        }}
-      </LocaleConsumer>
-    );
-  }
-}
+  return (
+    <div className="comment-input">
+      <form id="commentForm" autoComplete="off">
+        <div>
+          <div
+            id="content"
+            data-placeholdercomment={
+              locale === 'EN' ? 'Leave your comments here...' : 'Berikan komentarmu disini...'
+            }
+            aria-label={locale === 'EN' ? 'Comment' : 'Komentar'}
+            data-testid={locale === 'EN' ? 'Comment' : 'Komentar'}
+            aria-describedby="contentValidation"
+            contentEditable
+            required
+            onInput={onContentChange}
+          ></div>
+        </div>
+        <button type="button" id="commentSubmit" onClick={() => onAddComment(content)}>
+          {locale === 'EN' ? 'Submit' : 'Kirim'}
+        </button>
+      </form>
+    </div>
+  );
+};
 
 CommentInput.propTypes = {
   onAddComment: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default CommentInput;
