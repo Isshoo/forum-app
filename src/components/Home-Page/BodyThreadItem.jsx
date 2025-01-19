@@ -7,9 +7,7 @@ function BodyThreadItem({ title, body, category }) {
     <>
       <h3 className="thread-title">{title}</h3>
       <div className="thread-des">{parser(body)}</div>
-      <div className="thread-category">
-        <p>{category !== 'general' ? `#${category}` : ''}</p>
-      </div>
+      <div className="thread-category">{category !== 'general' ? <p>#{category}</p> : ''}</div>
     </>
   );
 }
