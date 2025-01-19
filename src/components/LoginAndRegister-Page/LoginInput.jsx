@@ -37,7 +37,12 @@ function LoginInput({ login, locale }) {
             value={password}
             onChange={onPasswordChange}
           />
-          <button type="button" className="toggle-password" onClick={setShowPassword}>
+          <button
+            id="login-toggle-password"
+            type="button"
+            className="toggle-password"
+            onClick={setShowPassword}
+          >
             {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
           </button>
         </div>

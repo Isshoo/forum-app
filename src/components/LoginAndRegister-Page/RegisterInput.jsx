@@ -66,7 +66,12 @@ function RegisterInput({ register }) {
                   value={password}
                   onChange={onPasswordChange}
                 ></input>
-                <button type="button" className="toggle-password" onClick={setShowPassword}>
+                <button
+                  id="reg-toggle-password"
+                  type="button"
+                  className="toggle-password"
+                  onClick={setShowPassword}
+                >
                   {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
                 </button>
               </div>
@@ -86,7 +91,12 @@ function RegisterInput({ register }) {
                   value={confirmPassword}
                   onChange={onConfirmPasswordChange}
                 ></input>
-                <button type="button" className="toggle-password" onClick={setShowPassword}>
+                <button
+                  id="reg-toggle-confirmpassword"
+                  type="button"
+                  className="toggle-password"
+                  onClick={setShowPassword}
+                >
                   {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
                 </button>
               </div>
