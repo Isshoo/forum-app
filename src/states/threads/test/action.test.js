@@ -71,7 +71,7 @@ describe('asyncAddThread thunk', () => {
   });
 
   afterEach(() => {
-    api._createThread = api.createThread;
+    api.createThread = api._createThread;
 
     // delete backup data
     delete api._createThread;
@@ -104,7 +104,7 @@ describe('asyncUpVoteThread thunk', () => {
   });
 
   afterEach(() => {
-    api._upVoteThread = api.upVoteThread;
+    api.upVoteThread = api._upVoteThread;
 
     // delete backup data
     delete api._upVoteThread;
@@ -141,7 +141,7 @@ describe('asyncDownVoteThread thunk', () => {
   });
 
   afterEach(() => {
-    api._downVoteThread = api.downVoteThread;
+    api.downVoteThread = api._downVoteThread;
 
     // delete backup data
     delete api._downVoteThread;
@@ -173,7 +173,7 @@ describe('asyncNeutralizeVoteThread thunk', () => {
   });
 
   afterEach(() => {
-    api._neutralizeVoteThread = api.neutralizeVoteThread;
+    api.neutralizeVoteThread = api._neutralizeVoteThread;
 
     // delete backup data
     delete api._neutralizeVoteThread;
