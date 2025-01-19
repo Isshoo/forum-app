@@ -4,7 +4,7 @@ import { receiveThreadsActionCreator } from '../../threads/action';
 import { receiveUsersActionCreator } from '../../users/action';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../../utils/api-test';
-import { receiveThreadDetailActionCreator } from '../../threadDetail/action';
+import { clearThreadDetailActionCreator, receiveThreadDetailActionCreator } from '../../threadDetail/action';
 
 //FAKE DATA
 const fakeThreadsResponse = [
@@ -20,7 +20,8 @@ const fakeThreadsResponse = [
     'totalComments': 0,
   },
 ];
-const fakeThreadDetailResponse = [
+const threadId = 'thread-1';
+const fakeThreadDetailResponse =
   {
     'id': 'thread-1',
     'title': 'Thread Pertama',
@@ -48,8 +49,7 @@ const fakeThreadDetailResponse = [
         'downVotesBy': []
       }
     ]
-  },
-];
+  };
 
 const fakeUsersResponse = [
   {
@@ -111,8 +111,8 @@ describe('asyncPopulateUsersAndThreads thunk', () => {
 
     // assert
     expect(dispatch).toHaveBeenCalledWith(showLoading());
-    expect(dispatch).toHaveBeenCalledWith(hideLoading());
     expect(window.alert).toHaveBeenCalledWith(fakeErrorResponse.message);
+    expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 });
 
@@ -141,12 +141,13 @@ describe('asyncPopulateUsersAndThreadDetail thunk', () => {
     const dispatch = vi.fn();
 
     // action
-    await asyncPopulateUsersAndDetailThread('thread-1')(dispatch);
+    await asyncPopulateUsersAndDetailThread(threadId)(dispatch);
 
     // assert
     expect(dispatch).toHaveBeenCalledWith(showLoading());
-    expect(dispatch).toHaveBeenCalledWith(receiveThreadDetailActionCreator(fakeThreadDetailResponse));
+    expect(dispatch).toHaveBeenCalledWith(clearThreadDetailActionCreator());
     expect(dispatch).toHaveBeenCalledWith(receiveUsersActionCreator(fakeUsersResponse));
+    expect(dispatch).toHaveBeenCalledWith(receiveThreadDetailActionCreator(fakeThreadDetailResponse));
     expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 
@@ -165,7 +166,8 @@ describe('asyncPopulateUsersAndThreadDetail thunk', () => {
 
     // assert
     expect(dispatch).toHaveBeenCalledWith(showLoading());
-    expect(dispatch).toHaveBeenCalledWith(hideLoading());
+    expect(dispatch).toHaveBeenCalledWith(clearThreadDetailActionCreator());
     expect(window.alert).toHaveBeenCalledWith(fakeErrorResponse.message);
+    expect(dispatch).toHaveBeenCalledWith(hideLoading());
   });
 });
