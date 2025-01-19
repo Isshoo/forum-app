@@ -58,7 +58,7 @@ describe('FormAddThread component', () => {
     expect(descriptionDiv).toHaveTextContent('descriptiontest');
   });
 
-  it('should call addThread function when addThread button is clicked', async () => {
+  it('should call addThread function when add button is clicked', async () => {
     // Arrange
     const mockAddThread = vi.fn();
     render(<FormAddThread addThread={mockAddThread} locale="EN" />);
