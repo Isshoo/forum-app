@@ -1,10 +1,10 @@
 import { describe, beforeEach, afterEach, it, vi, expect } from 'vitest';
-import { asyncPopulateUsersAndDetailThread, asyncPopulateUsersAndThreads } from './action';
-import { receiveThreadsActionCreator } from '../threads/action';
-import { receiveUsersActionCreator } from '../users/action';
+import { asyncPopulateUsersAndDetailThread, asyncPopulateUsersAndThreads } from '../action';
+import { receiveThreadsActionCreator } from '../../threads/action';
+import { receiveUsersActionCreator } from '../../users/action';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
-import api from '../../utils/api-test';
-import { receiveThreadDetailActionCreator } from '../threadDetail/action';
+import api from '../../../utils/api-test';
+import { receiveThreadDetailActionCreator } from '../../threadDetail/action';
 
 //FAKE DATA
 const fakeThreadsResponse = [

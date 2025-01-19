@@ -1,7 +1,7 @@
 import { describe, beforeEach, afterEach, it, vi, expect } from 'vitest';
-import {  asyncRecieveLeaderboards, receiveLeaderboardsActionCreator } from './action';
+import {  asyncRecieveLeaderboards, receiveLeaderboardsActionCreator } from '../action';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
-import api from '../../utils/api-test';
+import api from '../../../utils/api-test';
 
 //FAKE DATA
 const fakeLeaderboardsResponse = [

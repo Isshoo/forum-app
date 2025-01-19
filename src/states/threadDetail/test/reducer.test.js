@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import threadDetailReducer from './reducer';
+import threadDetailReducer from '../reducer';
 
 describe('threadDetailReducer function', () => {
   it('should return the initial state when given by unknown action', () => {
