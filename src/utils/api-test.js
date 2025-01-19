@@ -16,6 +16,7 @@ const api = (() => {
 
     return users;
   }
+
   async function getAllThreads() {
     const response = await fetch(`${BASE_URL}/threads`);
 
@@ -32,9 +33,26 @@ const api = (() => {
     return threads;
   }
 
+  async function getThreadDetail(id) {
+    const response = await fetch(`${BASE_URL}/threads/${id}`);
+
+    const responseJson = await response.json();
+
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: { detailThread } } = responseJson;
+
+    return detailThread;
+  }
+
   return {
     getAllUsers,
     getAllThreads,
+    getThreadDetail,
   };
 })();
 

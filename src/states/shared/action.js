@@ -27,8 +27,8 @@ function asyncPopulateUsersAndDetailThread(threadId) {
     dispatch(showLoading());
     dispatch(clearThreadDetailActionCreator());
     try {
-      const users = await getAllUsers();
-      const threadDetail = await getThreadDetail(threadId);
+      const users = await api.getAllUsers();
+      const threadDetail = await api.getThreadDetail(threadId);
 
       dispatch(receiveUsersActionCreator(users));
       dispatch(receiveThreadDetailActionCreator(threadDetail));
