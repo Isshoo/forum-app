@@ -1,3 +1,13 @@
+/**
+ * - Login spec
+ *   - should display login page correctly
+ *   - should display alert when email is empty
+ *   - should display alert when email input type is not valid
+ *   - should display alert when password is empty
+ *   - should display alert when email and password are wrong
+ *   - should display homepage when email and password are correct
+ */
+
 describe('Login spec', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5173/');
@@ -8,10 +18,11 @@ describe('Login spec', () => {
     cy.get('input[placeholder="Email"]').should('be.visible');
     cy.get('input[placeholder="Password"]').should('be.visible');
     cy.get('button').contains(/^Login$/).should('be.visible');
+    cy.get('a').contains(/^Sign up here!$/).should('be.visible');
   });
 
   it('should display alert when email is empty', () => {
-    // klik tombol login tanpa mengisi username
+    // klik tombol login tanpa mengisi email
     cy.get('button').contains(/^Login$/).click();
 
     // memverifikasi window.alert untuk menampilkan pesan dari API
@@ -21,10 +32,10 @@ describe('Login spec', () => {
   });
 
   it('should display alert when email input type is not valid', () => {
-    // mengisi username
+    // mengisi email
     cy.get('input[placeholder="Email"]').type('testuser');
 
-    // klik tombol login tanpa mengisi password
+    // klik tombol login tanpa mengisi email valid
     cy.get('button').contains(/^Login$/).click();
 
     // memverifikasi window.alert untuk menampilkan pesan dari API
@@ -34,7 +45,7 @@ describe('Login spec', () => {
   });
 
   it('should display alert when password is empty', () => {
-    // mengisi username
+    // mengisi email
     cy.get('input[placeholder="Email"]').type('testuser987123@gmail.com');
 
     // klik tombol login tanpa mengisi password
@@ -47,7 +58,7 @@ describe('Login spec', () => {
   });
 
   it('should display alert when email and password are wrong', () => {
-    // mengisi username
+    // mengisi email
     cy.get('input[placeholder="Email"]').type('testuser987123@gmail.com');
 
     // mengisi password yang salah
@@ -63,7 +74,7 @@ describe('Login spec', () => {
   });
 
   it('should display homepage when email and password are correct', () => {
-    // mengisi username
+    // mengisi email
     cy.get('input[placeholder="Email"]').type('algy25ng@gmail.com');
 
     // mengisi password
