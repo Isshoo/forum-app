@@ -24,11 +24,11 @@ function FooterThreadDetail({
       <div className="thread-numbers-container-detail">
         <div className="thread-votes-number-detail">
           <div className="thread-number-detail">
-            <UpVotesInfoDetail upVotesBy={upVotesBy} allUsers={allUsers} />
+            <UpVotesInfoDetail upVotesBy={upVotesBy} allUsers={allUsers} locale={locale} />
           </div>
           <span></span>
           <div className="thread-number-detail">
-            <DownVotesInfoDetail downVotesBy={downVotesBy} allUsers={allUsers} />
+            <DownVotesInfoDetail downVotesBy={downVotesBy} allUsers={allUsers} locale={locale} />
           </div>
         </div>
       </div>

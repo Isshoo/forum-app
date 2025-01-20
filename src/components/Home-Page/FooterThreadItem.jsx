@@ -41,11 +41,11 @@ function FooterThreadItem({
       <div className="thread-numbers-container">
         <div className="thread-votes-number">
           <div className="thread-number">
-            <UpVotesInfo upVotesBy={upVotesBy} allUsers={allUsers} />
+            <UpVotesInfo upVotesBy={upVotesBy} allUsers={allUsers} locale={locale} />
           </div>
           <span></span>
           <div className="thread-number">
-            <DownVotesInfo downVotesBy={downVotesBy} allUsers={allUsers} />
+            <DownVotesInfo downVotesBy={downVotesBy} allUsers={allUsers} locale={locale} />
           </div>
         </div>
         <div className="thread-number">

@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { BiLike, BiSolidLike } from 'react-icons/bi';
-import LocaleContext from '../../contexts/LocaleContext';
 
-function UpVotesInfo({ upVotesBy, allUsers }) {
-  const { locale } = useContext(LocaleContext);
+function UpVotesInfo({ upVotesBy, allUsers, locale }) {
   const voterName = allUsers.find((user) => user.id === upVotesBy[0])?.name || '';
   const lastVoter =
     allUsers.find((user) => user.id === upVotesBy[upVotesBy.length - 1])?.name || '';
@@ -48,6 +46,7 @@ UpVotesInfo.propTypes = {
       avatar: PropTypes.string.isRequired,
     })
   ).isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default UpVotesInfo;

@@ -1,5 +1,6 @@
 import React from 'react';
 import LeaderboardItem from '../components/Leaderboard-Page/LeaderboardItem';
+import '../styles/Leaderboards-Page/leadearboards.css';
 
 const story = {
   title: 'LeaderboardItem',
@@ -30,9 +31,4 @@ CurrentUser.args = {
   authUser: 'user1',
 };
 
-
-
-export {
-  DefaultType,
-  CurrentUser,
-};
+export { DefaultType, CurrentUser };
