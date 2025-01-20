@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import { showFormattedDate } from '../../utils';
 import LocaleContext from '../../contexts/LocaleContext';
 import PropTypes from 'prop-types';
+import Avatar from '../styled/Avatar';
 
 function HeaderThreadItem({ avatar, name, email, createdAt }) {
   const { locale } = useContext(LocaleContext);
   return (
     <div className="thread-header">
       <div className="thread-avatar">
-        <img src={avatar} alt="" />
+        <Avatar src={avatar} alt="" className="item-image" />
       </div>
       <div className="thread-user">
         <p className="thread-name">{name}</p>

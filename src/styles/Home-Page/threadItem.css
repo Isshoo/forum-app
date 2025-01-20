@@ -64,14 +64,7 @@
   justify-content: center;
 }
 
-.thread-avatar img {
-  width: 3.75rem;
-  height: 3.75rem;
-  border-radius: 50%;
-  overflow: hidden;
-  object-fit: cover;
-  box-shadow: -2px 2px 5px 2px var(--thread-item-shadow);
-}
+
 
 .thread-name {
   color: var(--thread-item-title);
@@ -315,10 +308,6 @@
 @media screen and (max-width: 500px) {
   .threads-item {
     padding: 1.25rem 1.5rem;
-  }
-  .thread-avatar img {
-    width: 3.5rem;
-    height: 3.5rem;
   }
   .thread-name {
     font-size: 1rem;

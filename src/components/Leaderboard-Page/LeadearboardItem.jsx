@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import Avatar from '../styled/Avatar';
 
 function LeaderboardItem({ id, avatar, name, email, score, authUser }) {
   const isCurrentUser = authUser === id;
@@ -7,7 +8,13 @@ function LeaderboardItem({ id, avatar, name, email, score, authUser }) {
     <div className="leaderboard-item">
       <div className="leaderboard-user">
         <div className="leaderboard-avatar">
-          <img src={avatar} alt="" />
+          <Avatar
+            width="3.25rem"
+            height="3.25rem"
+            src={avatar}
+            alt=""
+            className="leaderboard-image"
+          />
         </div>
         <div className="leaderboard-info">
           <p className={isCurrentUser ? 'leaderboard-name isUser' : 'leaderboard-name'}>{name}</p>

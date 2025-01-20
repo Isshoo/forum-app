@@ -4,6 +4,7 @@ import parser from 'html-react-parser';
 import { showFormattedDate } from '../../utils';
 import LocaleContext from '../../contexts/LocaleContext';
 import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from 'react-icons/bi';
+import Avatar from '../styled/Avatar';
 
 function CommentItem({
   id,
@@ -39,7 +40,14 @@ function CommentItem({
     <div className="comment-item">
       <div className="comment-avatar">
         <picture>
-          <img src={owner.avatar} alt="" />
+          <Avatar
+            width="2rem"
+            height="2rem"
+            src={owner.avatar}
+            alt=""
+            className="comment-image"
+            boxshadow="0px 0px 0px 0px transparent"
+          />
         </picture>
       </div>
       <div className="comment-body">

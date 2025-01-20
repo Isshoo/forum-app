@@ -67,15 +67,6 @@
   justify-content: center;
 }
 
-.thread-avatar-detail img {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  overflow: hidden;
-  object-fit: cover;
-  box-shadow: -2px 2px 5px 2px var(--thread-detail-shadow);
-}
-
 .thread-name-detail {
   color: var(--thread-detail-title);
   font-size: 1.3rem;
@@ -272,10 +263,6 @@
 @media screen and (max-width: 500px) {
   .threads-item-detail {
     padding: 1rem 1.25rem;
-  }
-  .thread-avatar-detail img {
-    width: 3.75rem;
-    height: 3.75rem;
   }
   .thread-name-detail {
     font-size: 1.2rem;
