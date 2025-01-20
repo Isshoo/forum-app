@@ -5,6 +5,7 @@ import { asyncRecieveLeaderboards } from '../states/leaderboards/action';
 import Loading from '../components/Base/LoadingBar';
 import LeaderboardList from '../components/Leaderboard-Page/LeaderboardsList';
 import LocaleContext from '../contexts/LocaleContext';
+import Pages from '../components/styled/Pages';
 
 function LeaderboardPage() {
   const firstRun = useRef(true);
@@ -32,12 +33,12 @@ function LeaderboardPage() {
   }
 
   return (
-    <section className="pages-section">
+    <Pages>
       <h3 className="leaderboard-title">
         {locale === 'EN' ? 'Top Active Users' : 'Klasemen Pengguna Aktif'}
       </h3>
       <LeaderboardList leaderboards={leaderboards} authUser={authUser.id} />
-    </section>
+    </Pages>
   );
 }
 

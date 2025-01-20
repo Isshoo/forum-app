@@ -5,6 +5,7 @@ import { LocaleConsumer } from '../contexts/LocaleContext';
 import { useDispatch } from 'react-redux';
 import { asyncSetAuthUser } from '../states/authUser/action';
 import { GiWorld } from 'react-icons/gi';
+import Pages from '../components/styled/Pages';
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function LoginPage() {
       {({ locale }) => {
         if (locale === 'EN') {
           return (
-            <section className="pages-section">
+            <Pages>
               <div className="form-container logreg">
                 <div className="logo">
                   <GiWorld />
@@ -28,11 +29,11 @@ function LoginPage() {
                   Don&apos;t have an account? <Link to="/register">Sign up here!</Link>
                 </p>
               </div>
-            </section>
+            </Pages>
           );
         }
         return (
-          <section className="pages-section">
+          <Pages>
             <div className="form-container logreg">
               <div className="logo">
                 <GiWorld />
@@ -42,7 +43,7 @@ function LoginPage() {
                 Belum punya akun? <Link to="/register">Registrasi disini!</Link>
               </p>
             </div>
-          </section>
+          </Pages>
         );
       }}
     </LocaleConsumer>

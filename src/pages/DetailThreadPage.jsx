@@ -16,6 +16,7 @@ import CommentSection from '../components/DetailThread-Page/CommentSection';
 import Loading from '../components/Base/LoadingBar';
 import Swal from 'sweetalert2';
 import { asyncPopulateUsersAndDetailThread } from '../states/shared/action';
+import Pages from '../components/styled/Pages';
 
 function DetailThreadsPage() {
   const firstRun = useRef(true);
@@ -92,7 +93,7 @@ function DetailThreadsPage() {
   }
 
   return (
-    <section className="pages-section">
+    <Pages>
       <div className="detail-con">
         <ThreadDetail
           title={threadDetail.title}
@@ -117,7 +118,7 @@ function DetailThreadsPage() {
           onNeutralizeVoteComment={onNeutralizeVoteComment}
         />
       </div>
-    </section>
+    </Pages>
   );
 }
 
