@@ -30,11 +30,17 @@ function LeaderboardItem({ id, avatar, name, email, score, authUser }) {
 }
 
 LeaderboardItem.propTypes = {
+  /** The id of the leaderboard item */
   id: PropTypes.string.isRequired,
+  /** The avatar of the leaderboard item */
   avatar: PropTypes.string.isRequired,
+  /** The name of the leaderboard item */
   name: PropTypes.string.isRequired,
+  /** The email of the leaderboard item */
   email: PropTypes.string.isRequired,
+  /** The score of the leaderboard item */
   score: PropTypes.number.isRequired,
+  /** The id of the current user */
   authUser: PropTypes.string.isRequired,
 };
 

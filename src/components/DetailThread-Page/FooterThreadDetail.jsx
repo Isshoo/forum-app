@@ -64,7 +64,14 @@ FooterThreadDetail.propTypes = {
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   authUser: PropTypes.string.isRequired,
-  allUsers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  allUsers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+    })
+  ),
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   onNeutralizeVote: PropTypes.func.isRequired,

@@ -1,5 +1,5 @@
 import React from 'react';
-import LeaderboardItem from './LeadearboardItem';
+import LeaderboardItem from './LeaderboardItem';
 import PropTypes from 'prop-types';
 import List from '../styled/List';
 
