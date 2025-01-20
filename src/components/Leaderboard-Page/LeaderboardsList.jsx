@@ -1,10 +1,11 @@
 import React from 'react';
 import LeaderboardItem from './LeadearboardItem';
 import PropTypes from 'prop-types';
+import List from '../styled/List';
 
 function LeaderboardList({ leaderboards, authUser }) {
   return (
-    <div className="leaderboard-list">
+    <List paddinginline="0.75rem" paddingblock="1.1rem 3rem" className="leaderboards-list">
       {leaderboards.map((leaderboard) => (
         <LeaderboardItem
           key={leaderboard.user.id}
@@ -16,7 +17,7 @@ function LeaderboardList({ leaderboards, authUser }) {
           authUser={authUser}
         />
       ))}
-    </div>
+    </List>
   );
 }
 LeaderboardList.propTypes = {

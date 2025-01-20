@@ -1,6 +1,7 @@
 import React from 'react';
 import CommentItem from './CommentItem';
 import PropTypes from 'prop-types';
+import List from '../styled/List';
 
 function CommentList({
   comments,
@@ -13,7 +14,7 @@ function CommentList({
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
   return (
-    <div className="comment-list">
+    <List gap="1rem" paddingblock="1rem">
       {sortedComments.map((comment) => (
         <CommentItem
           key={comment.id}
@@ -24,7 +25,7 @@ function CommentList({
           onNeutralizeVoteComment={onNeutralizeVoteComment}
         />
       ))}
-    </div>
+    </List>
   );
 }
 

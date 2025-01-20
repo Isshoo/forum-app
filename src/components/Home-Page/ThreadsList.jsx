@@ -1,11 +1,12 @@
 import React from 'react';
 import ThreadItem, { threadItemShape } from './ThreadItem';
 import PropTypes from 'prop-types';
+import List from '../styled/List';
 
 function ThreadsList({ threads, allUsers }) {
   return (
     <>
-      <div className="threads-list">
+      <List>
         {threads.map((thread) => (
           <ThreadItem
             key={thread.id}
@@ -17,7 +18,7 @@ function ThreadsList({ threads, allUsers }) {
             onNeutralizeVote={thread.onNeutralizeVote}
           />
         ))}
-      </div>
+      </List>
     </>
   );
 }
