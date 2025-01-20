@@ -64,8 +64,6 @@
   justify-content: center;
 }
 
-
-
 .thread-name {
   color: var(--thread-item-title);
   font-size: 1.1rem;
