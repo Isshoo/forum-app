@@ -4,8 +4,7 @@ import LocaleContext from '../../contexts/LocaleContext';
 import PropTypes from 'prop-types';
 import Avatar from '../styled/Avatar';
 
-function HeaderThreadDetail({ avatar, name, email, createdAt }) {
-  const { locale } = useContext(LocaleContext);
+function HeaderThreadDetail({ avatar, name, email, createdAt, locale }) {
   return (
     <div className="thread-header-detail">
       <div className="thread-avatar-detail">
@@ -27,6 +26,7 @@ HeaderThreadDetail.propTypes = {
   name: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   createdAt: PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default HeaderThreadDetail;

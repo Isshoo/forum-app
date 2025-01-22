@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useRef } from 'react';
+import React, { useCallback, useContext, useMemo, useRef } from 'react';
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
@@ -17,6 +17,7 @@ import Loading from '../components/Base/LoadingBar';
 import Swal from 'sweetalert2';
 import { asyncPopulateUsersAndDetailThread } from '../states/shared/action';
 import Pages from '../components/styled/Pages';
+import LocaleContext from '../contexts/LocaleContext';
 
 function DetailThreadsPage() {
   const firstRun = useRef(true);
@@ -30,6 +31,7 @@ function DetailThreadsPage() {
     shallowEqual
   );
   const dispatch = useDispatch();
+  const { locale } = useContext(LocaleContext);
 
   useEffect(() => {
     if (firstRun.current) {
@@ -108,6 +110,7 @@ function DetailThreadsPage() {
           onUpVote={onUpVote}
           onDownVote={onDownVote}
           onNeutralizeVote={onNeutralizeVote}
+          locale={locale}
         />
         <CommentSection
           comments={threadDetail.comments}
@@ -116,6 +119,7 @@ function DetailThreadsPage() {
           onUpVoteComment={onUpVoteComment}
           onDownVoteComment={onDownVoteComment}
           onNeutralizeVoteComment={onNeutralizeVoteComment}
+          locale={locale}
         />
       </div>
     </Pages>

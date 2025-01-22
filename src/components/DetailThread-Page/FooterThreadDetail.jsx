@@ -13,9 +13,8 @@ function FooterThreadDetail({
   onUpVote,
   onDownVote,
   onNeutralizeVote,
+  locale,
 }) {
-  const { locale } = useContext(LocaleContext);
-
   const isUpVotedByUser = upVotesBy.includes(authUser);
   const isDownVotedByUser = downVotesBy.includes(authUser);
 
@@ -75,6 +74,7 @@ FooterThreadDetail.propTypes = {
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   onNeutralizeVote: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default FooterThreadDetail;

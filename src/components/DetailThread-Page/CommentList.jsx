@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CommentItem from './CommentItem';
 import PropTypes from 'prop-types';
 import List from '../styled/List';
+import LocaleContext from '../../contexts/LocaleContext';
 
 function CommentList({
   comments,
@@ -9,6 +10,7 @@ function CommentList({
   onUpVoteComment,
   onDownVoteComment,
   onNeutralizeVoteComment,
+  locale,
 }) {
   const sortedComments = [...comments].sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
@@ -23,6 +25,7 @@ function CommentList({
           onUpVoteComment={onUpVoteComment}
           onDownVoteComment={onDownVoteComment}
           onNeutralizeVoteComment={onNeutralizeVoteComment}
+          locale={locale}
         />
       ))}
     </List>
@@ -35,6 +38,7 @@ CommentList.propTypes = {
   onUpVoteComment: PropTypes.func.isRequired,
   onDownVoteComment: PropTypes.func.isRequired,
   onNeutralizeVoteComment: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default CommentList;

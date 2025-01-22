@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React from 'react';
 import parser from 'html-react-parser';
 import { showFormattedDate } from '../../utils';
-import LocaleContext from '../../contexts/LocaleContext';
 import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from 'react-icons/bi';
 import Avatar from '../styled/Avatar';
 
@@ -17,9 +16,8 @@ function CommentItem({
   onUpVoteComment,
   onDownVoteComment,
   onNeutralizeVoteComment,
+  locale,
 }) {
-  const { locale } = useContext(LocaleContext);
-
   const isUpVotedByUser = upVotesBy.includes(authUser);
   const isDownVotedByUser = downVotesBy.includes(authUser);
 
@@ -102,6 +100,7 @@ CommentItem.propTypes = {
   onUpVoteComment: PropTypes.func.isRequired,
   onDownVoteComment: PropTypes.func.isRequired,
   onNeutralizeVoteComment: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default CommentItem;

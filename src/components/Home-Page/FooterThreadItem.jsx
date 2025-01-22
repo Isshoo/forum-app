@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from 'react-icons/bi';
 import { FaRegComments, FaComments } from 'react-icons/fa';
-import LocaleContext from '../../contexts/LocaleContext';
 import UpVotesInfo from './UpVotesInfo';
 import DownVotesInfo from './DownVotesInfo';
 
@@ -17,9 +16,8 @@ function FooterThreadItem({
   onUpVote,
   onDownVote,
   onNeutralizeVote,
+  locale,
 }) {
-  const { locale } = useContext(LocaleContext);
-
   const isUpVotedByUser = upVotesBy.includes(authUser);
   const isDownVotedByUser = downVotesBy.includes(authUser);
 
@@ -103,6 +101,7 @@ FooterThreadItem.propTypes = {
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   onNeutralizeVote: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default FooterThreadItem;
