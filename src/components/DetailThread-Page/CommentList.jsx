@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import CommentItem from './CommentItem';
 import PropTypes from 'prop-types';
 import List from '../styled/List';
-import LocaleContext from '../../contexts/LocaleContext';
 
 function CommentList({
   comments,
@@ -16,7 +15,7 @@ function CommentList({
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
   return (
-    <List gap="1rem" paddingblock="1rem">
+    <List gutter="1rem" paddingBlock="1rem">
       {sortedComments.map((comment) => (
         <CommentItem
           key={comment.id}

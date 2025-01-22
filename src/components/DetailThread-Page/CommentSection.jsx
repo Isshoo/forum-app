@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import CommentList from './CommentList';
 import CommentInput from './CommentInput';
-import { FaRegComments, FaComments } from 'react-icons/fa';
+import { FaRegComments } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import LocaleContext from '../../contexts/LocaleContext';
 
 function CommentSection({
   comments,
@@ -12,8 +11,8 @@ function CommentSection({
   onUpVoteComment,
   onDownVoteComment,
   onNeutralizeVoteComment,
+  locale,
 }) {
-  const { locale } = useContext(LocaleContext);
   return (
     <div className="comment-section">
       <div className="comment-head">
@@ -30,6 +29,7 @@ function CommentSection({
         onUpVoteComment={onUpVoteComment}
         onDownVoteComment={onDownVoteComment}
         onNeutralizeVoteComment={onNeutralizeVoteComment}
+        locale={locale}
       />
     </div>
   );
@@ -42,6 +42,7 @@ CommentSection.propTypes = {
   onUpVoteComment: PropTypes.func.isRequired,
   onDownVoteComment: PropTypes.func.isRequired,
   onNeutralizeVoteComment: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default CommentSection;

@@ -44,7 +44,7 @@ function CommentItem({
             src={owner.avatar}
             alt=""
             className="comment-image"
-            boxshadow="0px 0px 0px 0px transparent"
+            boxShadow="0px 0px 0px 0px transparent"
           />
         </picture>
       </div>

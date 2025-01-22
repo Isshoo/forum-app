@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
-const List = styled.div`
+const List = styled.div.withConfig({
+  shouldForwardProp: (prop) =>
+    !['paddingInline', 'paddingBlock', 'gutter'].includes(prop),
+})`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  gap: ${(props) => props.gap};
+  gap: ${(props) => props.gutter};
   background-color: transparent;
-  padding-inline: ${(props) => props.paddinginline};
-  padding-block: ${(props) => props.paddingblock};
+  padding-inline: ${(props) => props.paddingInline};
+  padding-block: ${(props) => props.paddingBlock};
 
   &.leaderboards-list {
     @media (max-width: 500px) {
@@ -22,9 +25,9 @@ const List = styled.div`
 `;
 
 List.defaultProps = {
-  paddinginline: '0',
-  paddingblock: '0',
-  gap: '1.25rem',
+  paddingInline: '0',
+  paddingBlock: '0',
+  gutter: '1.25rem',
 };
 
 export default List;
