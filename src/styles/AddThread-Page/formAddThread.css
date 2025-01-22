@@ -35,7 +35,7 @@
   --submit-bg-act: #f0f1f5;
   --question-text: #212631;
   --link-text: #0a0e15;
-  --validation: #5b79fc;
+  --validation: #375bfc;
 }
 
 #formNewThreads {
@@ -104,6 +104,7 @@
   color: var(--validation);
   margin-block: 0.5rem;
   text-align: start;
+  font-weight: 500;
 }
 
 #title:focus,

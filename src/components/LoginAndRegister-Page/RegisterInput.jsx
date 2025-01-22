@@ -57,6 +57,7 @@ function RegisterInput({ register, locale }) {
             type="button"
             className="toggle-password"
             onClick={setShowPassword}
+            aria-label="Toggle Password Button"
           >
             {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
           </button>
@@ -82,6 +83,7 @@ function RegisterInput({ register, locale }) {
             type="button"
             className="toggle-password"
             onClick={setShowPassword}
+            aria-label="Toggle Confirm Password Button"
           >
             {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
           </button>

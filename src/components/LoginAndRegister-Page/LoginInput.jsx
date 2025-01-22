@@ -42,6 +42,7 @@ function LoginInput({ login, locale }) {
             type="button"
             className="toggle-password"
             onClick={setShowPassword}
+            aria-label="Toggle Password Button"
           >
             {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
           </button>
