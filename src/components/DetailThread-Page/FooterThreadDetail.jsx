@@ -13,9 +13,8 @@ function FooterThreadDetail({
   onUpVote,
   onDownVote,
   onNeutralizeVote,
+  locale,
 }) {
-  const { locale } = useContext(LocaleContext);
-
   const isUpVotedByUser = upVotesBy.includes(authUser);
   const isDownVotedByUser = downVotesBy.includes(authUser);
 
@@ -24,11 +23,11 @@ function FooterThreadDetail({
       <div className="thread-numbers-container-detail">
         <div className="thread-votes-number-detail">
           <div className="thread-number-detail">
-            <UpVotesInfoDetail upVotesBy={upVotesBy} allUsers={allUsers} />
+            <UpVotesInfoDetail upVotesBy={upVotesBy} allUsers={allUsers} locale={locale} />
           </div>
           <span></span>
           <div className="thread-number-detail">
-            <DownVotesInfoDetail downVotesBy={downVotesBy} allUsers={allUsers} />
+            <DownVotesInfoDetail downVotesBy={downVotesBy} allUsers={allUsers} locale={locale} />
           </div>
         </div>
       </div>
@@ -64,10 +63,18 @@ FooterThreadDetail.propTypes = {
   upVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   downVotesBy: PropTypes.arrayOf(PropTypes.string).isRequired,
   authUser: PropTypes.string.isRequired,
-  allUsers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  allUsers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+    })
+  ),
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   onNeutralizeVote: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default FooterThreadDetail;

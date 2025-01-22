@@ -13,6 +13,7 @@ import {
   asyncUpVoteThread,
 } from '../states/threads/thunk';
 import LocaleContext from '../contexts/LocaleContext';
+import Pages from '../components/styled/Pages';
 
 function HomePage() {
   const firstRun = useRef(true);
@@ -67,7 +68,7 @@ function HomePage() {
   }
 
   return (
-    <section className="pages-section">
+    <Pages>
       <div className="filter-container">
         <CategoryDropdown categories={categories} setCategory={setCategory} />
         <SearchThreadForm
@@ -78,7 +79,7 @@ function HomePage() {
       </div>
       <ThreadsList threads={filteredThreads} allUsers={users} />
       <AddPageLink />
-    </section>
+    </Pages>
   );
 }
 

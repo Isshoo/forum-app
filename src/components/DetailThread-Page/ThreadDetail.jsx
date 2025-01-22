@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import HeaderThreadDetail from './HeaderThreadDetail';
 import BodyThreadDetail from './BodyThreadDetail';
@@ -17,6 +17,7 @@ function ThreadDetail({
   onUpVote,
   onDownVote,
   onNeutralizeVote,
+  locale,
 }) {
   return (
     <div className="thread-detail">
@@ -26,6 +27,7 @@ function ThreadDetail({
           name={owner.name}
           email={owner.email}
           createdAt={createdAt}
+          locale={locale}
         />
         <BodyThreadDetail title={title} body={body} category={category} />
         <FooterThreadDetail
@@ -36,6 +38,7 @@ function ThreadDetail({
           onUpVote={onUpVote}
           onDownVote={onDownVote}
           onNeutralizeVote={onNeutralizeVote}
+          locale={locale}
         />
       </div>
     </div>
@@ -56,10 +59,18 @@ export const threadDetailShape = {
   upVotesBy: PropTypes.arrayOf(PropTypes.string),
   downVotesBy: PropTypes.arrayOf(PropTypes.string),
   authUser: PropTypes.string.isRequired,
-  allUsers: PropTypes.arrayOf(PropTypes.object).isRequired,
+  allUsers: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      avatar: PropTypes.string.isRequired,
+    })
+  ),
   onUpVote: PropTypes.func.isRequired,
   onDownVote: PropTypes.func.isRequired,
   onNeutralizeVote: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 ThreadDetail.propTypes = {

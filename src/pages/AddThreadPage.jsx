@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import LocaleContext from '../contexts/LocaleContext';
 import { asyncAddThread } from '../states/threads/thunk';
 import { useDispatch } from 'react-redux';
+import Pages from '../components/styled/Pages';
 
 function AddThreadsPage() {
   const navigate = useNavigate();
@@ -34,12 +35,12 @@ function AddThreadsPage() {
   };
 
   return (
-    <section className="pages-section">
+    <Pages>
       <div id="formNewThreads" className="form-container">
         <h2>{locale === 'EN' ? 'New Threads' : 'Thread Baru'}</h2>
         <FormAddThreads addThread={onAddThreadHandler} locale={locale} />
       </div>
-    </section>
+    </Pages>
   );
 }
 

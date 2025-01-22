@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import HeaderThreadItem from './HeaderThreadItem';
 import BodyThreadItem from './BodyThreadItem';
 import FooterThreadItem from './FooterThreadItem';
+import LocaleContext from '../../contexts/LocaleContext';
 
 function ThreadItem({
   id,
@@ -21,6 +22,7 @@ function ThreadItem({
   onDownVote,
   onNeutralizeVote,
 }) {
+  const { locale } = useContext(LocaleContext);
   return (
     <div className="thread">
       <div className="threads-item">
@@ -43,6 +45,7 @@ function ThreadItem({
           onUpVote={onUpVote}
           onDownVote={onDownVote}
           onNeutralizeVote={onNeutralizeVote}
+          locale={locale}
         />
       </div>
     </div>
@@ -61,6 +64,7 @@ export const threadItemShape = {
   user: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
   }).isRequired,
   authUser: PropTypes.string.isRequired,
@@ -75,6 +79,7 @@ ThreadItem.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
       avatar: PropTypes.string.isRequired,
     })
   ),

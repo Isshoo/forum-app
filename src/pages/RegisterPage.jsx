@@ -5,6 +5,7 @@ import { LocaleConsumer } from '../contexts/LocaleContext';
 import { useDispatch } from 'react-redux';
 import { asyncRegisterUser } from '../states/users/action';
 import Swal from 'sweetalert2';
+import Pages from '../components/styled/Pages';
 
 function RegisterPage() {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ function RegisterPage() {
       {({ locale }) => {
         if (locale === 'EN') {
           return (
-            <section className="pages-section">
+            <Pages>
               <div className="form-container logreg">
                 <h2>Register</h2>
                 <RegisterInput register={onRegister} locale={locale} />
@@ -44,11 +45,11 @@ function RegisterPage() {
                   Already have an account? <Link to="/">Login here!</Link>
                 </p>
               </div>
-            </section>
+            </Pages>
           );
         }
         return (
-          <section className="pages-section">
+          <Pages>
             <div className="form-container logreg">
               <h2>Registrasi</h2>
               <RegisterInput register={onRegister} locale={locale} />
@@ -56,7 +57,7 @@ function RegisterPage() {
                 Sudah punya akun? <Link to="/">Masuk disini!</Link>
               </p>
             </div>
-          </section>
+          </Pages>
         );
       }}
     </LocaleConsumer>

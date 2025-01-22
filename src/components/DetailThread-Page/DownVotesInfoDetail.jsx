@@ -1,10 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { BiDislike, BiSolidDislike } from 'react-icons/bi';
-import LocaleContext from '../../contexts/LocaleContext';
 
-function DownVotesInfoDetail({ downVotesBy, allUsers }) {
-  const { locale } = useContext(LocaleContext);
+function DownVotesInfoDetail({ downVotesBy, allUsers, locale }) {
   const voterName = allUsers.find((user) => user.id === downVotesBy[0])?.name || '';
   const lastVoter =
     allUsers.find((user) => user.id === downVotesBy[downVotesBy.length - 1])?.name || '';
@@ -44,9 +42,11 @@ DownVotesInfoDetail.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
       avatar: PropTypes.string.isRequired,
     })
   ).isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default DownVotesInfoDetail;
