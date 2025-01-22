@@ -161,5 +161,6 @@ input:focus {
   .form-container.logreg {
     background-color: transparent;
     box-shadow: 0px 0px 0px 0px transparent;
+    border: 1px solid transparent;
   }
 }
