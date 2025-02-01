@@ -15,7 +15,7 @@ const List = styled.div.withConfig({
   &.leaderboards-list {
     @media (max-width: 500px) {
       padding-inline: 0.25rem;
-      padding-block: 1rem 0rem;
+      padding-block: 1rem 3rem;
     }
 
     @media (max-width: 368px) {
