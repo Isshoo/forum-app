@@ -12,14 +12,14 @@ function RegisterInput({ register, locale }) {
   const [showPassword, setShowPassword] = useVisibility(false);
 
   return (
-    <form id="registerForm" className="logreg-form" autoComplete="off">
+    <form id='registerForm' className='logreg-form' autoComplete='off'>
       <div>
-        <label htmlFor="name">{locale === 'EN' ? 'Name' : 'Nama'}</label>
+        <label htmlFor='name'>{locale === 'EN' ? 'Name' : 'Nama'}</label>
         <input
-          type="text"
-          id="name"
-          name="name"
-          className="name form-input"
+          type='text'
+          id='name'
+          name='name'
+          className='name form-input'
           required
           placeholder={locale === 'EN' ? 'Name' : 'Nama'}
           value={name}
@@ -27,72 +27,63 @@ function RegisterInput({ register, locale }) {
         />
       </div>
       <div>
-        <label htmlFor="email">Email</label>
+        <label htmlFor='email'>Email</label>
         <input
-          type="email"
-          id="email"
-          name="email"
-          className="email form-input"
+          type='email'
+          id='email'
+          name='email'
+          className='email form-input'
           required
-          placeholder="Email"
+          placeholder='Email'
           value={email}
           onChange={onEmailChange}
         />
       </div>
       <div>
-        <label htmlFor="password">Password</label>
-        <div className="password-container">
+        <label htmlFor='password'>Password</label>
+        <div className='password-container'>
           <input
             type={showPassword ? 'text' : 'password'}
-            id="password"
-            name="password"
-            className="password form-input"
+            id='password'
+            name='password'
+            className='password form-input'
             required
-            placeholder="Password"
+            placeholder='Password'
             value={password}
             onChange={onPasswordChange}
           ></input>
           <button
-            id="reg-toggle-password"
-            type="button"
-            className="toggle-password"
+            id='reg-toggle-password'
+            type='button'
+            className='toggle-password'
             onClick={setShowPassword}
-            aria-label="Toggle Password Button"
+            aria-label='Toggle Password Button'
           >
             {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
           </button>
         </div>
       </div>
       <div>
-        <label htmlFor="confirm-password">
+        <label htmlFor='confirm-password'>
           {locale === 'EN' ? 'Confirm Password' : 'Konfirmasi Password'}
         </label>
-        <div className="password-container">
+        <div className='password-container'>
           <input
-            type={showPassword ? 'text' : 'password'}
-            id="confirm-password"
-            name="confirm-password"
-            className="password form-input"
+            type='password'
+            id='confirm-password'
+            name='confirm-password'
+            className='password form-input'
             required
             placeholder={locale === 'EN' ? 'Confirm Password' : 'Konfirmasi Password'}
             value={confirmPassword}
             onChange={onConfirmPasswordChange}
           ></input>
-          <button
-            id="reg-toggle-confirmpassword"
-            type="button"
-            className="toggle-password"
-            onClick={setShowPassword}
-            aria-label="Toggle Confirm Password Button"
-          >
-            {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
-          </button>
         </div>
       </div>
       <button
-        type="button"
-        id="registrationSubmit"
-        className="submit-btn"
+        type='button'
+        id='registrationSubmit'
+        className='submit-btn'
         onClick={() => register({ name, email, password, confirmPassword })}
       >
         {locale === 'EN' ? 'Register' : 'Registrasi'}
